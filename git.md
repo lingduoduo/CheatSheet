@@ -1,5 +1,7 @@
 #### Workflow
 
+https://rachelcarmena.github.io/2018/12/12/how-to-teach-git.html
+
 **everything is happy and up-to-date in master**
 
 `git checkout master`
@@ -90,6 +92,8 @@ stash takes care of this in a pull-request merge
 
 `git diff`
 
+`git diff -staged`
+
 `git add -u`
 
 `git commit -m "Testing"`
@@ -102,11 +106,15 @@ stash takes care of this in a pull-request merge
 
 `git rebase -i 5cc90d163c8eeec54c823a09a1cbab57daf6163b`
 
+`git pull --rebase`
+
 `git add dlorean/utils/dates.py`
 
 `git status`
 
 `git diff`
+
+`git diff -staged`
 
 `git push`
 
@@ -390,29 +398,25 @@ Show history of commits as graph-summary:
 
 #### Compare
 
-Compare modified files:
+Compare modified files in working directory:
 `git diff`
-
-Compare modified files and highlight changes only:
-`git diff --color-words index.html`
 
 Compare modified files within the staging area:
 `git diff --staged`
+
+Compare commits in local repository:
+`git diff 6eb715d`
+`git diff 6eb715d..HEAD`
+`git diff 6eb715d..537a09f`
+
+Compare modified files and highlight changes only:
+`git diff --color-words index.html`
 
 Compare branches:
 `git diff master..branchname`
 
 Compare branches like above:
 `git diff --color-words master..branchname^`
-
-Compare commits:
-`git diff 6eb715d`
-`git diff 6eb715d..HEAD`
-`git diff 6eb715d..537a09f`
-
-Compare commits of file:
-`git diff 6eb715d index.html`
-`git diff 6eb715d..537a09f index.html`
 
 Compare without caring about spaces:
 `git diff -b 6eb715d..HEAD` or:
@@ -490,7 +494,7 @@ Push:
 `git push origin master`
 
 Force-Push:
-`git push origin master --force
+`git push origin master --force`
 
 Pull:
 `git pull`
