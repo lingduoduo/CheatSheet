@@ -1,7 +1,97 @@
-#### General
+#### Setup
 
 Initialize Git:
 `git init`
+
+`git remote add origin url` -- 关联远程仓库
+
+`git config --global credential.helper stor` -- 拉取、上传免密码
+
+`git pull`
+
+`git fetch` -- 获取远程仓库中所有的分支到本地
+
+** autosetup rebase so that pulls rebase by default**
+
+`git config --global branch.autosetuprebase always`
+
+** if you already have branches (made before `autosetuprebase always`)**
+
+`git config branch.mybranchname.rebase true`
+
+** you almost certainly want to run this as well, to allow git commands to be output with colour:**
+
+`git config --global color.ui always`
+
+#### Workflow
+
+** everything is happy and up-to-date in master**
+
+`git checkout master`
+
+`git pull origin master`
+
+** create branch
+
+`git branch my-new-feature`
+
+`git branch -b my-new-feature`
+
+** let's branch to make changes**
+
+`git checkout -b my-new-feature`
+
+** go ahead, make changes now.**
+
+`vim file`
+
+** commit your (incremental, atomic) changes**
+
+`git add -p`
+
+`git commit -m "my changes"`
+
+** optional: push your branch for discussion (pull-request)  you might do this many times as you develop.**
+-- 推送本地分支到远程仓库
+
+`git push origin my-new-feature`
+
+** if your branch becomes too old (2-3 days) and diverges from master,you will want to merge origin/master into your future branch before deploying**
+
+`git fetch origin`
+
+`git merge origin master`
+
+** merge when done developing.**
+
+`git checkout master`
+
+`git pull origin master`
+
+`git merge --no-ff -m 'merge my new-feature with no-ff' my-new-feature`
+`git merge --no-ff -m '合并描述' 分支名` -- 不使用Fast forward方式合并，采用这种方式合并可以看到合并记录
+
+--no-ff preserves feature history and easy full-feature reverts merge commits should not include changes; 
+
+`git rebase -i HEAD-n` -- rebasing reconciles issues
+
+`git rebase -i master mybranch`
+
+`git rm -r --cached 文件/文件夹名字` 取消文件被版本控制
+
+`git reflog` -- 获取执行过的命令
+
+`git log --graph` -- 查看分支合并图
+
+`git check-ignore -v 文件名` -- 查看忽略规则
+
+`git update-index --assume-unchanged file` --忽略单个文件
+
+`git rm -r --cached 文件/文件夹名字` -- 忽略全部文件
+
+`git update-index --no-assume-unchanged file` -- 取消忽略文件
+
+### General
 
 Get everything ready to commit:
 `git add .`
@@ -30,30 +120,37 @@ Remove file but do not track anymore:
 Move or rename files:
 `git mv index.html dir/index_new.html`
 
-Undo modifications (restore files from latest commited version):
+Undo modifications (restore files from latest commited version): - 撤销修改的文件(如果文件加入到了暂存区，则回退到暂存区的，如果文件加入到了版本库，则还原至加入版本库之后的状态)
 `git checkout -- index.html`
 
 Restore file from a custom commit (in current branch):
 `git checkout 6eb715d -- index.html`
 
+Hard reset of a single file (`@` is short for `HEAD`):
+`git checkout @ -- index.html`
+
 #### Reset
 
-Go back to commit:
-`git revert 073791e7dd71b90daa853b2c5acc2c925f02dbc6`
+Undo latest commit: 
+`git reset --soft HEAD~ `
 
 Soft reset (move HEAD only; neither staging nor working dir is changed):
 `git reset --soft 073791e7dd71b90daa853b2c5acc2c925f02dbc6`
 
-Undo latest commit: `git reset --soft HEAD~ `
+Hard rest to HEAD ---- 回退到上一个版本
+`git rest --hard HEAD`
+
+Hard reset (move HEAD and change staging dir and working dir to match repo): -- 回退到某个版本
+`git reset --hard commit_id`
+`git reset --hard 073791e7dd71b90daa853b2c5acc2c925f02dbc6`
+
+Go back to commit:
+`git revert 073791e7dd71b90daa853b2c5acc2c925f02dbc6`
+
+`git reset HEAD file` -- 撤回暂存区的文件修改到工作区
 
 Mixed reset (move HEAD and change staging to match repo; does not affect working dir):
 `git reset --mixed 073791e7dd71b90daa853b2c5acc2c925f02dbc6`
-
-Hard reset (move HEAD and change staging dir and working dir to match repo):
-`git reset --hard 073791e7dd71b90daa853b2c5acc2c925f02dbc6`
-
-Hard reset of a single file (`@` is short for `HEAD`):
-`git checkout @ -- index.html`
 
 #### Update & Delete
 
@@ -126,7 +223,8 @@ Undo local merge that hasn't been pushed yet:
 Merge only one specific commit: 
 `git cherry-pick 073791e7`
 
-Rebase:
+#### Rebase
+
 `git checkout branchname` » `git rebase master`
 or:
 `git merge master branchname`
@@ -143,10 +241,10 @@ Squash-merge a feature branch (as one commit):
 
 #### Stash
 
-Put in stash:
+Put in stash: -- 暂存当前修改
 `git stash save "Message"`
 
-Show stash:
+Show stash: -- 查看暂存列表
 `git stash list`
 
 Show stash stats:
@@ -155,10 +253,10 @@ Show stash stats:
 Show stash changes:
 `git stash show -p stash@{0}`
 
-Use custom stash item and drop it:
+Use custom stash item and drop it: -- 恢复暂存并删除暂存记录
 `git stash pop stash@{0}`
 
-Use custom stash item and do not drop it:
+Use custom stash item and do not drop it: -- 恢复最近的一次暂存
 `git stash apply stash@{0}`
 
 Use custom stash item and index:
@@ -167,10 +265,10 @@ Use custom stash item and index:
 Create branch from stash: 
 `git stash branch new_branch`
 
-Delete custom stash item:
+Delete custom stash item: -- 移除某次暂存
 `git stash drop stash@{0}`
 
-Delete complete stash:
+Delete complete stash: --  清除暂存
 `git stash clear`
 
 #### Gitignore & Gitkeep
@@ -268,20 +366,31 @@ Blame:
 
 #### Releases & Version Tags
 
-Show all released versions:
+Show all released versions: -- 列出所有标签列表
 `git tag`
 
 Show all released versions with comments:
 `git tag -l -n1`
 
-Create release version:
+Create release version: --添加标签(默认对当前版本)
 `git tag v1.0.0`
 
-Create release version with comment:
+Create release version with comment: -- 创建新标签并增加备注
 `git tag -a v1.0.0 -m 'Message'`
 
 Checkout a specific release version:
 `git checkout v1.0.0`
+
+`git show tagname` -- 查看标签信息
+
+`git tag -d tagname` -- 删除本地标签
+
+`git push origin tagname` -- 推送标签到远程仓库
+
+`git push origin --tags` -- 推送所有标签到远程仓库
+
+`git push origin :refs/tags/tagnames` -- 从远程仓库中删除标签
+
 
 #### Collaborate
 
@@ -375,81 +484,6 @@ Website: https://git-lfs.github.com/
 Install: `brew install git-lfs`
 
 Track `*.psd` files: `git lfs track "*.psd"` (init, add, commit and push as written above)
-
-#### Workflow
-
-https://rachelcarmena.github.io/2018/12/12/how-to-teach-git.html
-
-**everything is happy and up-to-date in master**
-
-`git checkout master`
-
-`git pull origin master`
-
-**create branch
-
-`git branch my-new-feature`
-
-`git branch -b my-new-feature`
-
-**let's branch to make changes**
-
-`git checkout -b my-new-feature`
-
-**go ahead, make changes now.**
-
-`vim file`
-
-**commit your (incremental, atomic) changes**
-
-`git add -p`
-
-`git commit -m "my changes"`
-
-**optional: push your branch for discussion (pull-request)  you might do this many times as you develop.**
-
-`git push origin my-new-feature`
-
-**if your branch becomes too old (2-3 days) and diverges from master,you will want to merge origin/master into your future branch before deploying**
-
-`git fetch origin`
-
-`git merge origin master`
-
-**merge when done developing.**
-
---no-ff preserves feature history and easy full-feature reverts
-merge commits should not include changes; 
-rebasing reconciles issues
-stash takes care of this in a pull-request merge
-
-`git checkout master`
-
-`git pull origin master`
-
-`git merge --no-ff -m 'merge my new-feature with no-ff' my-new-feature`
-
-`git rebase -i HEAD-n`
-
-`git rebase -i master mybranch`
-
-**autosetup rebase so that pulls rebase by default**
-
-`git config --global branch.autosetuprebase always`
-
-**if you already have branches (made before `autosetuprebase always`)**
-
-`git config branch.mybranchname.rebase true`
-
-**you almost certainly want to run this as well, to allow git commands to be output with colour:**
-
-`git config --global color.ui always`
-
-**drop big GitHub files**
-
-`git filter-branch -f --index-filter '`
-
-`git rm --cached --ignore-unmatch users.csv'`
 
 **own git repo examples**
 
