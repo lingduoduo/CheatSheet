@@ -1,175 +1,3 @@
-#### Workflow
-
-https://rachelcarmena.github.io/2018/12/12/how-to-teach-git.html
-
-**everything is happy and up-to-date in master**
-
-`git checkout master`
-
-`git pull origin master`
-
-**let's branch to make changes**
-
-`git checkout -b my-new-feature`
-
-**go ahead, make changes now.**
-
-`vim file`
-
-**commit your (incremental, atomic) changes**
-
-`git add -p`
-`git commit -m "my changes"`
-
-**optional: push your branch for discussion (pull-request)  you might do this many times as you develop.**
-
-`git push origin my-new-feature`
-
-**if your branch becomes too old (2-3 days) and diverges from master,you will want to merge origin/master into your future branch before deploying**
-
-`git fetch origin`
-
-`git merge origin master`
-
-**merge when done developing.**
-
---no-ff preserves feature history and easy full-feature reverts
-merge commits should not include changes; 
-rebasing reconciles issues
-stash takes care of this in a pull-request merge
-
-`git checkout master`
-
-`git pull origin master`
-
-`git merge --no-ff -m 'merge my new-feature with no-ff' my-new-feature`
-
-`git rebase -i HEAD-n`
-
-`git rebase -i master mybranch`
-
-**autosetup rebase so that pulls rebase by default**
-
-`git config --global branch.autosetuprebase always`
-
-**if you already have branches (made before `autosetuprebase always`)**
-
-`git config branch.mybranchname.rebase true`
-
-**you almost certainly want to run this as well, to allow git commands to be output with colour:**
-
-`git config --global color.ui always`
-
-`git filter-branch -f --index-filter 'git rm --cached --ignore-unmatch users.csv'`
-
-**drop big GitHub files**
-
-`git filter-branch -f --index-filter '`
-
-`git rm --cached --ignore-unmatch users.csv'`
-
-**own git repo examples**
-
-`git branch ling`
-
-`git checkout master`
-
-`git add .`
-
-`git status`
-
-`git commit --m 'add new files'`
-
-`git pull origin master`
-
-`git push -u origin master`
-
-**php examples**
-
-`git branch`
-
-`rsub -f components/Gdpr/Collector/User/LastActiveTimes.php` 
-
-`git diff`
-
-`git diff -staged`
-
-`git add -u`
-
-`git commit -m "Testing"`
-
-`vendor/bin/phpcbf components/Gdpr/Collector/User/LastActiveTimes.php`
-
-**rebase examples**
-
-`git rebase add_shift_dt_fn/master`
-
-`git rebase -i 5cc90d163c8eeec54c823a09a1cbab57daf6163b`
-
-`git pull --rebase`
-
-`git add dlorean/utils/dates.py`
-
-`git status`
-
-`git diff`
-
-`git diff -staged`
-
-`git push`
-
-**revert/undo the last commit:**
-
-`git reset --soft HEAD~`
-
-`git reset HEAD~1`
-
-check out the current directory:
-`git checkout -- .`
-
-**look for difference:**
-`git diff`
-
-`git checkout -- .`
-
-`vim whitelists.yaml`
-
-`git diff`
-
-**commit to PR and force-push**
-
-`git commit --m 'add ling to the whitelist'`
-
-`git push`
-
-`git push --set-upstream origin add_ling_whitelist_grp -f`
-
-#### Reminder
-
-Press `minus + shift + s` and `return` to chop/fold long lines!
-
-Show folder content: `ls -la`
-
-#### Notes
-
-Do not put (external) dependencies in version control!
-
-#### Setup
-
-See where Git is located:
-`which git`
-
-Get the version of Git:
-`git --version`
-
-Create an alias (shortcut) for `git status`:
-`git config --global alias.st status`
-
-#### Help
-
-Help:
-`git help`
-
 #### General
 
 Initialize Git:
@@ -259,19 +87,25 @@ Rename branch:
 `git branch -m branchname new_branchname` or:
 `git branch --move branchname new_branchname`
 
-Show all completely merged branches with current branch:
+Show all completely merged branches with current branch: --查看别的分支和当前分支合并过的分支
 `git branch --merged`
 
-Delete merged branch (only possible if not HEAD):
+Show all branches without merged -- 查看未与当前分支合并的分支
+`git branch --no-merged`
+
+Delete merged branch (only possible if not HEAD): -- 删除本地分支
 `git branch -d branchname` or:
 `git branch --delete branchname`
 
-Delete not merged branch:
+Delete not merged branch: -- 强行删除分支
 `git branch -D branch_to_delete`
+
+Delete remote branch: -- 删除远处仓库分支
+`git branch origin: branchname`
 
 #### Merge
 
-True merge (fast forward):
+True merge (fast forward): --合并分支到当前分支上
 `git merge branchname`
 
 Merge to master (only if fast forward):
@@ -541,4 +375,181 @@ Website: https://git-lfs.github.com/
 Install: `brew install git-lfs`
 
 Track `*.psd` files: `git lfs track "*.psd"` (init, add, commit and push as written above)
+
+#### Workflow
+
+https://rachelcarmena.github.io/2018/12/12/how-to-teach-git.html
+
+**everything is happy and up-to-date in master**
+
+`git checkout master`
+
+`git pull origin master`
+
+**create branch
+
+`git branch my-new-feature`
+
+`git branch -b my-new-feature`
+
+**let's branch to make changes**
+
+`git checkout -b my-new-feature`
+
+**go ahead, make changes now.**
+
+`vim file`
+
+**commit your (incremental, atomic) changes**
+
+`git add -p`
+
+`git commit -m "my changes"`
+
+**optional: push your branch for discussion (pull-request)  you might do this many times as you develop.**
+
+`git push origin my-new-feature`
+
+**if your branch becomes too old (2-3 days) and diverges from master,you will want to merge origin/master into your future branch before deploying**
+
+`git fetch origin`
+
+`git merge origin master`
+
+**merge when done developing.**
+
+--no-ff preserves feature history and easy full-feature reverts
+merge commits should not include changes; 
+rebasing reconciles issues
+stash takes care of this in a pull-request merge
+
+`git checkout master`
+
+`git pull origin master`
+
+`git merge --no-ff -m 'merge my new-feature with no-ff' my-new-feature`
+
+`git rebase -i HEAD-n`
+
+`git rebase -i master mybranch`
+
+**autosetup rebase so that pulls rebase by default**
+
+`git config --global branch.autosetuprebase always`
+
+**if you already have branches (made before `autosetuprebase always`)**
+
+`git config branch.mybranchname.rebase true`
+
+**you almost certainly want to run this as well, to allow git commands to be output with colour:**
+
+`git config --global color.ui always`
+
+**drop big GitHub files**
+
+`git filter-branch -f --index-filter '`
+
+`git rm --cached --ignore-unmatch users.csv'`
+
+**own git repo examples**
+
+`git branch ling`
+
+`git checkout master`
+
+`git add .`
+
+`git status`
+
+`git commit --m 'add new files'`
+
+`git pull origin master`
+
+`git push -u origin master`
+
+**php examples**
+
+`git branch`
+
+`rsub -f components/Gdpr/Collector/User/LastActiveTimes.php` 
+
+`git diff`
+
+`git diff -staged`
+
+`git add -u`
+
+`git commit -m "Testing"`
+
+`vendor/bin/phpcbf components/Gdpr/Collector/User/LastActiveTimes.php`
+
+**rebase examples**
+
+`git rebase add_shift_dt_fn/master`
+
+`git rebase -i 5cc90d163c8eeec54c823a09a1cbab57daf6163b`
+
+`git pull --rebase`
+
+`git add dlorean/utils/dates.py`
+
+`git status`
+
+`git diff`
+
+`git diff -staged`
+
+`git push`
+
+**revert/undo the last commit:**
+
+`git reset --soft HEAD~`
+
+`git reset HEAD~1`
+
+check out the current directory:
+`git checkout -- .`
+
+**look for difference:**
+`git diff`
+
+`git checkout -- .`
+
+`vim whitelists.yaml`
+
+`git diff`
+
+**commit to PR and force-push**
+
+`git commit --m 'add ling to the whitelist'`
+
+`git push`
+
+`git push --set-upstream origin add_ling_whitelist_grp -f`
+
+#### Reminder
+
+Press `minus + shift + s` and `return` to chop/fold long lines!
+
+Show folder content: `ls -la`
+
+#### Notes
+
+Do not put (external) dependencies in version control!
+
+#### Setup
+
+See where Git is located:
+`which git`
+
+Get the version of Git:
+`git --version`
+
+Create an alias (shortcut) for `git status`:
+`git config --global alias.st status`
+
+#### Help
+
+Help:
+`git help`
 
