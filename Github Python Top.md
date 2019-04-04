@@ -1,25 +1,15 @@
-### 2018/09 
-#### https://medium.mybridge.co/python-open-source-of-the-month-v-sep-2018-3136ac55f230
+in:name python
+in:descripton python
+stars: > 数字  关键字
+stars: 10..20 python
+size:>=5000 python
+pushed:>2019-01-03spring cloud
+license:apache-2.0 spring cloud
+language:java  关键词
+user:linghduoduo
+user:linghduoduo language:python
+org:spring-cloud
 
-1 Python-nubia: A command-line and interactive shell framework. [734 stars on Github]. Courtesy of Facebook Incubator
-
-2 Faust: A library for building streaming applications in Python. [2119 stars on Github]. Courtesy of Robinhood
-
-3 Soundcloud-dl: Download SoundCloud music at 128kbps with album art and tags [96 stars on Github]. Courtesy of Siddharth Dushantha
-
-4 PyTheory: Music Theory for Humans. [626 stars on Github]. Courtesy of Kenneth Reitz
-
-5 Lazydata: A minimalist library for including data dependencies into Python projects. [384 stars on Github]. Courtesy of rstojnic
-
-6 Python-jvm-interpreter: Java Virtual Machine implementation in Python [118 stars on Github]. Courtesy of Gokberk Yaltirakli
-
-7 Pyodide: The Python scientific stack, compiled to WebAssembly [762 stars on Github]. Courtesy of iodide
-
-8 Botflow: Python Fast Data driven programming framework for Data pipeline work( Web Crawler,Machine Learning,Quantitative Trading.etc) [739 stars on Github]. Courtesy of kkyon
-
-9 Asciify: Convert Images into ASCII Art with the power of Python [229 stars on Github]. Courtesy of Aditya Ramesh
-
-10 Lmdb-embeddings: Fast word vectors with little memory usage in Python [265 stars on Github]. Courtesy of ThoughtRiver
 
 ### 2018/06
 #### https://mp.weixin.qq.com/s/9Gv3EfLCWRMo2-8NfNHT7Q
