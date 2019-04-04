@@ -652,12 +652,12 @@ mount 挂载 linux所有存储设备都必须挂载使用，包括硬盘
     /dev/cdrom     光盘
     /dev/hdc       IDE硬盘   centos 5.5
     /dev/sr0       光盘      centos 6.x
-    mount -t 文件系统 设备描述文件 挂载点（已经存在空目录）
-    mount -t iso9660 /dev/cdrom /mnt/cdrom
-    umount /dev/cdrom
-    umount /mnt/cdrom      注意：退出挂载目录，才能卸载
-    fdisk -l 查看设备名
-    mount -t vfat /dev/sdb1 /mnt/usb
+mount -t 文件系统 设备描述文件 挂载点（已经存在空目录）
+mount -t iso9660 /dev/cdrom /mnt/cdrom
+umount /dev/cdrom
+umount /mnt/cdrom      注意：退出挂载目录，才能卸载
+fdisk -l 查看设备名
+mount -t vfat /dev/sdb1 /mnt/usb
 ```
 
 10 Network
