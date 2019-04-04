@@ -1,5 +1,3 @@
-Unix 101
-========================================================
 
 1 Introduction
 ---------------------------------
@@ -20,16 +18,15 @@ drwxr-xr-x  1887 root   wheel    80K Mar 11 05:09 ..
 drwxr-xr-x     2 lingh  users   4.0K Jul 11  2013 .ssh
 -rw-------     1 lingh  users   470B Jul 11  2013 .xinitrc
 -rw-------     1 lingh  users   177B Jul 11  2013 .xsession
--rw-r--r--     1 lingh  users   119B Jul 23  2013 apple.txt
--rw-r--r--     1 lingh  users   156B Jul 24  2013 fruits.txt
--rw-r--r--     1 lingh  users    48B Jul 23  2013 fruits.txt.output1
--rw-r--r--     1 lingh  users    48B Jul 23  2013 fruits.txt.output2
--rwxr-xr-x     1 lingh  users   404B Jul 23  2013 isscript.sh
--rwxr--r--     1 lingh  users   385B Jul 23  2013 myscript.sh
--rw-r--r--     1 lingh  users    30B Jul 31  2013 numbers.txt
--rwxr-xr-x     1 lingh  users   232B Jul 23  2013 uniquefruits.sh
--rw-r--r--     1 lingh  users    97B Jul 22  2013 uniquefruits.txt
--rw-r--r--     1 lingh  users   123B Jul 30  2013 vartot.awk
+
+ls              (显示当前目录下文件)
+ls 目录名        (显示指定目录下文件)
+ls -l           (长格式显示目录文件)
+ls -l 文件名     (长格式显示指定文件)
+ls -a           (显示所有文件(包含隐藏文件))
+ls -al          (长格式显示当前目录下所有文件)
+ls -h           (文件大小显示为常见大小单位 B KB MB ...)
+ls -d           (显示目录本身，而不是里面的子文件)
 
 login4 09:57:34 ~ $ cat -n apple.txt
      1  fruits.txt:apple
@@ -65,32 +62,44 @@ banner(6)                - print large banner on printer
 ---------------------------------
 
 ```
-# / - root
-# /bin - Binaries, programs
-# /sbin - System binaries, sytem program
-# /dev - Devices: hard drives, keyboard, mouse, etc.
-# /etc - system configurations
-# /home - user home directories
-# /lib - libraries of code
-# /tmp - temporary files
-# /var - various, mostly files the system uses
-# /usr - user programs, tools and libraries (not files)
-# /usr/bin
-# /usr/etc
-# /usr/lib
-# /usr/local
+/ - root  根目录
+/bin - Binaries, programs
+/sbin - System binaries, sytem program
+/dev - Devices: hard drives, keyboard, mouse, etc.  设备文件保存目录
+/etc - system configurations  配置文件保存目录
+/home - user home directories 普通用户的家目录
+/lib - libraries of code 系统库保存目录
+/tmp - temporary files 临时目录
+/var - various, mostly files the system uses 系统相关文档内容
+/var/log/         系统日志位置
+/var/spool/mail/  系统默认邮箱位置
+/var/lib/         默认安装的库文件目录
+/usr - user programs, tools and libraries (not files) 系统软件资源目录
+/usr/bin 命令保存目录（普通用户就可以读取的命令）
+/usr/bin/         系统命令（普通用户）
+/usr/sbin/        系统命令（超级用户）
+/boot             启动目录，启动相关文件
+/mnt              系统挂载目录
+/media            挂载目录
+/root             超级用户的家目录
+/sbin             命令保存目录（超级用户才能使用的目录）
+/proc             直接写入内存的
+/sys              将内核的一些信息映射，可供应用程序所用
 
 login3 10:42:38 ~ $ pwd
 /homes/lingh
 
 # parent's parent's directory
 cd ../..
-
+cd ..               进入上一级目录
 # user directory
-cd ~ 
-
+cd ~                进入当前用户的家目录
 # toggle directory
 cd -
+cd -                进入上次目录
+cd /usr/local/src   切换到指定路径(使用绝对路径方式)
+cd .                进入当前目录
+绝对路径：cd ../usr/local 参照当前所在目录，进行查找。一定要先确定当前所在目录。 相对路径：cd /usr/local 从根目录开始指定，一级一级递归查找。在任何目录下，都能进入指定位置。
 ```
 
 3 Working with Files and Directories
@@ -104,19 +113,43 @@ vi fruits.txt
 
 #small files
 Cat fruits.txt
+cat 文件名      查看文件内容内容
+cat -n 文件名   查看文件内容，并列出行号
 
 #large files
 less -N fruits.txt
 less -M fruits.txt
 
+#large files
+more 文件名    分屏显示文件内容
+向上翻页  空格键
+向下翻页  b键
+退出查看  q键
+
 #sample lines from files
 head -1 fruits.txt
+head 文件名           显示文件头几行(默认显示10行)
+head -n 20 文件名     显示文件前20行
+head -n -20 文件名    显示文件最后20行
+ctrl + c             强制终止查看模式
+ctrl + l             清屏
+
 tail -1 fruits.txt
 tail -f /var/log/apache2/error_log
 
 #create directory
-mkdir -p testdir/test1/test2
+mkdir -p testdir/test1/test2 递归创建
 mkdir -vp testdir/test1/test3
+
+# ln - link
+功能描述：链接文件,等同于Windows中的快捷方式
+新建的链接，占用不同的硬盘位置
+修改一个文件，两边都会改变
+删除源文件，软连接文件打不开
+ln -s 源文件 目标文件 创建链接文件(文件名都必须写绝对路径)
+
+# remove empty directories
+rmdir
 
 #move files and directory
 mv newfile.txt ../newfile.txt
@@ -133,9 +166,13 @@ cp -i newfile.txt newerfile.txt (interactive overwriting)
 cp -R test1 test1_copy_dir
 
 #delete files and directories
+rm 文件名 删除文件
 rm somefile.txt
 rmdir somedir
+rm -r 目录名 递归删除文件和目录
 rm -R somedir (delete files and directories recursively)
+rm -f 文件名 强制删除
+rm -rf 目录名 强制删除目录和文件
 
 #finder aliases/links and symbolic links
 ln fruits.txt hardlink (ln filetolink hardlink - reference a hard copy file in a file system)
@@ -171,6 +208,16 @@ sudo chown user1:users ownership.txt
 # group categories (user, group, other)
 # permission read(r-4), write(w-2), execute(x-1)
 # user(rwx), group(rw-), other(r--)
+权限位是十位
+    第一位：代表文件类型
+    -   普通文件
+    d   目录文件
+    l   链接文件
+    其他九位：代表各用户的权限
+    (前三位=属主权限u  中间三位=属组权限g  其他人权限o)
+    r   读   4 , 读取文件内容 如：cat、more、head、tail; 可以查询目录下文件名 如：ls
+    w   写   2 , 编辑、新增、修改文件内容 如：vi、echo 但是不包含删除文件; 具有修改目录结构的权限 如：touch、rm、mv、cp
+    x   执行  1, 可执行  /tmp/11/22/abc; 可以进入目录 如：cd
 chmod mode filename
 chmod ugo=rwx filename
 chmod u=rwx,g=rw,o=r filename
@@ -179,16 +226,25 @@ chmod o-w filename
 chmod ugo+rw filename
 chmod a+rw filename
 chmod -R g+w testdir
+chmod u+x aa      aa文件的属主加上执行权限
+chmod u-x aa      aa文件的属主减去执行权限
+chmod g+w,o+w aa  aa文件的属组和其他人加上写权限
+chmod u=rwx aa    aa文件的用户权限改为所有权限(读+写+执行)
 
 chmod 777 filename (all permissions)
 chmod 764 filename (rwx+rw+r)
 chmod 755 filename (rwx+rx+rx)
 chmod 700 filename (rwx+ + )
 chmod 000 filename (no permission)
+chmod 755 aa      aa文件的属主权限是rwx，属组和其他人是rx
+chmod 644 aa      aa文件的属主权限是rw，属组和其他人是r
 
 # root user
 sudo ls -lla
 sudo chown lingh file.txt
+chown 用户名 文件名      改变文件属主
+chown user1 aa         user1必须存在
+chown user1:user1 aa   改变属主同时改变属组
 ```
 
 5 Commands and Programs
