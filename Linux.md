@@ -190,6 +190,14 @@ find ~ -name *.plist
 find ~ -name *.plist -and -not -path *QuickTime
 find ~ -name *.plist -and -not -paht *QuickTime -and -not *Preference
 find /homes/lingh/ -name '*.*'
+-name 文件名      按照文件名查找
+-user 用户名      按照属主用户名查找文件
+-group 组名       按照属组组名查找文件
+-nouser          找没有属主的文件 (除了这三个文件：/proc、/sys、/mnt/cdrom)
+-size            按照文件大小k M  如：find / -size +50k
+-type            按照文件类型查找(f=普通  d=目录  l=链接)
+-perm            按照权限查找  如：find /root -perm 644
+-iname           按照文件名查找，不区分大小写
 ```
 
 4 Ownership and Permissions
@@ -456,6 +464,13 @@ grep --color apple fruit.txt
 export GREP_COLOR="34;47"
 export GREP_OPTIONS="--color=auto"
 grep --color=auto apple fruit.txt
+grep -i "root" /etc/passwd
+    -v       反向选择
+    -i       忽略大小写
+管道符 |
+命令1 | 命令2                 命令1的执行结果，作为命令2的执行条件
+cat 文件名 | grep '字串'      提取含有字符串的行
+ls -l /etc | more           分屏显示ls内容
 
 # regular expression - basics
 .  (wild card, any one character except line breaks, gre.t)
@@ -602,13 +617,27 @@ find  ~lingh/ -name "*.backup" -print0 | xargs -p -0 -n1 rm
 # Creating an archive using tar command
 tar cvf archive_name.tar dirname/
 tar cvfj archive_name.tar.bz2 dirname/
-# z - filter the archive through gzip
-# j - filter the archive through bzip2
-# Extracting (untar) an archive using tar command
+tar -zcvf 压缩文件名 源文件
+tar -zcvf aa.tar.gz aa
+    -z       识别.gz格式 filter the archive through gzip
+    -c       压缩
+    -v       显示压缩过程
+    -f       指定压缩包名
+    -j       filter the archive through bzip2
+tar  -zxvf  压缩文件名   解压缩同时解打包
+tar -jcvf 压缩文件名 源文件      压缩同时打包
+tar -jcvf aa.tar.bz2 aa  
+tar -jxvf aa.tar.bz2          解打包同时解压缩
+
+# Extracting (untar) an archive using tar command 查看不解包
 #Extract a *.tar file using option xvf
 tar xvf archive_name.tar
 #Extract a gzipped tar archive ( *.tar.gz ) using option xvzf
 tar xvfz archive_name.tar.gz
 #Extracting a bzipped tar archive ( *.tar.bz2 ) using option xvjf
 tar xvfj archive_name.tar.bz2
+tar -ztvf aa.tar.gz           查看不解压
+tar -jtvf aa.tar.bz2
+    -t  只查看，不解压
+tar -jxvf root.tar.bz2 -C /tmp/      指定解压缩位置
 ```
