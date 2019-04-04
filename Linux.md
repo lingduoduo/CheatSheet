@@ -641,3 +641,32 @@ tar -jtvf aa.tar.bz2
     -t  只查看，不解压
 tar -jxvf root.tar.bz2 -C /tmp/      指定解压缩位置
 ```
+
+9 Shotdown and Reboot
+---------------------------------------------
+```
+shutdown -h now    没有特殊情况，使用此命令
+root 关机/重启挂载
+mount 挂载 linux所有存储设备都必须挂载使用，包括硬盘
+ /dev/sda1      第一个scsi硬盘的第一分区
+    /dev/cdrom     光盘
+    /dev/hdc       IDE硬盘   centos 5.5
+    /dev/sr0       光盘      centos 6.x
+    mount -t 文件系统 设备描述文件 挂载点（已经存在空目录）
+    mount -t iso9660 /dev/cdrom /mnt/cdrom
+    umount /dev/cdrom
+    umount /mnt/cdrom      注意：退出挂载目录，才能卸载
+    fdisk -l 查看设备名
+    mount -t vfat /dev/sdb1 /mnt/usb
+```
+
+10 Network
+---------------------------------------------
+```
+ping
+功能描述：测试网络畅通性
+ping -c 次数 ip    探测网络通畅
+
+ifconfig
+功能描述：查询本机网络信息
+```
