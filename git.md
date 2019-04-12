@@ -108,6 +108,8 @@ Commit changes with title and description:
 Add and commit in one step:
 `git commit -am "Message"`
 
+`git commit –amend` ——将暂存区的更改添加到最近一次提交中。
+
 Remove files from Git:
 `git rm index.html`
 
@@ -133,6 +135,8 @@ Hard reset of a single file (`@` is short for `HEAD`):
 
 Undo latest commit: 
 `git reset --soft HEAD~ `
+
+`git reset –-hard HEAD` ——撤销最近提交以来暂存区和非暂存区的改动
 
 Soft reset (move HEAD only; neither staging nor working dir is changed):
 `git reset --soft 073791e7dd71b90daa853b2c5acc2c925f02dbc6`
@@ -387,10 +391,11 @@ Checkout a specific release version:
 
 `git push origin tagname` -- 推送标签到远程仓库
 
+`git push my remote –tags` -- 将所有本地标记发送到远程版本库中
+
 `git push origin --tags` -- 推送所有标签到远程仓库
 
 `git push origin :refs/tags/tagnames` -- 从远程仓库中删除标签
-
 
 #### Collaborate
 
