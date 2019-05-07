@@ -1,9 +1,13 @@
 #### Setup
 
-Initialize Git:
+** Initialize Git**
 `git init`
 
+`git remote` 列出所有远程仓库
+
 `git remote add origin url` -- 关联远程仓库
+
+`git remote set-url origin <URL>`--修改远程仓库的 url
 
 `git config --global credential.helper stor` -- 拉取、上传免密码
 
@@ -22,6 +26,8 @@ Initialize Git:
 ** you almost certainly want to run this as well, to allow git commands to be output with colour:**
 
 `git config --global color.ui always`
+
+`git status --ignored` --展示忽略的文件
 
 #### Workflow
 
@@ -56,9 +62,13 @@ Initialize Git:
 
 `git push origin my-new-feature`
 
+`git push origin/mybranch -u`
+
 ** if your branch becomes too old (2-3 days) and diverges from master,you will want to merge origin/master into your future branch before deploying**
 
 `git fetch origin`
+
+`git fetch --all`
 
 `git merge origin master`
 
@@ -79,9 +89,11 @@ Initialize Git:
 
 `git rm -r --cached 文件/文件夹名字` 取消文件被版本控制
 
-`git reflog` -- 获取执行过的命令
+`git reflog` -- 获取执行过的命令, 显示本地更新过 HEAD 的 git 命令记录
 
-`git log --graph` -- 查看分支合并图
+`git log --graph` -- 查看分支合并图, 查看 commit 历史
+
+`git whatchanged --since= 2 weeks ago` --查看两个星期内的改动
 
 `git check-ignore -v 文件名` -- 查看忽略规则
 
@@ -90,6 +102,10 @@ Initialize Git:
 `git rm -r --cached 文件/文件夹名字` -- 忽略全部文件
 
 `git update-index --no-assume-unchanged file` -- 取消忽略文件
+
+`git update-ref -d HEAD` 把所有的改动都重新放回工作区，并清空所有的 commit，这样就可以重新提交第一个 commit 了
+
+`git checkout <branch-name> && git cherry-pick <commit-id>`把 A 分支的某一个 commit，放到 B 分支上
 
 ### General
 
@@ -131,30 +147,56 @@ Restore file from a custom commit (in current branch):
 Hard reset of a single file (`@` is short for `HEAD`):
 `git checkout @ -- index.html`
 
+`git show <branch-name>:<file-name>  --展示任意分支某一文件的内容`
+
+`git clone -b <branch-name> --single-branch https://github.com/user/repo.git --clone 下来指定的单一分支`
+
+`git update-index --assume-unchanged path/to/file` 忽略某个文件的改动, 关闭 track 指定文件的改动，也就是 Git 将不会在记录这个文件的改动
+
+`git update-index --no-assume-unchanged path/to/file`忽略某个文件的改动, 关闭 track 指定文件的改动，也就是 恢复 track 指定文件的改动
+
+`git config core.fileMode false` — 忽略文件的权限变化
+
+`git for-each-ref --sort=-committerdate --format= %(refname:short)  refs/heads/` --以最后提交的顺序列出所有 Git 分支
+
 #### Reset
+
+`git rest --hard HEAD` ---- 回退到上一个版本
+
+`git reset –-hard HEAD` ——撤销最近提交以来暂存区和非暂存区的改动
+
+`git reset --hard origin/master` --回到远程仓库的状态
+
+Hard reset (move HEAD and change staging dir and working dir to match repo): -- 回退到某个版本,  彻底回退到指定commit-id的状态，暂存区和工作区也会变为指定commit-id版本的内容
+`git reset --hard commit_id`
+`git reset --hard 073791e7dd71b90daa853b2c5acc2c925f02dbc6`
+
+reset 命令会抹去某个 commit id 之后的所有 commit
+
+`git reset <commit-id>`  默认就是-mixed参数
+
+`git reset –mixed HEAD^`  回退至上个版本，它将重置HEAD到另外一个commit,并且重置暂存区以便和HEAD相匹配，但是也到此为止。工作区不会被更改。
+
+`git reset –soft HEAD~3`  回退至三个版本之前，只回退了commit的信息，暂存区和工作区与回退之前保持一致。如果还要提交，直接commit即可
 
 Undo latest commit: 
 `git reset --soft HEAD~ `
 
-`git reset –-hard HEAD` ——撤销最近提交以来暂存区和非暂存区的改动
-
 Soft reset (move HEAD only; neither staging nor working dir is changed):
+
 `git reset --soft 073791e7dd71b90daa853b2c5acc2c925f02dbc6`
-
-Hard rest to HEAD ---- 回退到上一个版本
-`git rest --hard HEAD`
-
-Hard reset (move HEAD and change staging dir and working dir to match repo): -- 回退到某个版本
-`git reset --hard commit_id`
-`git reset --hard 073791e7dd71b90daa853b2c5acc2c925f02dbc6`
-
-Go back to commit:
-`git revert 073791e7dd71b90daa853b2c5acc2c925f02dbc6`
 
 `git reset HEAD file` -- 撤回暂存区的文件修改到工作区
 
 Mixed reset (move HEAD and change staging to match repo; does not affect working dir):
 `git reset --mixed 073791e7dd71b90daa853b2c5acc2c925f02dbc6`
+
+Go back to commit: 以新增一个 commit 的方式还原某一个 commit 的修改
+`git revert 073791e7dd71b90daa853b2c5acc2c925f02dbc6`
+
+`git commit --amend` 修改上一个 commit 的描述
+
+`git commit --amend --author= Author Name <email@address.com>` 修改作者名
 
 #### Update & Delete
 
@@ -170,10 +212,24 @@ Unstage (undo adds):
 Update most recent commit (also update the commit message):
 `git commit --amend -m "New Message"`
 
+恢复删除的文件
+
+`git rev-list -n 1 HEAD -- <file_path>`  得到 deleting_commit
+
+`git checkout <deleting_commit>^ -- <file_path> 回到删除文件 deleting_commit 之前的状态`
+
 #### Branch
 
 Show branches:
 `git branch`
+
+展示本地分支关联远程仓库的情况
+
+`git branch -vv`
+
+关联远程分支
+
+`git branch -u origin/mybranch`
 
 Create branch:
 `git branch branchname`
@@ -184,25 +240,42 @@ Change to branch:
 Create and change to new branch:
 `git checkout -b branchname`
 
-Rename branch:
-`git branch -m branchname new_branchname` or:
-`git branch --move branchname new_branchname`
+从远程分支中创建并切换到本地分支
 
-Show all completely merged branches with current branch: --查看别的分支和当前分支合并过的分支
+`git checkout -b <branch-name> origin/<branch-name>`
+
+列出所有远程分支 -r 参数相当于：remoted
+
+`git branch -r`
+
+列出本地和远程分支 -a 参数相当于：all
+
+`git branch -a`
+
+Show all completely merged branches with current branch, 查看别的分支和当前分支合并过的分支:
 `git branch --merged`
+
+删除已经合并到 master 的分支
+
+`git branch --merged master | grep -v  ^* |  master  | xargs -n 1 git branch -d`
 
 Show all branches without merged -- 查看未与当前分支合并的分支
 `git branch --no-merged`
 
+`git checkout --orphan <branch-name>` — 相当于保存修改，但是重写 commit 历史
+
 Delete merged branch (only possible if not HEAD): -- 删除本地分支
-`git branch -d branchname` or:
-`git branch --delete branchname`
+`git branch -d local-branchname` or:`git branch --delete branchname`
 
 Delete not merged branch: -- 强行删除分支
 `git branch -D branch_to_delete`
 
 Delete remote branch: -- 删除远处仓库分支
 `git branch origin: branchname`
+
+Rename branch:
+`git branch -m branchname new_branchname` or:
+`git branch --move branchname new_branchname`
 
 #### Merge
 
@@ -238,17 +311,21 @@ Cancel rebase:
 `git rebase --abort`
 
 Squash multiple commits into one:
-`git rebase -i HEAD~3` ([source](https://www.devroom.io/2011/07/05/git-squash-your-latests-commits-into-one/))
+`git rebase -i HEAD~3` 
 
 Squash-merge a feature branch (as one commit):
 `git merge --squash branchname` (commit afterwards)
+
+`git rebase --autostash` 执行 rebase 之前自动 stash
 
 #### Stash
 
 Put in stash: -- 暂存当前修改
 `git stash save "Message"`
 
-Show stash: -- 查看暂存列表
+`git stash -u` 保存当前状态，包括 untracked 的文件
+
+Show stash: -- 查看暂存列表, 展示所有 stashes
 `git stash list`
 
 Show stash stats:
@@ -257,11 +334,15 @@ Show stash stats:
 Show stash changes:
 `git stash show -p stash@{0}`
 
+`git stash pop` — 回到最后一个 stash 的状态，并删除这个 stash
+
 Use custom stash item and drop it: -- 恢复暂存并删除暂存记录
 `git stash pop stash@{0}`
 
 Use custom stash item and do not drop it: -- 恢复最近的一次暂存
 `git stash apply stash@{0}`
+
+`git stash apply <stash@{n}>` 回到某个 stash 的状态
 
 Use custom stash item and index:
 `git stash apply --index`
@@ -275,17 +356,22 @@ Delete custom stash item: -- 移除某次暂存
 Delete complete stash: --  清除暂存
 `git stash clear`
 
-#### Gitignore & Gitkeep
+`git checkout <stash@{n}> -- <file-path>` 从 stash 中拿出某个文件的修改
 
-About: https://help.github.com/articles/ignoring-files
+`git ls-files -t` 展示所有 tracked 的文件
 
-Useful templates: https://github.com/github/gitignore
+`git ls-files --others` 展示所有 untracked 的文件
 
-Add or edit gitignore: 
-`nano .gitignore`
+`git ls-files --others -i --exclude-standard` 展示所有忽略的文件
 
-Track empty dir: 
-`touch dir/.gitkeep`
+`git blame <file-name>` 查看某段代码是谁写的
+`git blame -L10,+1 index.html`
+
+`git clean <directory-name> -df ` 强制删除 untracked 的目录
+
+`git bundle create <file> <branch-name>` 把某一个分支到导出成一个文件
+
+`git clone repo.bundle <repo-dir> -b <branch-name>` 从包中导入分支
 
 #### Log
 
@@ -302,7 +388,7 @@ Show oneline-summary of the last three commits:
 `git log --oneline -3`
 
 Show only custom commits:
-`git log --author="Sven"`
+`git log --author="Ling"`
 `git log --grep="Message"`
 `git log --until=2013-01-01`
 `git log --since=2013-01-01`
@@ -329,20 +415,35 @@ Show stats and summary of commits:
 Show history of commits as graph:
 `git log --graph`
 
-Show history of commits as graph-summary:
+Show history of commits as graph-summary: 展示简化的 commit 历史
 `git log --oneline --graph --all --decorate`
+
+`git log Branch1 ^Branch2`  — commit 历史中显示 Branch1 有的，但是 Branch2 没有 commit
+
+`git log --show-signature` — 在 commit log 中显示 GPG 签名
 
 #### Compare
 
-Compare modified files in working directory:
+Compare modified files in working directory. 输出工作区和暂存区的不同
 `git diff`
 
 Compare modified files within the staging area:
 `git diff --staged`
 
-Compare commits in local repository:
+展示暂存区和最近版本的不同
+
+`git diff --cached`
+
+Compare commits in local repository - 
+
 `git diff 6eb715d`
+
+输出工作区、暂存区 和本地最近的版本 (commit) 的不同
+
 `git diff 6eb715d..HEAD`
+
+`git diff <commit-id> <commit-id>` -展示本地仓库中任意两个 commit 之间的文件变动
+
 `git diff 6eb715d..537a09f`
 
 Compare modified files and highlight changes only:
@@ -365,16 +466,21 @@ Compare without caring about all spaces:
 Useful comparings:
 `git diff --stat --summary 6eb715d..HEAD`
 
-Blame:
-`git blame -L10,+1 index.html`
+`git diff --word-diff `-- 详细展示一行中的修改
 
 #### Releases & Version Tags
 
 Show all released versions: -- 列出所有标签列表
 `git tag`
 
-Show all released versions with comments:
+展示当前分支的最近的 tag
+
+`git describe --tags --abbrev=0`
+
+Show all released versions with comments: 查看标签详细信息
 `git tag -l -n1`
+
+`git tag -ln`
 
 Create release version: --添加标签(默认对当前版本)
 `git tag v1.0.0`
@@ -382,18 +488,28 @@ Create release version: --添加标签(默认对当前版本)
 Create release version with comment: -- 创建新标签并增加备注
 `git tag -a v1.0.0 -m 'Message'`
 
+默认 tag 是打在最近的一次 commit 上，如果需要指定 commit 打 tag：
+
+`git tag -a <version-number> -m "v1.0 发布(描述)" <commit-id>`
+
 Checkout a specific release version:
 `git checkout v1.0.0`
 
-`git show tagname` -- 查看标签信息
+`git checkout -b branch_name tag_name` --切回到某个标签
 
-`git tag -d tagname` -- 删除本地标签
+`git show tagname` -- 查看标签信息
 
 `git push origin tagname` -- 推送标签到远程仓库
 
+`git push origin <local-version-number>` 推送标签到远程仓库
+
+`git push origin --tags` -- 推送所有标签到远程仓库, 一次性推送所有标签，同步到远程仓库
+
+`git tag -d tagname` -- 删除本地标签
+
 `git push my remote –tags` -- 将所有本地标记发送到远程版本库中
 
-`git push origin --tags` -- 推送所有标签到远程仓库
+`git push origin :refs/tags/<tag-name>`--删除远程标签
 
 `git push origin :refs/tags/tagnames` -- 从远程仓库中删除标签
 
@@ -412,10 +528,13 @@ Add remote upstream from existing empty project on server:
 `git remote add upstream ssh://root@123.123.123.123/path/to/repository/.git`
 
 Fetch:
+
 `git fetch upstream`
 
 Fetch a custom branch:
 `git fetch upstream branchname:local_branchname`
+
+`git fetch origin pull/<id>/head:<branch-name>` — 从远程仓库根据 ID，拉下某一状态，到本地分支
 
 Merge fetched commits:
 `git merge upstream/master`
@@ -463,15 +582,33 @@ Clone to localhost folder:
 Clone specific branch to localhost:
 `git clone -b branchname https://github.com/user/project.git`
 
-Delete remote branch (push nothing):
+Delete remote branch (push nothing), 删除远程分支
 `git push origin :branchname` or:
 `git push origin --delete branchname`
 
 #### Archive
 
-Create a zip-archive: `git archive --format zip --output filename.zip master`
+Create a zip-archive: 
 
-Export/write custom log to a file: `git log --author=sven --all > log.txt`
+`git archive --format zip --output filename.zip master`
+
+Export/write custom log to a file: 
+
+`git log --author=sven --all > log.txt`
+
+#### Gitignore & Gitkeep
+
+About: https://help.github.com/articles/ignoring-files
+
+Useful templates: https://github.com/github/gitignore
+
+Add or edit gitignore: 
+`nano .gitignore`
+
+Track empty dir: 
+`touch dir/.gitkeep`
+
+`git clean -X -f` 详细展示一行中的修改
 
 #### Troubleshooting
 
@@ -591,4 +728,6 @@ Create an alias (shortcut) for `git status`:
 
 Help:
 `git help`
+
+`git help -g`
 
