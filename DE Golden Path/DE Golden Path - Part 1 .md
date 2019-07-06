@@ -72,12 +72,12 @@ If you have successfully connected to the host, your prompt should now look simi
 <your-username>@guc3-devadmin-a-xxxx:~$
 Log out from the remote host with:
 <your-username>@guc3-devadmin-a-xxxx:~$ exit
-
+```
 Installing the Standard toolkit
 Note
 If you have been with us for some time, you may already have some of these tools in your laptop. However, if you work with backend development or follow the Golden Path tutorials, we strongly recommend that you update all your tools to the latest versions.
 
-Homebrew and Command Line Tools¶
+Homebrew and Command Line Tools
 Homebrew is a package manager for OS X. You'll need it to install other Spotify software.
 Install it from here. For security purposes, make sure the command looks like this.
 ```
