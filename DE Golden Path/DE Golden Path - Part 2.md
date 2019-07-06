@@ -1,4 +1,4 @@
-Part 2
+### Part 2
 
 **Introduction**
 
@@ -100,7 +100,7 @@ Now set up and index the project in IntelliJ:
 
 > A good starting point to learn how to use Scio is by understanding the example pipeline job from the template.
 
-### Deep dive into the example project[¶](https://backstage.spotify.net/docs/data-engineering-golden-path/part-2-creating-and-running-a-data-pipeline/4-understanding-whats-inside-the-new-repository/#deep-dive-into-the-example-project)
+### Deep dive into the example project
 
 We will now go through the example code in `di-golden-path-pipeline-<username>/src/main/scala/com/spotify/data/example/BrownieRecsJob.scala`, line-by-line.
 
@@ -114,11 +114,11 @@ Here, you use the ScioContext **sc** to read an Avro dataset (may contain multip
 
 Normally, you need to set up permissions correctly in order to read/write data from/to a GCS bucket. However, in the playground environment for this part, it has been set up for you. Permissions in the GCP world is an important topic that is revisited in later parts.
 
-At Spotify, you normally only read/write Avro [SpecificRecord](https://avro.apache.org/docs/1.7.7/api/java/org/apache/avro/specific/SpecificRecord.html). For `SpecificRecord`, you need to specify a class generated from the Avro schema used by your input file as type parameter `T`, to instruct Scio how to deserialize the data. In your case, `T` is `EndContentFactXT`.
+At Spotify, you normally only read/write Avro [SpecificRecord]. For `SpecificRecord`, you need to specify a class generated from the Avro schema used by your input file as type parameter `T`, to instruct Scio how to deserialize the data. In your case, `T` is `EndContentFactXT`.
 
-Many common Avro schemas (`.avsc` files) at Spotify reside in the [datainfra/schemas](https://ghe.spotify.net/datainfra/schemas) repository where they are used to generate Java classes, and the resulting `.jar` package is published to Spotify’s [artifactory](https://artifactory.spotify.net/artifactory/webapp/#/artifacts/browse/tree/General/libs-snapshot-local/com/spotify/data/spotify-data-schemas) [r](https://artifactory.spotify.net/artifactory/webapp/#/artifacts/browse/tree/General/libs-snapshot-local/com/spotify/data/spotify-data-schemas)e[p](https://artifactory.spotify.net/artifactory/webapp/#/artifacts/browse/tree/General/libs-snapshot-local/com/spotify/data/spotify-data-schemas)o[s](https://artifactory.spotify.net/artifactory/webapp/#/artifacts/browse/tree/General/libs-snapshot-local/com/spotify/data/spotify-data-schemas)i[t](https://artifactory.spotify.net/artifactory/webapp/#/artifacts/browse/tree/General/libs-snapshot-local/com/spotify/data/spotify-data-schemas)o[r](https://artifactory.spotify.net/artifactory/webapp/#/artifacts/browse/tree/General/libs-snapshot-local/com/spotify/data/spotify-data-schemas)y. In this case though, the `EndContentFactXT` schema resides in [core-data-pipelines-schemas](https://ghe.spotify.net/core-data/core-data-pipelines/tree/master/core-data-pipelines-schemas), so we add it as a project dependency (in `build.sbt`). This allows us to use the `EndContentFactXT` class which was generated from [EndContentFactXT2.avsc](https://ghe.spotify.net/core-data/core-data-pipelines/blob/master/core-data-pipelines-schemas/src/main/avro/EndContentFactXT2.avsc). Schemas will be further explained in a later part about data discovery.
+Many common Avro schemas (`.avsc` files) at Spotify reside in the [datainfra/schemas]repository where they are used to generate Java classes, and the resulting `.jar` package is published to Spotify’s [artifactory] repository. In this case though, the `EndContentFactXT` schema resides in [core-data-pipelines-schemas], so we add it as a project dependency (in `build.sbt`). This allows us to use the `EndContentFactXT` class which was generated from [EndContentFactXT2.avsc]. Schemas will be further explained in a later part about data discovery.
 
-**Each step of computation is fully explained in the project comments. Make sure you understand everything it’s doing. You will need it in the next sections of this tutorial.**
+Each step of computation is fully explained in the project comments. Make sure you understand everything it’s doing. You will need it in the next sections of this tutorial.
 
 To be able to use **saveAsTextFile** to save the `SCollection` to text files in GCS, you need to **make sure that you have the correct permissions**. For this particular project, your permission should have already been set up in the playground environment.
 
@@ -154,11 +154,11 @@ As `runMain` command starts, you see many logs. Typically, these are logs with c
 
 **Access control**
 
-To get access to the data that you need for this Golden Path tutorial, join the group [scio-users](https://groups.google.com/a/spotify.com/forum/#!forum/scio-users) which will give you access to **scio-playground**. (Note, however, to access most other Spotify datasets, you will have to follow the access control procedure in [Silver Path: Data Access Control Instructions](https://docs.google.com/document/d/1R496L_8mSJf2LRJLFsnLxCwt_XIe51lHSpUfTRxaMV4/edit#).)
+To get access to the data that you need for this Golden Path tutorial, join the group [scio-users], which will give you access to **scio-playground**. (Note, however, to access most other Spotify datasets, you will have to follow the access control procedure in [Silver Path: Data Access Control Instructions].)
 
 **Troubleshooting** If the end result is not a success:
 
-- Make sure you are a member of [scio-users](https://groups.google.com/a/spotify.com/forum/#!forum/scio-users).
+- Make sure you are a member of [scio-users].
 - Get logged in: run `gcloud auth application-default login`.
 - If you haven’t done so when running the pipeline, set the GCP project: run `gcloud config set project scio-playground`.
 - Make sure that the `GOOGLE_APPLICATION_CREDENTIALS` environment variable isn’t set.
@@ -182,7 +182,7 @@ Let’s check the other parameters related to the job:
 | `--topN=10`                                                  | This is a parameter for your job: the number of top tracks for user you have kept. It corresponds to args(topN) in the code. Use a parameter like this whenever you want to modify the behavior of your pipeline before it is run, based on user input. |
 | `--metricsLocation=gs://scio-playground/user/<username>/di_golden_path/output/_metrics` | This parameter stores accumulators, cloud metrics, job name, job Id and other useful info about the job in Json format. To have access control for counters for ITGC compliance purposes, counters need to be stored as files (rather than in counter service) because this service doesn’t provide an access control mechanism. |
 
-There are a few other parameters you may see often in other pipelines such as `numWorkers`, `maxNumWorkers`, `autoscalingAlgorithm` and `network`. Check the [Scio wiki](https://spotify.github.io/scio/Getting-Started.html) and [Google Cloud documentation](https://cloud.google.com/dataflow/docs/guides/specifying-exec-params#setting-other-cloud-pipeline-options) for information on how to configure your Scio/Dataflow jobs based on your needs.
+There are a few other parameters you may see often in other pipelines such as `numWorkers`, `maxNumWorkers`, `autoscalingAlgorithm` and `network`. Check the [Scio wiki] and [Google Cloud documentation] for information on how to configure your Scio/Dataflow jobs based on your needs.
 
 When you’ve run the commands, you see that the job is submitted to Google Cloud Dataflow. To monitor the running status of the job, go to the link seen in the output log (similar to the below). The link is typically at the end of the log, but sometimes in the middle.
 
@@ -224,7 +224,7 @@ Scio provides two ways to load BigQuery tables: a type-safe way and a non-type-s
 
 You should have already installed the IntelliJ Scio IDEA plugin in the first section of this Golden Path. (If you haven't, go do that now.)
 
-Like the Avro datasets in GCS, all BigQuery datasets have a schema. The difference is that BigQuery schemas are not stored in the `spotify-data-schemas` library. Scio can automatically find the schema of a given table or query, and can even generate a Scala class matching it. In the rest of this document, we’ll be using the type-safe BigQuery API. Make sure you’ve read [the relevant documentation](https://spotify.github.io/scio/io/Type-Safe-BigQuery).
+Like the Avro datasets in GCS, all BigQuery datasets have a schema. The difference is that BigQuery schemas are not stored in the `spotify-data-schemas` library. Scio can automatically find the schema of a given table or query, and can even generate a Scala class matching it. In the rest of this document, we’ll be using the type-safe BigQuery API. Make sure you’ve read [the relevant documentation].
 
 Here’s how you will use the plugin later in this guide:
 
@@ -245,17 +245,16 @@ In theory, the code compiles without plugins. However, due to a bug in IntelliJ 
 
 **Let’s start coding**
 
-Now we will create a new Scio job and then go through an example of building a data pipeline computing who were the top 10 most streamed artists yesterday, and how many times their songs were streamed. The complete code example is [here](https://ghe.spotify.net/pages/scala/goldenpath-example/TopArtistsJob.scala.html).
+Now we will create a new Scio job and then go through an example of building a data pipeline computing who were the top 10 most streamed artists yesterday, and how many times their songs were streamed. The complete code example is [here].
 
 Note that the case class definitions need to be outside the main method. Also that the BigQuery annotated classes need to live inside a class/object (it can be the same object that main is in, or another one).
 
 **Create a new Scio job**
 
-Start by creating a new Scala object called **TopArtistsJob** in package **com.spotify.data.example**. Paste in the code from the example [here](https://ghe.spotify.net/scala/goldenpath-example/blob/master/goldenpath-example/src/main/scala/com/spotify/data/example/TopArtistsJob.scala).
+Start by creating a new Scala object called **TopArtistsJob** in package **com.spotify.data.example**. Paste in the code from the example [here].
 
-![image alt text](https://backstage-proxy.spotify.net/api/docproxy/data-engineering-golden-path/part-2-creating-and-running-a-data-pipeline/img/image_1.png)
 
-## Helper classes and methods[¶](https://backstage.spotify.net/docs/data-engineering-golden-path/part-2-creating-and-running-a-data-pipeline/7-lets-start-coding/#helper-classes-and-methods)
+## Helper classes and methods
 
 Instead of using `EndContentFactXT` which has a lot of fields we are not interested in, we will convert `EndContentFactXT` instances into a custom, smaller, case class `EndContentFact`. This will also allow us to get rid of all the unused fields, and to replace the nullable fields by instances of `Option`.
 
@@ -315,7 +314,7 @@ First, it tries to get the `PlayTrack`, `IncognitoMode` status, `MsPlayed`, and 
 
 In this code, `getPlayTrack` can sometimes return `null`, that is, a java null value, because Avro objects are Java objects.The problem is, if your pipeline tries to call `.toString` on a `null` value when it’s running, it throws a `NullPointerException`and crashes.
 
-To prevent the pipeline from crashing, we handle the potential Exception using `Try`. (See [Try in scaladoc](https://www.scala-lang.org/api/current/scala/util/Try.html)). In this example, problematic values will simply be discarded, so we turn that `Try` into an [Option](https://www.scala-lang.org/api/current/scala/Option.html).
+To prevent the pipeline from crashing, we handle the potential Exception using `Try`. (See [Try in scaladoc]. In this example, problematic values will simply be discarded, so we turn that `Try` into an [Option].
 
 Note
 
@@ -334,7 +333,7 @@ As usual, we’ll use `isValidEndContent` to filter invalid `EndContentFact`.
 case class ArtistCount(id: String, name: String, count: Long)
 ```
 
-We use [BigQueryType.toTable](https://spotify.github.io/scio/io/Type-Safe-BigQuery.html#bigquerytype-totable) to automatically generate the code required to safely write to BigQuery.
+We use [BigQueryType.toTable] to automatically generate the code required to safely write to BigQuery.
 
 ```
 @BigQueryType.fromQuery(
@@ -353,7 +352,7 @@ We use [BigQueryType.toTable](https://spotify.github.io/scio/io/Type-Safe-BigQue
 class TrackEntity
 ```
 
-We also use [BigQueryType.fromQuery](https://spotify.github.io/scio/io/Type-Safe-BigQuery.html#bigquerytype-fromquery) to read from the table named `scio-playground:di_golden_path.track_entity_20181031`.
+We also use [BigQueryType.fromQuery] to read from the table named `scio-playground:di_golden_path.track_entity_20181031`.
 
 Note
 
@@ -432,7 +431,7 @@ In this pipeline, the output is stored both in GCS as plain text and in a BigQue
 
 > Many production pipelines have only one output, but for demonstration purposes, here you see two.
 
-### Counting the number of times each track has been played[¶](https://backstage.spotify.net/docs/data-engineering-golden-path/part-2-creating-and-running-a-data-pipeline/7-lets-start-coding/#counting-the-number-of-times-each-track-has-been-played)
+### Counting the number of times each track has been played
 
 Let’s start by reading the `EndContentFactXT` data and convert them to `EndContentFact`:
 
@@ -496,8 +495,8 @@ For `typedBigQuery` to work, `TrackEntity` had to be annotated with either `BigQ
 
 This method executes the query and loads the results (and give an `SCollection`with millions of elements), which is what we’ll need for the Top10 pipeline.
 
-> **Extracting data using a different SQL query** While the `typedBigQuery` method can automatically access the BQ table, it also lets you pass a custom SQL query. For example, you may want to limit the number of results returned to a number `limitN` passed to your pipeline as an argument:
->
+Extracting data using a different SQL query** While the `typedBigQuery` method can automatically access the BQ table, it also lets you pass a custom SQL query. For example, you may want to limit the number of results returned to a number `limitN` passed to your pipeline as an argument:
+
 > ```
 > val trackEntities: SCollection[TrackEntity] = 
 >     sc.typedBigQuery[TrackEntity](s"""
@@ -505,11 +504,11 @@ This method executes the query and loads the results (and give an `SCollection`w
 >         FROM `scio-playground.di_golden_path.track_entity_20181031` 
 >         LIMIT ${args.int("limitN")}
 >     """)
-> ```
->
-> In that case you need to make sure the schema of the result of this query matches the schema used to generate `TrackEntity`. If not, the execution will fail at runtime.
->
-> This feature is commonly used to build pipelines using the schema from a fixed table (for example using `@BigQueryType.fromTable`), while still querying BigQuery dynamically. For example, when the data is partitioned.
+```
+
+In that case you need to make sure the schema of the result of this query matches the schema used to generate `TrackEntity`. If not, the execution will fail at runtime.
+
+This feature is commonly used to build pipelines using the schema from a fixed table (for example using `@BigQueryType.fromTable`), while still querying BigQuery dynamically. For example, when the data is partitioned.
 >
 > Keep this important distinction in mind: the macro annotations like `@BigQueryType.fromTable` query the table schemas at compile time, but the `typedBigQuery` function is executed at runtime.
 
@@ -568,7 +567,7 @@ val artistAndTotalCounts: SCollection[(Artist, Long)] =
     .sumByKey
 ```
 
-Here, you use `sumByKey` to sum all the track counts for each artist. `sumByKey` is an operation that relies on an algebraic data structure provided by [Algebird](https://twitter.github.io/algebird/), [Semigroup](https://twitter.github.io/algebird/typeclasses/semigroup.html). This and other powerful transforms like `sum`, `aggregate`, `aggregrateByKey` are available in Scio by leveraging [Algebird](https://twitter.github.io/algebird/).
+Here, you use `sumByKey` to sum all the track counts for each artist. `sumByKey` is an operation that relies on an algebraic data structure provided by [Algebird], [Semigroup]. This and other powerful transforms like `sum`, `aggregate`, `aggregrateByKey` are available in Scio by leveraging [Algebird].
 
 ```
 val topArtistByTotalCounts: SCollection[(Artist, Long)] = 
@@ -577,7 +576,7 @@ val topArtistByTotalCounts: SCollection[(Artist, Long)] =
     .flatten
 ```
 
-You already have the total stream counts for all artists from the previous steps. In this step, you are going to find the ones with the highest counts by using the [top function](https://spotify.github.io/scio/api/com/spotify/scio/values/SCollection.html#top(num:Int,ord:Ordering[T])(implicitcoder:com.spotify.scio.coders.Coder[T]):com.spotify.scio.values.SCollection[Iterable[T]]).
+You already have the total stream counts for all artists from the previous steps. In this step, you are going to find the ones with the highest counts by using the [top function]:com.spotify.scio.values.SCollection[Iterable[T]]).
 
 It is a curried function, so uncurry it with the number of top artists you want to keep in the output. Define how to order the artist using the second element in the tuple (the total stream counts).
 
@@ -607,9 +606,9 @@ There are two optional parameters for `saveAsTypedBigQuery` that you should omit
 1. `WriteDisposition`
 2. `CreateDisposition`
 
-`WriteDisposition` has three options: `WRITE_TRUNCATE, WRITE_APPEND` and `WRITE_EMPTY`. The default value is `WRITE_EMPTY`, which means that you only write if the destination table is empty. Learn more [here](https://cloud.google.com/bigquery/docs/reference/rest/v2/jobs#configuration.query.writeDisposition).
+`WriteDisposition` has three options: `WRITE_TRUNCATE, WRITE_APPEND` and `WRITE_EMPTY`. The default value is `WRITE_EMPTY`, which means that you only write if the destination table is empty. Learn more [here].
 
-`CreateDisposition` has two options: `CREATE_NEVER` and `CREATE_IF_NEEDED`. The default value is `CREATE_IF_NEEDED`, which means if the table doesn’t exist, a new one is created. Learn more [here](https://cloud.google.com/bigquery/docs/reference/rest/v2/jobs#configuration.query.createDisposition).
+`CreateDisposition` has two options: `CREATE_NEVER` and `CREATE_IF_NEEDED`. The default value is `CREATE_IF_NEEDED`, which means if the table doesn’t exist, a new one is created. Learn more [here].
 
 ```
 sc.close()
@@ -633,7 +632,7 @@ $ sbt
 > runMain com.spotify.data.example.TopArtistsJob --runner=DataflowRunner --project=scio-playground --region=europe-west1 --tempLocation=gs://scio-playground/user/<username>/dataflow/staging --endContentFact=gs://golden-path-sample-data/di.golden.path.EndContentFactXT2/2018-10-31/20181031T075406.854146-12dc225803c3/*.avro --textOutput=gs://scio-playground/user/<username>/di_golden_path/top_artists/ --bqOutput=scio-playground:<username>.top_artists --topN=10
 ```
 
-If you get permission errors, join [scio-users](https://groups.google.com/a/spotify.com/forum/#!forum/scio-users); that group has access to scio-playground.
+If you get permission errors, join [scio-users]; that group has access to scio-playground.
 
 View the pipeline running status in the dataflow UI:
 
@@ -668,7 +667,7 @@ Please consider this before choosing GCS/BigQuery/... as your storage location.
 
 **Testing your pipeline**
 
-Your pipeline now runs, but the feedback loop in case of mistakes in your code is still quite long. You can create a test for our pipeline and get feedback in just seconds. You can find a test for the pipeline created above by clicking [this link](https://ghe.spotify.net/scala/goldenpath-example/blob/master/goldenpath-example/src/test/scala/com/spotify/data/example/TopArtistsJobTest.scala). You can also find documentation about Scio’s test api [in the wiki](https://spotify.github.io/scio/Scio-Unit-Tests).
+Your pipeline now runs, but the feedback loop in case of mistakes in your code is still quite long. You can create a test for our pipeline and get feedback in just seconds. You can find a test for the pipeline created above by clicking [this link]. You can also find documentation about Scio’s test api [in the wiki].
 
 To run the test, you can run the following commands. You can skip the first two lines if you already ran them and are still in the sbt shell.
 
@@ -678,7 +677,7 @@ $ sbt
 > test
 ```
 
-Have a look at the [commented source code](https://ghe.spotify.net/scala/goldenpath-example/blob/master/goldenpath-example/src/test/scala/com/spotify/data/example/TopArtistsJobTest.scala) to understand how tests are defined.
+Have a look at the [commented source code] to understand how tests are defined.
 
 A more detailed description and examples on how to write various Scio unit tests is on the [github wiki](https://github.com/spotify/scio/wiki/Scio-Unit-Tests).
 
@@ -686,15 +685,15 @@ A more detailed description and examples on how to write various Scio unit tests
 
 In this test, we use a couple of open-source tools we created to generate random data and assert the correct behaviour of our newly created pipeline:
 
-[Ratatool](https://ghe.spotify.net/scala/ratatool-internal) A library that provides [ScalaCheck](http://scalacheck.org/) data generators for Spotify data types. If ratatool doesn’t have a generator for the record you’re using, you can write your own generator ([examples](https://github.com/spotify/ratatool/blob/master/ratatool-examples/src/main/scala/com/spotify/ratatool/examples/scalacheck/GenExample.scala)) or construct the record manually. In this example, manual record construction would look like: `EndContentFactXT.newBuilder().setMsPlayed(...).setUserId(...)...build()`
+[Ratatool] A library that provides [ScalaCheck] data generators for Spotify data types. If ratatool doesn’t have a generator for the record you’re using, you can write your own generator ([examples] or construct the record manually. In this example, manual record construction would look like: `EndContentFactXT.newBuilder().setMsPlayed(...).setUserId(...)...build()`
 
-[Data Generators](https://github.com/spotify/ratatool/wiki/Generators) Data Generators create data of a user-specified type, with optional additional user-specified constraints. This data is then often used for testing.
+[Data Generators] Data Generators create data of a user-specified type, with optional additional user-specified constraints. This data is then often used for testing.
 
-See [SCollectionMatchers.scala](https://github.com/spotify/scio/blob/master/scio-test/src/main/scala/com/spotify/scio/testing/SCollectionMatchers.scala) for more matchers to use in your test and [scio-examples](https://github.com/spotify/scio/tree/master/scio-examples/src/test) for some more examples of pipeline tests.
+See [SCollectionMatchers.scala] for more matchers to use in your test and [scio-examples]for some more examples of pipeline tests.
 
 **Checking the content of an Avro file**
 
-Once you’ve completed those exercises, you may want to check the content of the generated avro files. You can easily do it using **gsutil** and [avro-tools](https://github.com/spotify/gcs-tools) (which is available from the public Spotify Homebrew tap).
+Once you’ve completed those exercises, you may want to check the content of the generated avro files. You can easily do it using **gsutil** and [avro-tools] which is available from the public Spotify Homebrew tap.
 
 Start by using gsutil to inspect your output directory, which will list specific file names:
 
