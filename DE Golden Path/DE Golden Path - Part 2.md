@@ -497,7 +497,7 @@ This method executes the query and loads the results (and give an `SCollection`w
 
 Extracting data using a different SQL query** While the `typedBigQuery` method can automatically access the BQ table, it also lets you pass a custom SQL query. For example, you may want to limit the number of results returned to a number `limitN` passed to your pipeline as an argument:
 
-> ```
+```
 > val trackEntities: SCollection[TrackEntity] = 
 >     sc.typedBigQuery[TrackEntity](s"""
 >         SELECT * 
@@ -509,8 +509,8 @@ Extracting data using a different SQL query** While the `typedBigQuery` method c
 In that case you need to make sure the schema of the result of this query matches the schema used to generate `TrackEntity`. If not, the execution will fail at runtime.
 
 This feature is commonly used to build pipelines using the schema from a fixed table (for example using `@BigQueryType.fromTable`), while still querying BigQuery dynamically. For example, when the data is partitioned.
->
-> Keep this important distinction in mind: the macro annotations like `@BigQueryType.fromTable` query the table schemas at compile time, but the `typedBigQuery` function is executed at runtime.
+
+Keep this important distinction in mind: the macro annotations like `@BigQueryType.fromTable` query the table schemas at compile time, but the `typedBigQuery` function is executed at runtime.
 
 Let’s now define and use the `getTrackArtists` method to and the classes it uses:
 
