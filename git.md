@@ -2,6 +2,8 @@
 
 ** Genereate SSH Key
 `ssh-keygen -t rsa -b 4096 -C "linghypshen@gmail.com"`
+ssh-add -K ~/.ssh/id_rsa
+pbcopy < ~/.ssh/id_rsa.pub
 
 ** Initialize Git**
 `git init`
