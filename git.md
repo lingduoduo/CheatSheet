@@ -1,5 +1,10 @@
 #### Setup
 
+** Genereate SSH Key
+`ssh-keygen -t rsa -b 4096 -C "linghypshen@gmail.com"`
+ssh-add -K ~/.ssh/id_rsa
+pbcopy < ~/.ssh/id_rsa.pub
+
 ** Initialize Git**
 `git init`
 
@@ -525,7 +530,8 @@ Add remote upstream from GitHub project:
 `git remote add upstream https://github.com/user/project.git`
 
 Add remote upstream from existing empty project on server:
-`git remote add upstream ssh://root@123.123.123.123/path/to/repository/.git`
+`git remote add upstream 
+://root@123.123.123.123/path/to/repository/.git`
 
 Fetch:
 
