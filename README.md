@@ -1,5 +1,7 @@
 ##  Cheatsheet
 
+https://github.com/trending/scala?trending=today
+
 Git https://gist.github.com/hofmannsven/6814451#file-readme-md
 
 Pyspark https://jetblue-jupyter.blue.ygrid.yahoo.com:9999/nb/notebooks/user/jessiej/trial_n_error.ipynb#3.-explode-values
