@@ -190,8 +190,12 @@ vi fruits.txt
 
 #small files
 Cat fruits.txt
-cat 文件名      查看文件内容内容
+cat service.log | wc -l
 cat -n 文件名   查看文件内容，并列出行号
+cat -n service.log | grep 13888888888
+sed -n "29496,29516p" service.log：从29496行开始检索，到29516行结束
+cat -n service.log | tail -n +29496 | head -n 20:从29496行开始检索，往前推20条
+
 
 #large files
 less -N fruits.txt
@@ -370,6 +374,10 @@ ps (process status)
 ps -a
 ps aux (a: all processes, u: column showing th eprocess user, x show the background processes)
 ps aux | grep lingh
+ps -ef |grep java
+netstat -lntup 查端口也是一个很常见的操作
+lsof -i:4000 查看某个端口详细的信息
+
 top
 top -n 10 (top 10 processes)
 top -n 10 -o cpu -s 3 -U lingh (top 10 processes of lingh, sorted by CPU, refress every 3 seconds)
