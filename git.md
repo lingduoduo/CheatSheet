@@ -1,3 +1,21 @@
+| Alias  | Command                               |
+| :----- | :------------------------------------ |
+| gapa   | git add --patch                       |
+| gc!    | git commit -v -amend                  |
+| gcl    | git clone --recursive                 |
+| gclean | git reset --hard && git clean -dfx    |
+| gcm    | git check out master                  |
+| gcmsg  | git comit -m                          |
+| gco    | git checkout                          |
+| gd     | git diff                              |
+| gdca   | git diff --cached                     |
+| glola  | git log --graph --pretty=format:...   |
+| gp     | git push                              |
+| grbc   | git rebase --continue                 |
+| gst    | git status                            |
+| gup    | git pull --rebase                     |
+| gwip   | git add -a; git commit -m '---wip---' |
+
 #### Setup
 
 ** Genereate SSH Key
