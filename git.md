@@ -17,8 +17,6 @@
 | gup    | git pull --rebase                     |
 | gwip   | git add -a; git commit -m '---wip---' |
 
-#### Setup
-=======
 #### Hotkeys
 1 按 t 可以快速进入模糊文件名搜索模式, w 可以快速进行分支过滤,  ? 展示当前页面可用的快捷键
 2 忽略空格: ?w=1
@@ -26,18 +24,21 @@
 4 按作者过滤提交记录: ?author=github_handle, e.g., https://github.com/dynjs/dynjs/commits/master?author=jingweno
 5 compare/master@{1.day.ago}…master.patch 显示Rails项目中全部昨天开始的提交记录和变化的文本格式, compare/master@{1.day.ago}…master.patch 
 
+
+
 1、git log -p FILE
 查看 README.md 的修改历史，例如：
 > git log -p README.md
+
 2、git log -S’PATTERN’
 例如，搜索修改符合 stupid 的历史：
 > git log -S'stupid'
-# 每个提交在一行内显示
-git log --oneline
-# 在所有提交日志中搜索包含「homepage」的提交
-git log --all --grep='homepage'
-# 获取某人的提交日志
-git log --author="Maxence"
+每个提交在一行内显示
+> git log --oneline
+在所有提交日志中搜索包含「homepage」的提交
+> git log --all --grep='homepage'
+获取某人的提交日志
+> git log --author="Maxence"
 
 3、git add -p
 交互式的保存和取消保存变化，使用：
@@ -62,7 +63,6 @@ Git操作常用的命令都在这里了，点击这里查看。这个命令返�
 返回包含某个指定 sha 的分支列表。例如：
 > git branch --contains 2f8e2b
 显示全部包含提交 2f832b 的分支。这个命令对于验证 git cherry-pick 完成非常有帮助。
-
 
 8、git status -s
 返回一个简单版的 git status。我设置这个命令为默认 git status 来减少噪音。
