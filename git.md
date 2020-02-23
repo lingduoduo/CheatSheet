@@ -29,10 +29,15 @@
 1、git log -p FILE
 查看 README.md 的修改历史，例如：
 > git log -p README.md
-
 2、git log -S’PATTERN’
 例如，搜索修改符合 stupid 的历史：
 > git log -S'stupid'
+# 每个提交在一行内显示
+git log --oneline
+# 在所有提交日志中搜索包含「homepage」的提交
+git log --all --grep='homepage'
+# 获取某人的提交日志
+git log --author="Maxence"
 
 3、git add -p
 交互式的保存和取消保存变化，使用：
@@ -257,7 +262,7 @@ reset 命令会抹去某个 commit id 之后的所有 commit
 Undo latest commit: 
 `git reset --soft HEAD~ `
 
-Soft reset (move HEAD only; neither staging nor working dir is changed):
+soft reset (move HEAD only; neither staging nor working dir is changed):
 
 `git reset --soft 073791e7dd71b90daa853b2c5acc2c925f02dbc6`
 
@@ -414,6 +419,10 @@ Show stash changes:
 Use custom stash item and drop it: -- 恢复暂存并删除暂存记录
 `git stash pop stash@{0}`
 
+# 获取并删除暂存项
+`git stash apply stash@{1}`
+`git stash drop stash@{1}`
+
 Use custom stash item and do not drop it: -- 恢复最近的一次暂存
 `git stash apply stash@{0}`
 
@@ -549,7 +558,6 @@ Show all released versions: -- 列出所有标签列表
 `git tag`
 
 展示当前分支的最近的 tag
-
 `git describe --tags --abbrev=0`
 
 Show all released versions with comments: 查看标签详细信息
@@ -604,13 +612,18 @@ Add remote upstream from existing empty project on server:
 ://root@123.123.123.123/path/to/repository/.git`
 
 Fetch:
-
 `git fetch upstream`
 
 Fetch a custom branch:
 `git fetch upstream branchname:local_branchname`
 
 `git fetch origin pull/<id>/head:<branch-name>` — 从远程仓库根据 ID，拉下某一状态，到本地分支
+
+# 移除远程仓库上不存在的分支
+git fetch -p
+
+# 移除所有包含 `greenkeeper` 的分支
+git fetch -p && git branch --remote | fgrep greenkeeper | sed 's/^.\{9\}//' | xargs git push origin --delete
 
 Merge fetched commits:
 `git merge upstream/master`
