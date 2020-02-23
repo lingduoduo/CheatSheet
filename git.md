@@ -419,7 +419,7 @@ Show stash changes:
 Use custom stash item and drop it: -- 恢复暂存并删除暂存记录
 `git stash pop stash@{0}`
 
-# 获取并删除暂存项
+获取并删除暂存项
 `git stash apply stash@{1}`
 `git stash drop stash@{1}`
 
