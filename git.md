@@ -24,6 +24,60 @@
 4 按作者过滤提交记录: ?author=github_handle, e.g., https://github.com/dynjs/dynjs/commits/master?author=jingweno
 5 compare/master@{1.day.ago}…master.patch 显示Rails项目中全部昨天开始的提交记录和变化的文本格式, compare/master@{1.day.ago}…master.patch 
 
+➜  campaign-runner git:(a9ccd04) sbt compile
+[info] Loading settings for project campaign-runner-build from plugins.sbt ...
+[info] Loading project definition from /Users/lingh/Git/campaign-runner/project
+[info] Loading settings for project root from build.sbt ...
+[info] Set current project to campaign-runner-parent (in build file:/Users/lingh/Git/campaign-runner/)
+[info] Executing in batch mode. For better performance use sbt's shell
+[success] Total time: 1 s, completed Jan 14, 2020 1:54:35 PM
+
+
+➜  campaign-runner git:(a9ccd04) git diff HEAD master
+➜  campaign-runner git:(a9ccd04)
+➜  campaign-runner git:(a9ccd04) git log
+➜  campaign-runner git:(a9ccd04)
+➜  campaign-runner git:(a9ccd04) git checkout master
+Previous HEAD position was a9ccd04 Update sbt.version (#169)
+Switched to branch 'master'
+Your branch is up to date with 'origin/master'.
+➜  campaign-runner git:(master) git diff a9ccd04
+➜  campaign-runner git:(master)
+➜  campaign-runner git:(master) git log -p
+➜  campaign-runner git:(master) git checkout a9ccd04
+Note: checking out 'a9ccd04'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by performing another checkout.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -b with the checkout command again. Example:
+
+  git checkout -b <new-branch-name>
+
+HEAD is now at a9ccd04 Update sbt.version (#169)
+➜  campaign-runner git:(a9ccd04) git branch -d master
+warning: deleting branch 'master' that has been merged to
+         'refs/remotes/origin/master', but not yet merged to HEAD.
+Deleted branch master (was ae882bd).
+
+➜  campaign-runner git:(a9ccd04)
+➜  campaign-runner git:(a9ccd04) git checkout -b master
+Switched to a new branch 'master'
+➜  campaign-runner git:(master) git log -p
+➜  campaign-runner git:(master)
+➜  campaign-runner git:(master) git push origin master -f
+Total 0 (delta 0), reused 0 (delta 0)
+remote: error: GH006: Protected branch update failed for refs/heads/master.
+remote: error: Cannot force-push to a protected branch
+To ghe.spotify.net:edison/campaign-runner.git
+ ! [remote rejected] master -> master (protected branch hook declined)
+error: failed to push some refs to 'git@ghe.spotify.net:edison/campaign-runner.git'
+➜  campaign-runner git:(master) git push origin master -f
+Total 0 (delta 0), reused 0 (delta 0)
+To ghe.spotify.net:edison/campaign-runner.git
+ + ae882bd...a9ccd04 master -> master (forced update)
 
 
 1、git log -p FILE
