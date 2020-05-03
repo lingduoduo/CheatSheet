@@ -50,3 +50,36 @@ vi insert mode(ilaA)
 * A - append text to end of current line, until Esc hit
 * o - open and put text in a new line below current line, until Esc hit
 * O - open and put text in a new line above current line, until Esc hit
+
+5. 在 vi 中設定一下行號；
+:set nu
+
+6. 移動到第 43 列，向右移動 59 個字元，請問你看到的小括號內是哪個文字？
+43G -> 59l
+
+7. 移動到第一列，並且向下搜尋一下『 gzip 』這個字串，請問他在第幾列？
+gg 或 1G -> /gzip -> 在第 93 列
+
+8. 接著下來，我要將 29 到 41 列之間的『小寫 man 字串』改為『大寫 MAN 字串』，並且一個一個挑選是否需要修改，如何下達指令？如果在挑選過程中一直按『y』， 結果會在最後一列出現改變了幾個 man 呢？
+输入命令 [:29,41s/man/MAN/gc] -> 然后一直点击 y ，总共需要替换 13 个4g24:24G
+
+9. 修改完之後，突然反悔了，要全部復原，有哪些方法？
+一直按 u 键即可复原；更加简单粗暴的就是强制退出，也就是输入 :q!
+
+10. 我要複製 66 到 71 這 6 列的內容(含有MANDB_MAP)，並且貼到最後一列之後；
+66G 跳到 66 行 -> 6yy 复制 6 行内容(输入后，屏幕最后一行会显示 6 lines yanked) -> G 跳到最后一行，输入 p 复制到最后一行的后面
+
+11. 113 到 128 列之間的開頭為 # 符號的註解資料我不要了，要如何刪除？
+113G 跳到 113 行 -> 总共需要删除 16 行内容，所以输入 16dd
+
+12. 將這個檔案另存成一個 man.test.config 的檔名；
+输入 [:w man.test.config] 实现保存操作，接着可以输入 [:! ls -l]，即显示查看当前文件夹内文件内容的命令 ls -l 显示的内容在 vim 内，再次按下回车键即回到 vim 命令模式
+
+13. 去到第 25 列，並且刪除 15 個字元，結果出現的第一個單字是什麼？
+输入 25G 到 25 行 -> 15x 删除 15 个字符，然后显示的是 tree
+
+14. 在第一列新增一列，該列內容輸入『I am a student...』；
+gg / 1G 到 第一行 -> O 在上方新增一行，然后输入 『I am a student…』-> Esc 键返回命令模式
+
+15. 儲存後離開吧！
+[:wq] 或者 ZZ 保存离开文件
