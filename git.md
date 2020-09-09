@@ -24,6 +24,7 @@
 4 按作者过滤提交记录: ?author=github_handle, e.g., https://github.com/dynjs/dynjs/commits/master?author=jingweno
 5 compare/master@{1.day.ago}…master.patch 显示Rails项目中全部昨天开始的提交记录和变化的文本格式, compare/master@{1.day.ago}…master.patch 
 
+```
 ➜  campaign-runner git:(a9ccd04) sbt compile
 [info] Loading settings for project campaign-runner-build from plugins.sbt ...
 [info] Loading project definition from /Users/lingh/Git/campaign-runner/project
@@ -31,8 +32,6 @@
 [info] Set current project to campaign-runner-parent (in build file:/Users/lingh/Git/campaign-runner/)
 [info] Executing in batch mode. For better performance use sbt's shell
 [success] Total time: 1 s, completed Jan 14, 2020 1:54:35 PM
-
-```
 ➜  campaign-runner git:(a9ccd04) git diff HEAD master
 ➜  campaign-runner git:(a9ccd04)
 ➜  campaign-runner git:(a9ccd04) git log
@@ -370,8 +369,8 @@ git revert -n <commit_id>：重做执行commit的代码修改
 
 git revert -e 重做commit_id的提交信息，生成为一个新的new_commit_id
 git revert -e commit_id
-git revert -n 重做commit_id的提交
-git revert -n commit_id 将commit_id中修改，放到index区，我们可以对他重新做修改并重新提交
+git revert -n 重做commit_id的提交, 将commit_id中修改，放到index区，我们可以对他重新做修改并重新提交
+git revert -n commit_id 
 
 revert vs reset
 git revert是用一次新的commit来回滚之前的commit，此次提交之前的commit都会被保留不动；
@@ -724,10 +723,10 @@ Fetch a custom branch:
 
 `git fetch origin pull/<id>/head:<branch-name>` — 从远程仓库根据 ID，拉下某一状态，到本地分支
 
-# 移除远程仓库上不存在的分支
+#### 移除远程仓库上不存在的分支
 git fetch -p
 
-# 移除所有包含 `greenkeeper` 的分支
+#### 移除所有包含 `greenkeeper` 的分支
 git fetch -p && git branch --remote | fgrep greenkeeper | sed 's/^.\{9\}//' | xargs git push origin --delete
 
 Merge fetched commits:
