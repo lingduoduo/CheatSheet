@@ -32,7 +32,7 @@
 [info] Executing in batch mode. For better performance use sbt's shell
 [success] Total time: 1 s, completed Jan 14, 2020 1:54:35 PM
 
-
+```
 ➜  campaign-runner git:(a9ccd04) git diff HEAD master
 ➜  campaign-runner git:(a9ccd04)
 ➜  campaign-runner git:(a9ccd04) git log
@@ -78,7 +78,7 @@ error: failed to push some refs to 'git@ghe.spotify.net:edison/campaign-runner.g
 Total 0 (delta 0), reused 0 (delta 0)
 To ghe.spotify.net:edison/campaign-runner.git
  + ae882bd...a9ccd04 master -> master (forced update)
-
+```
 
 1、git log -p FILE
 查看 README.md 的修改历史，例如：
