@@ -80,6 +80,29 @@ To ghe.spotify.net:edison/campaign-runner.git
  + ae882bd...a9ccd04 master -> master (forced update)
 ```
 
+1、获取当前提交的commit id
+命令：git log
+获取到当前项目分支下的所有commit记录
+
+2、将某个commit id前的commit清除，并保留修改的代码
+命令：git reset <commit_id>  
+
+3、修改代码完成后，将修改好的代码add到暂存区，并提交到本地仓库中
+命令：git add <file_name>  and  git commit   当前场景下：git add .  and  git commit
+将最新修改后的代码commit
+
+4、将本地修改同步到远程仓库
+命令：git push origin HEAD --force
+
+```
+git log
+git reset commit_id3
+修改代码
+git add .
+git commit -m '第三次修改README文件-更新错误后提交'
+git push origin HEAD --force
+```
+
 1、git log -p FILE
 查看 README.md 的修改历史，例如：
 > git log -p README.md
@@ -295,42 +318,77 @@ Hard reset of a single file (`@` is short for `HEAD`):
 
 #### Reset
 
-`git rest --hard HEAD` ---- 回退到上一个版本
+reset命令有三种处理模式：
+--soft：保留commit修改，将修改存储到index中；也就是说git add后的区域
+--mixed：保留commit修改，将修改存储到本地工作区域中；也就是说git add前的区域
+--hard：删除commit修改，慎用！
 
-`git reset –-hard HEAD` ——撤销最近提交以来暂存区和非暂存区的改动
-
-`git reset --hard origin/master` --回到远程仓库的状态
-
-Hard reset (move HEAD and change staging dir and working dir to match repo): -- 回退到某个版本,  彻底回退到指定commit-id的状态，暂存区和工作区也会变为指定commit-id版本的内容
-`git reset --hard commit_id`
-`git reset --hard 073791e7dd71b90daa853b2c5acc2c925f02dbc6`
-
-reset 命令会抹去某个 commit id 之后的所有 commit
-
-`git reset <commit-id>`  默认就是-mixed参数
-
-`git reset –mixed HEAD^`  回退至上个版本，它将重置HEAD到另外一个commit,并且重置暂存区以便和HEAD相匹配，但是也到此为止。工作区不会被更改。
-
+git reset --soft
+回滚commit_id前的所有提交，不删除修改：
+`git reset HEAD file` -- 撤回暂存区的文件修改到工作区
+`git reset HEAD index.html` --Unstage (undo adds)
+`git reset HEAD~1`
+git reset --soft commit_id
+重设head，不动index，所以效果是commit_id之后的commit修改全部在index中将id3 和 id4的修改放到index区（暂存区），也就是add后文件存放的区域，本地当前的修改保留
+`git reset --soft 073791e7dd71b90daa853b2c5acc2c925f02dbc6`
+`git reset --soft HEAD~ ` --soft reset (move HEAD only; neither staging nor working dir is changed):
 `git reset –soft HEAD~3`  回退至三个版本之前，只回退了commit的信息，暂存区和工作区与回退之前保持一致。如果还要提交，直接commit即可
 
-Undo latest commit: 
-`git reset --soft HEAD~ `
 
-soft reset (move HEAD only; neither staging nor working dir is changed):
-
-`git reset --soft 073791e7dd71b90daa853b2c5acc2c925f02dbc6`
-
-`git reset HEAD file` -- 撤回暂存区的文件修改到工作区
-
+git reset --mixed
+回滚commit_id前的所有提交，不删除修改：git reset commit_id  等同于 git reset --mixed commit_id
+与 下述的 git reset --hard commit_id效果不同
+重设head 和 index，不重设work tree，效果就是commit_id之前的修改，全部在work tree中，为还未add的状态将id3 和 id4 的所有修改放到本地工作区中，本地当前的修改保留
+`git reset <commit-id>`  默认就是-mixed参数
+`git reset –mixed HEAD^`  回退至上个版本，它将重置HEAD到另外一个commit,并且重置暂存区以便和HEAD相匹配，但是也到此为止。工作区不会被更改。
 Mixed reset (move HEAD and change staging to match repo; does not affect working dir):
 `git reset --mixed 073791e7dd71b90daa853b2c5acc2c925f02dbc6`
+
+
+git reset --hard
+Hard reset (move HEAD and change staging dir and working dir to match repo): -- 回退到某个版本,  彻底回退到指定commit-id的状态，暂存区和工作区也会变为指定commit-id版本的内容
+回滚commit_id前的所有提交，将修改全部删除：git reset --hard commit_id
+重设head、index、work tree，也就是说将当前项目的状态恢复到commit_id的状态，其余的全部删除（包含commit_id后的提交和本地还未提交的修改）慎用！！
+`git rest --hard HEAD` ---- 回退到上一个版本
+`git reset –-hard HEAD` ——撤销最近提交以来暂存区和非暂存区的改动
+`git reset --hard origin/master` --回到远程仓库的状态
+`git reset --hard commit_id`
+`git reset --hard 073791e7dd71b90daa853b2c5acc2c925f02dbc6`
 
 Go back to commit: 以新增一个 commit 的方式还原某一个 commit 的修改
 `git revert 073791e7dd71b90daa853b2c5acc2c925f02dbc6`
 
 `git commit --amend` 修改上一个 commit 的描述
-
 `git commit --amend --author= Author Name <email@address.com>` 修改作者名
+`git commit --amend -m "New Message"` Update most recent commit (also update the commit message)
+
+#### Revert
+
+在revert命令中常用的就两个：
+git revert -e <commit_id>：重做指定commit的提交信息
+git revert -n <commit_id>：重做执行commit的代码修改
+
+git revert -e 重做commit_id的提交信息，生成为一个新的new_commit_id
+git revert -e commit_id
+git revert -n 重做commit_id的提交
+git revert -n commit_id 将commit_id中修改，放到index区，我们可以对他重新做修改并重新提交
+
+revert vs reset
+git revert是用一次新的commit来回滚之前的commit，此次提交之前的commit都会被保留不动；
+git reset是回到某次提交，提交及之前的commit都会被保留，但是此commit id之后的修改都会被删除或放回工作区等待下一次提交；
+
+#### Checkout
+
+我们知道使用git checkout可以
+git checkout <branch_name>切换分支
+git checkout -b <branch_bame>创建分支等操作
+它还有回滚指定文件的修改的功能
+命令：git checkout -- <file_name>
+上述语句的作用，就是将file_name的本地工作区的修改全部撤销，有两种情况：
+如果file_name在commit后没有add过这个文件，则撤销到版本库中的状态
+如果file_name在commit后add过这个文件，则撤销到暂存区的状态，也就是add后的状态
+总之，就是让指定的文件回滚到最近的一次git add 或者 git commit时的状态！
+
 
 #### Update & Delete
 
@@ -340,16 +398,9 @@ Test-Delete untracked files:
 Delete untracked files (not staging):
 `git clean -f`
 
-Unstage (undo adds):
-`git reset HEAD index.html`
-
-Update most recent commit (also update the commit message):
-`git commit --amend -m "New Message"`
-
 恢复删除的文件
 
 `git rev-list -n 1 HEAD -- <file_path>`  得到 deleting_commit
-
 `git checkout <deleting_commit>^ -- <file_path> 回到删除文件 deleting_commit 之前的状态`
 
 #### Branch
