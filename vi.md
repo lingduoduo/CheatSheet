@@ -1,36 +1,6 @@
 ####  Editing File in vi
 
-vi command mode (Esc)
-
-* k - Up one line
-* j - Down one line
-* h - Left one character
-* l - Right one character 
-* w - Right one word
-* b - Left one word
-* ^ - Go to the beginning of the line
-* $ - Got to the end of the line
-* x - Delete a character
-* dw - delete a word
-* dd - delete a line
-* D - delete from the current position
-* r - replace the current character
-* cw - change the current word
-* cc - change the current line
-* c$ - change the text fromthe current position
-* C - save as c$
-* ~ - reverses the case of a character
-* * u - undo whatever you just did
-* ctrl+r - redo whatever you just did
-* yy - copy(yank, cut) the current line into the buffer
-* Nyy - copy(yank, cut) the next N lines, including the current line, into the buffer
-* p - put(paste) the line(s) in the buffer into the text after the current line 
-
-* /<pattern> start a forward search, type n to next match , type N to previous match
-* ?<pattern> start a reverse search, type n to next match , type N to previous match
-
 vi line mode (:)
-
 * :w - Writes(saves) the file
 * :w! - Forces the file to be saved
 * :q - Quit
@@ -50,6 +20,95 @@ vi insert mode(ilaA)
 * A - append text to end of current line, until Esc hit
 * o - open and put text in a new line below current line, until Esc hit
 * O - open and put text in a new line above current line, until Esc hit
+
+vi command mode (Esc)
+```
+* k - Up one line
+* j - Down one line
+* h - Left one character
+* l - Right one character 
+* w - Right one word
+* ^ - Go to the beginning of the line
+* $ - Got to the end of the line
+
+这里说到的Nouns，就是 Vim 中的一些动作
+h：左
+j：下
+k：上
+l：右
+w：移动到下个词的开头
+}：跳到下一个段
+$：移动到本行末尾
+```
+
+```
+W：移动到下一个单词的开头处
+E：移动到下一个单词的结尾处
+B：移动到前一个单词的开头处
+gE：移动到前一个单词的结尾处
+
+0：移动到当前行的第一个字符处
+^：移动到当前行第一个非空字符处
+g_：移动到当前行最后一个非空字符处
+$：移动到当前行最后一个字符处
+n|：移动到当前行的第n列
+```
+
+```
+Vim 中的 Verbs，就相当于操作符
+y：复制
+d：删除文本，保存到register
+c：删除文本，保存到register，并开始「插入」模式
+
+* dw - delete a word
+* dd - delete a line
+* cw - change the current word
+* cc - change the current line
+```
+
+```
+Verbs+Nouns
+y$：把当前所有的东西，从当前位置拖拽至行末
+dw：从当前位置删除到下一个单词的开头
+c}：将当前位置更改为此段末尾
+y2h：向左拉2个字符
+d2w：删除接下来的2个单词
+c2j：改变接下来的2行内容
+dd: 删除整行内容
+cc: 更改整行内容
+```
+
+```
+column terminal 命令
+!}column -t -s “|”
+
+Id   Name    Cuteness
+01  Puppy    Very
+02  Kitten    Ok
+03  Bunny   Ok
+
+
+!}column -t -s “|” | awk ‘NR > 1 && /Ok/ {print $0}’
+
+02  Kitten  Ok
+03  Bunny  Ok
+```
+
+* b - Left one word
+* x - Delete a character
+* D - delete from the current position
+* r - replace the current character
+* c$ - change the text fromthe current position
+* C - save as c$
+* ~ - reverses the case of a character
+* * u - undo whatever you just did
+* ctrl+r - redo whatever you just did
+* yy - copy(yank, cut) the current line into the buffer
+* Nyy - copy(yank, cut) the next N lines, including the current line, into the buffer
+* p - put(paste) the line(s) in the buffer into the text after the current line 
+
+* /<pattern> start a forward search, type n to next match , type N to previous match
+* ?<pattern> start a reverse search, type n to next match , type N to previous match
 
 5. 在 vi 中設定一下行號；
 :set nu
@@ -83,3 +142,5 @@ gg / 1G 到 第一行 -> O 在上方新增一行，然后输入 『I am a studen
 
 15. 儲存後離開吧！
 [:wq] 或者 ZZ 保存离开文件
+
+https://github.com/iggredible/Learn-Vim
