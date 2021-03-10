@@ -11,3 +11,6 @@ Your mind is a garden. Your thoughts are the seeds. You can grow flowers. Or you
 
 3/8/2021
 Life is like a camera. Just focus on what is important, capture the good times, develop from the negatives. If things don't work out, take another shot!
+
+3/10/2021
+Leave from yesterday. Live for today. Hope for tomorrow.
