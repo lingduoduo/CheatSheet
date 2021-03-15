@@ -16,6 +16,25 @@
 | gst    | git status                            |
 | gup    | git pull --rebase                     |
 | gwip   | git add -a; git commit -m '---wip---' |
+| 查看历史   | - |
+| git log --oneline   | 每个提交在一行内显示 |
+| git log --all --grep='homepage'   | 在所有提交日志中搜索包含「homepage」的提交 |
+| git log --author="Maxence"	| 获取某人的提交日志 | 
+| git log --oneline --decorate --graph	| - | 
+| 之前重置了一个不想保留的提交，但是现在又想要回滚	| - | 
+| git reflog	| 获取所有操作历史 | 
+| git reset HEAD@{4}	| 重置到相应提交 | 
+| git reset --hard <提交的哈希值>	| git reset --hard 37d09fc |
+| 我把本地仓库搞得一团糟，应该怎么清理	| - | 
+| git fetch origin	| - | 
+| git checkout master | - | 
+| git reset --hard origin/master	| - |
+| 查看我的分支和 master 的不同| - |	
+| git diff master..my-branch| - |
+| 定制提交| - | 	
+| git commit --amend -m "更好的提交日志"	| 编辑上次提交| 
+| git add . && git commit --amend --no-edit	| 在上次提交中附加一些内容，保持提交日志不变| 
+| git commit --allow-empty -m "chore: re-trigger build"	| 空提交 —— 可以用来重新触发 CI 构建| 
 
 #### Hotkeys
 1 按 t 可以快速进入模糊文件名搜索模式, w 可以快速进行分支过滤,  ? 展示当前页面可用的快捷键
