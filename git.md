@@ -28,8 +28,8 @@
 | 我把本地仓库搞得一团糟，应该怎么清理	| - | 
 | git fetch origin	| - | 
 | git checkout master | - | 
-| git reset --hard origin/master	| 查看我的分支和 master 的不同| - |	
-| git diff master..my-branch| - |
+| git reset --hard origin/master	|  - |	
+| git diff master..my-branch| 查看我的分支和 master 的不同 |
 | 定制提交| - | 	
 | git commit --amend -m "更好的提交日志"	| 编辑上次提交| 
 | git add . && git commit --amend --no-edit	| 在上次提交中附加一些内容，保持提交日志不变| 
