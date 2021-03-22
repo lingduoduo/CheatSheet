@@ -14,3 +14,6 @@ Life is like a camera. Just focus on what is important, capture the good times, 
 
 3/10/2021
 Leave from yesterday. Live for today. Hope for tomorrow.
+
+3/22/2021
+Creativity is intelligence having fun.
