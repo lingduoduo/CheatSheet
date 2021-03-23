@@ -17,3 +17,6 @@ Leave from yesterday. Live for today. Hope for tomorrow.
 
 3/22/2021
 Creativity is intelligence having fun.
+
+3/23/2021
+If you are not willing to learn, no one can help you. If you are determined to learn, no one can stop you.
