@@ -20,3 +20,6 @@ Creativity is intelligence having fun.
 
 3/23/2021
 If you are not willing to learn, no one can help you. If you are determined to learn, no one can stop you.
+
+4/5/2021
+I gave today all that I had in me.
