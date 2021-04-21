@@ -23,3 +23,6 @@ If you are not willing to learn, no one can help you. If you are determined to l
 
 4/5/2021
 I gave today all that I had in me.
+
+4/21/2021
+Human beings are members of a whole. In creation of one essence and soul. If one member is afflicted with pain. Other members uneasy will remain. If you have no sympathy for human pain. The name of human you cannot retain
