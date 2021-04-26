@@ -26,3 +26,6 @@ I gave today all that I had in me.
 
 4/21/2021
 Human beings are members of a whole. In creation of one essence and soul. If one member is afflicted with pain. Other members uneasy will remain. If you have no sympathy for human pain. The name of human you cannot retain
+
+4/26/2021
+Every Moringing is a new opportunity to do things you missed yesterday
