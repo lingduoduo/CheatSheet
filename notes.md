@@ -29,3 +29,6 @@ Human beings are members of a whole. In creation of one essence and soul. If one
 
 4/26/2021
 Every Moringing is a new opportunity to do things you missed yesterday
+
+4/29/2021
+Forget the mistake. Remember the lesson.
