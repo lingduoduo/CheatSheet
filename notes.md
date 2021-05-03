@@ -32,3 +32,6 @@ Every Moringing is a new opportunity to do things you missed yesterday
 
 4/29/2021
 Forget the mistake. Remember the lesson.
+
+5/2/2021
+Leadership is the capacity to translate vision into reality.
