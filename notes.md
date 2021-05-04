@@ -35,3 +35,6 @@ Forget the mistake. Remember the lesson.
 
 5/2/2021
 Leadership is the capacity to translate vision into reality.
+
+5/4/2021
+If it doesn't challenge you, it doesn't change you.
