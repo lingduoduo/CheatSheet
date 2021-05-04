@@ -1,3 +1,15 @@
+## Ongoing items
+https://ghe.spotify.net/lingh/weekly-update
+Dev Plan 2019 2020Q1
+What's been working for you so far?
+What's been hardest (or most surprising)?
+What's your north star, or what are you optimizing for?
+What's something about the squad you've noticed from the past week?
+Do you feel like you have a good workload this week?
+Do you feel like you have a good idea of the squad priorities?
+Do you feel like you know what’s next after your current tasks are done?
+
+
 ##  Cheatsheet
 
 Deep Learning https://github.com/princewen/tensorflow_practice
