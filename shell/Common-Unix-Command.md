@@ -75,6 +75,7 @@ In insert mode, literal text can be inserted
 cat file1.txt
 cat -n file1.txt
 cat file1.txt file2.txt
+
 ```
 
 -Show long files
@@ -82,6 +83,7 @@ cat file1.txt file2.txt
 ```
 less -N file1.txt
 less -M file1.txt
+
 ```
 
 -Sample files: the first or the last records
@@ -95,6 +97,7 @@ tail -10 rwa-data.txt > last-10_records.txt
 tail bankstatement.txt (show last 10 lines)
 tail -n 15 bankstatement.txt
 tail -f /var/log/apache2/error_log (trace all new lines from tail of files)
+
 ```
 
 -Create Directory
@@ -103,6 +106,7 @@ tail -f /var/log/apache2/error_log (trace all new lines from tail of files)
 mkdir newdir 
 mkdir -p newdir/newsubdir/newsubsubdir (create all parent directory if needed)
 mkdir -vp newdir/test1/test2 (create directory with feedbacks) 
+
 ```
 
 -Copy File
@@ -114,6 +118,7 @@ cp -nv overwrite1.txt overwrite2.txt (not overwriting)
 cp -fv overwrite1.txt overwrite2.txt (overwriting)
 cp -i overwrite1.txt overwrite2.txt (interactive overwriting)
 cp -R test1 tet_copy_dir
+
 ```
 
 -Move File
@@ -126,6 +131,7 @@ mv newfile.txt ..
 mv -nv overwrite1.txt overwrite2.txt (not overwriting)
 mv -fv overwrite1.txt overwrite2.txt (overwriting)
 mv -i overwrite1.txt overwrite2.txt (interactive overwriting)
+
 ```
 
 -Remove File
@@ -163,6 +169,12 @@ find ~ -name *.plist
 find ~ -name *.plist -and -not -path *QuickTime
 find ~ -name *.plist -and -not -paht *QuickTime -and -not *Preference
 find /homes/lingh/ -name '*.*'
+find / -name file1 从 '/' 开始进入根文件系统搜索文件和目录
+find / -user user1 搜索属于用户 'user1' 的文件和目录
+find /usr/bin -type f -atime +100 搜索在过去100天内未被使用过的执行文件
+find /usr/bin -type f -mtime -10 搜索在10天内被创建或者修改过的文件
+whereis halt 显示一个二进制文件、源码或man的位置
+which halt 显示一个二进制文件或可执行文件的完整路径
 ```
 
 -Change ownership
@@ -280,15 +292,28 @@ wc (word count)
 wc fruits.txt
    25    22   156 fruits.txt (25 lines, 22 words per line, total 156 words)
 wc -l myfile.txt (count lines)
+
 sort (sort lines)
 sort fruits.txt
 sort -f fruits.txt (mix upper case letters and lowercase letters)
 sort -r fruits.txt (reverse sort)
 sort -u fruits.txt (sorted and unique)
+sort file1 file2 排序两个文件的内容
+sort file1 file2 | uniq 取出两个文件的并集(重复的行只保留一份)
+sort file1 file2 | uniq -u 删除交集，留下其他的行
+sort file1 file2 | uniq -d 取出两个文件的交集(只留下同时存在于两个文件中的文件)
+
 unique (filter in/out repeated lines)
 uniq fruits.txt
 uniq -d fruits.txt (duplicate lines)
 uniq -u fruits.txt (unduplicate lines)
+
+paste file1 file2 合并两个文件或两栏的内容
+paste -d '+' file1 file2 合并两个文件或两栏的内容，中间用"+"区分
+
+comm -1 file1 file2 比较两个文件的内容只删除 'file1' 所包含的内容
+comm -2 file1 file2 比较两个文件的内容只删除 'file2' 所包含的内容
+comm -3 file1 file2 比较两个文件的内容只删除两个文件共有的部分
 ```
 
 -Utility programs
@@ -324,6 +349,7 @@ history -a
 history -n (read all history lines not already read)
 history -d 10 (delete the 10th line of history)
 history -c (clean all history)
+
  ```
 
 -Command history
@@ -342,6 +368,7 @@ chown lingh fruit.txt
 sudo !! (that is, sudo chown lingh fruit.txt)
 cat fruits.txt
 less !$ (run the command with the arguments fromt the previous command)
+
 ```
 
 - Directing Input and Output
@@ -353,6 +380,7 @@ sort fruits.txt > sortedfruits.txt
 unique sortedfruits.txt > uniquefruits.txt
 cat apple.txt apple2.txt > applecat.txt
 echo 'fruits.txt' >> apple.txt (appended to the file)
+
 ```
 
 \#Directing input from a file
@@ -371,15 +399,21 @@ ps aux | less
 \#/dev/null - 'null device', 'bit bucket', 'black hold'
 \#similar to special files /dev/stdin and /dev/stdout, unix discards any data sent there
 ls -lah > /dev/null
+
 ```
 
 -Configuring Your Working Environment
-When you login (type username and password) via Terminal, either sitting at the machine, or remotely via ssh, .bash_profile is executed to configure your shell before the initial command prompt.
-If you’ve already logged into your machine and open a new terminal window (xterm) inside a client other than Mac OSX Terminal, then .bashrc is executed before the window command prompt.
-\#Upon login to a bash shell - This only runs on user login
-\#/etc/profile - system configurations with master default commands
+
+- When you login (type username and password) via Terminal, either sitting at the machine, or remotely via ssh, .bash_profile is executed to configure your shell before the initial command prompt.
+
+- If you’ve already logged into your machine and open a new terminal window (xterm) inside a client other than Mac OSX Terminal, then .bashrc is executed before the window command prompt.
+  \#Upon login to a bash shell - This only runs on user login
+
+- /etc/profile - system configurations with master default commands
+
 \#~/.bash_profile, ~/.bash_login, ~/.profile, ~/.login
-\#Add to ~/.bash_profile and then put all shell configuration in ~/.bashrc
+
+  Add to ~/.bash_profile and then put all shell configuration in ~/.bashrc
 
 ```
 if [ -f ~/.bashrc ]; then
@@ -421,7 +455,8 @@ export HISTIGNORE="history:pwd:ls -lah:exit" (ignore commands in the history)
 ```
 
 \#Customizing the command prompt with format codes
-\#\u - username
+
+```#\u - username
 \#\s - current shell
 \#\w - current working directory
 \#\W - basename of current working directory
@@ -436,8 +471,6 @@ export HISTIGNORE="history:pwd:ls -lah:exit" (ignore commands in the history)
 \#|! history number of this command
 \#\$ when UID is 0 (root), a "#", otherwise a "$"
 \#\\ a literal backslash
-
-```
 PS1='--> ' (change the main command prompt)
 PS1="\h:\W\u$'
 ```
@@ -464,9 +497,18 @@ grep --color apple fruit.txt
 export GREP_COLOR="34;47"
 export GREP_OPTIONS="--color=auto"
 grep --color=auto apple fruit.txt
+
+grep Aug /var/log/messages  在文件 '/var/log/messages'中查找关键词"Aug"
+grep ^Aug /var/log/messages 在文件 '/var/log/messages'中查找以"Aug"开始的词汇
+grep [0-9] /var/log/messages 选择 '/var/log/messages' 文件中所有包含数字的行
+grep Aug -R /var/log/* 在目录 '/var/log' 及随后的目录中搜索字符串"Aug"
+sed 's/stringa1/stringa2/g' example.txt 将example.txt文件中的 "string1" 替换成 "string2"
+sed '/^$/d' example.txt 从example.txt文件中删除所有空白行（搜索公众号Java知音，回复“2021”，送你一份Java面试题宝典）
 ```
 
 \#regular expression basics
+
+```
 .  (wild card, any one character except line breaks, gre.t)
 [] (character set, any one character listed inside [], gr[ea]y)
 [^] (negative character set, any one character not listed inside [], [^aeiou])
@@ -498,7 +540,6 @@ $ (End of line anchor, World$)
 [:cntrl:] (control characters, not printing)
 [:xdigit:] (Hexadecimal characters 0-9, A-F, a-f)
 
-```
 grep 'apple' fruits.txt
 grep 'a..le' fruits.txt (. is wildcard character for regular expression)
 grep '.a.a' fruits.txt (return word by any character followed by 'a' and then any character followed by 'a')
@@ -525,14 +566,15 @@ echo 'already daytime' | tr 'day' 'night'
 tr 'A-Z' 'a-z' < fruits.txt (change from uppercase to lowercase)
 tr '[:upper:]' '[:lower:]' < fruits.txt
 tr ' ' '\t' < fruits.txt
+
 ```
 
-\#tr: deleting and squeezing characters
-\# -d delete characters in listed set
-\# -s squeeze repeats in listed set
-\# -c user complementatry set
-\# -dc delete characters not in listed set
-\# -sc squeeze characters not in listed set
+- tr: deleting and squeezing characters
+  - -d delete characters in listed set
+  - -s squeeze repeats in listed set
+  - -c user complementatry set
+  - -dc delete characters not in listed set
+  - -sc squeeze characters not in listed set
 
 ```
 echo 'abc123deee567f' | tr -d [:digit:] (delete digits)
@@ -544,6 +586,7 @@ echo 'abc123deee567f' | tr -dsc [:digit:] [:digit:] (-c only apply to delete -d)
 tr -dc [:print:] < file1 > file2 (remove non-printable characters from file 1)
 tr -d  '\015\031' < windows_file > unix_file (remove surplus carriage return and end of file character)
 tr -s ' ' < file1 > file2 (remove double spaces from file1)
+
 ```
 
 \#sed - Stream Editor
@@ -585,16 +628,17 @@ cut -f 2,6 -d "," us_presidents.csv (grab fields 2, 6 by changing the delimiter 
 
 \#diff: Comparing files
 diff fruits.txt.output1 fruits.txt.output2 (original txt file typically first, c indicates change, a indicates append)
-\# -i (case insensitive)
-\# -b (ignore changes to blank characters)
-\# -w (ignore all whitespace)
-\# -B (ignore blank lines)
-\# -r (recursively compare directories)
-\# -s (show identical files)
-\# -c (copied context)
-\# -u (unified context)
-\# -y (side-by-side)
-\# -q (only whether files differ)
+
+- -i (case insensitive)
+- -b (ignore changes to blank characters)
+- -w (ignore all whitespace)
+- -B (ignore blank lines)
+- -r (recursively compare directories)
+- -s (show identical files)
+- -c (copied context)
+- -u (unified context)
+- -y (side-by-side)
+- -q (only whether files differ)
 
 ```
 diff -c fruits.txt.output1 fruits.txt (show context difference, + added, ! changed, - deleted)
@@ -641,6 +685,31 @@ tar -cvf homebackup.tar /home/user
 tar -czvf homebackup.tar.gz /home/user
 tar -xvf homebackup.tar
 tar -xzvf homebackup.tar.gz
+
+对文件进行打包，默认情况并不会压缩，如果指定了相应的参数，它还会调用相应的压缩程序（如gzip和bzip等）进行压缩和解压：
+-c ：新建打包文件
+-t ：查看打包文件的内容含有哪些文件名
+-x ：解打包或解压缩的功能，可以搭配-C（大写）指定解压的目录，注意-c,-t,-x不能同时出现在同一条命令中
+-j ：通过bzip2的支持进行压缩/解压缩
+-z ：通过gzip的支持进行压缩/解压缩
+-v ：在压缩/解压缩过程中，将正在处理的文件名显示出来
+-f filename ：filename为要处理的文件
+-C dir ：指定压缩/解压缩的目录dir
+压缩：tar -jcv -f filename.tar.bz2 要被处理的文件或目录名称
+查询：tar -jtv -f filename.tar.bz2
+解压：tar -jxv -f filename.tar.bz2 -C 欲解压缩的目录
+
+bunzip2 file1.bz2 解压一个叫做 'file1.bz2'的文件
+bzip2 file1 压缩一个叫做 'file1' 的文件
+gunzip file1.gz 解压一个叫做 'file1.gz'的文件
+gzip file1 压缩一个叫做 'file1'的文件
+gzip -9 file1 最大程度压缩
+rar a file1.rar test_file 创建一个叫做 'file1.rar' 的包
+rar a file1.rar file1 file2 dir1 同时压缩 'file1', 'file2' 以及目录 'dir1'
+rar x file1.rar 解压rar包
+zip file1.zip file1 创建一个zip格式的压缩包
+unzip file1.zip 解压一个zip格式压缩包
+zip -r file1.zip file1 file2 dir1 将几个文件和目录同时压缩成一个zip格式的压缩包
 ```
 
 \- Job Contrl
@@ -684,4 +753,5 @@ exit 1 (exit with states)
 info coreutils
 ctrl + r (incremental search in history)
 env (print env variables)
+
 ```
