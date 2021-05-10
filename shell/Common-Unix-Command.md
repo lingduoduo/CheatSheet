@@ -269,12 +269,30 @@ du -hd 0 ~/ (only current directory)
 
 ```
 ps (process status)
+
+用于将某个时间点的进程运行情况选取下来并输出，process之意：
+-A ：所有的进程均显示出来
+-a ：不与terminal有关的所有进程
+-u ：有效用户的相关进程
+-x ：一般与a参数一起使用，可列出较完整的信息
+-l ：较长，较详细地将PID的信息列出
+
+ps aux # 查看系统所有的进程数据
+ps ax # 查看不与terminal有关的所有进程
+ps -lA # 查看系统所有的进程数据
+ps axjf # 查看连同一部分进程树状态
+
 ps -a
 ps aux (a: all processes, u: column showing th eprocess user, x show the background processes)
 ps aux | grep lingh
+
 top
 top -n 10 (top 10 processes)
 top -n 10 -o cpu -s 3 -U lingh (top 10 processes of lingh, sorted by CPU, refress every 3 seconds)
+
+jps(Java Virtual Machine Process Status Tool)是JDK 1.5提供的一个显示当前所有java进程pid的命令，简单实用，非常适合在linux/unix平台上简单察看当前java进程的一些简单情况。
+
+netstat -tunlp|grep 端口号
 ```
 
 \#Stopping processes
@@ -283,6 +301,10 @@ top -n 10 -o cpu -s 3 -U lingh (top 10 processes of lingh, sorted by CPU, refres
 kill pid
 kill -9 pid (force to kill the process id)
 kill %2 (terminate a background job 2)
+
+kill -9 pid  （-9表示强制关闭）
+killall -9 程序的名字
+pkill 程序的名字
 ```
 
 -Text File Helpers
@@ -338,6 +360,7 @@ You have: 1 foot
 You want: meters
     \* 0.3048
     / 3.2808399
+
 ```
 
  -Show all commands run before 
@@ -349,6 +372,7 @@ history -a
 history -n (read all history lines not already read)
 history -d 10 (delete the 10th line of history)
 history -c (clean all history)
+
 
  ```
 
@@ -369,6 +393,7 @@ sudo !! (that is, sudo chown lingh fruit.txt)
 cat fruits.txt
 less !$ (run the command with the arguments fromt the previous command)
 
+
 ```
 
 - Directing Input and Output
@@ -380,6 +405,7 @@ sort fruits.txt > sortedfruits.txt
 unique sortedfruits.txt > uniquefruits.txt
 cat apple.txt apple2.txt > applecat.txt
 echo 'fruits.txt' >> apple.txt (appended to the file)
+
 
 ```
 
@@ -753,5 +779,18 @@ exit 1 (exit with states)
 info coreutils
 ctrl + r (incremental search in history)
 env (print env variables)
+```
 
+-Shutdoen
+
+```
+shutdown -h now 关闭系统(1)
+init 0 关闭系统(2)
+telinit 0 关闭系统(3)
+shutdown -h hours:minutes & 按预定时间关闭系统
+shutdown -c 取消按预定时间关闭系统
+shutdown -r now 重启(1)
+reboot 重启(2)
+logout 注销
+time 测算一个命令（即程序）的执行时间
 ```
