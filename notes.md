@@ -41,3 +41,6 @@ If it doesn't challenge you, it doesn't change you.
 
 5/12/2021
 Magic is believing in yourself. If you can make that happen, you can make. anything happen.
+
+5/14/2021
+Motivation is what gets you started. Habit is what keeps you going.
