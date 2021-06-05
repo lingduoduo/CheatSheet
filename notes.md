@@ -43,4 +43,7 @@ If it doesn't challenge you, it doesn't change you.
 Magic is believing in yourself. If you can make that happen, you can make. anything happen.
 
 5/14/2021
-Motivation is what gets you started. Habit is what keeps you going.
+Motivation is what gets you started. Habit is what keeps you going. 
+
+6/42021
+Knowing of the hand. The essence of creative journey. Gain the confidence to develop an idea, courage to step into unknown situation, possibility will arise, realizing something happen is not exactly your idea, but something even more interesting.
