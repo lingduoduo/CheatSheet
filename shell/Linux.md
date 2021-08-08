@@ -912,7 +912,8 @@ ifconfig
 功能描述：查询本机网络信息
 ```
 
-01 pgrep
+11 pgrep
+---------------------------------------------
 
 pgrep名字前有个p，我们可以猜到这和进程相关，又是grep，当然这是进程相关的grep命令。不过，这个命令主要是用来列举进程ID的。如：
 
@@ -926,7 +927,8 @@ $ pgrep -u hchen2244122444
 ps -ef | egrep '^hchen' | awk '{print $2}'
 ```
 
-02 pstree
+12 pstree
+---------------------------------------------
 
 这个命令可以以树形的方式列出进程。如下所示：
 
@@ -989,7 +991,8 @@ init-+-acpid
      -xinetd
 ```
 
-03 bc
+13 bc
+---------------------------------------------
 
 这个命令主要是做一个精度比较高的数学运算的。比如开平方根等。下面是一个我们利用bc命令写的一个脚本（文件名：sqrt）
 
@@ -1003,7 +1006,8 @@ init-+-acpid
 [hchen@RHELSVR5]$ ./sqrt 366[hchen@RHELSVR5]$ ./sqrt 2.00001.4142[hchen@RHELSVR5]$ ./sqrt 10.00003.1622
 ```
 
-04 split
+14 split
+---------------------------------------------
 
 如果你有一个很大的文件，你想把其分割成一些小的文件，那么这个命令就是干这件事的了。
 
@@ -1017,8 +1021,8 @@ init-+-acpid
 ```
 [hchen@RHELSVR5]#  cat LF_* >largefile.tar.gz
 ```
-
-05 nl
+15 nl
+---------------------------------------------
 
 `nl`命令其它和`cat`命令很像，只不过它会打上行号。如下所示：
 
@@ -1026,7 +1030,8 @@ init-+-acpid
 [hchen@RHELSVR5 include]# nl stdio.h | head -n 10     1  /* Define ISO C stdio on top of C++ iostreams.          2     Copyright (C) 1991,1994-2004,2005,2006 Free Software Foundation, Inc.          3     This file is part of the GNU C Library.          4     The GNU C Library is free software; you can redistribute it and/or          5     modify it under the terms of the GNU Lesser General Public          6     License as published by the Free Software Foundation; either          7     version 2.1 of the License, or (at your option) any later version.          8     The GNU C Library is distributed in the hope that it will be useful,
 ```
 
-06 mkfifo
+16 mkfifo
+---------------------------------------------
 
 熟悉Unix的人都应该知道这个是一个创建有名管道的系统调用或命令。
 
@@ -1057,7 +1062,8 @@ init-+-acpid
 
 ```
 
-07 ldd
+17 ldd
+---------------------------------------------
 
 这个命令可以知道你的一个可执行文件所使用了动态链接库。如：
 
@@ -1065,7 +1071,8 @@ init-+-acpid
 [hchen@RHELSVR5 ~]# ldd /usr/bin/java        linux-gate.so.1 =>  (0x00cd9000)        libgij.so.7rh => /usr/lib/libgij.so.7rh (0x00ed3000)        libgcj.so.7rh => /usr/lib/libgcj.so.7rh (0x00ed6000)        libpthread.so.0 => /lib/i686/nosegneg/libpthread.so.0 (0x00110000)        librt.so.1 => /lib/i686/nosegneg/librt.so.1 (0x009c8000)        libdl.so.2 => /lib/libdl.so.2 (0x008b5000)        libz.so.1 => /usr/lib/libz.so.1 (0x00bee000)        libgcc_s.so.1 => /lib/libgcc_s.so.1 (0x00aa7000)        libc.so.6 => /lib/i686/nosegneg/libc.so.6 (0x0022f000)        libm.so.6 => /lib/i686/nosegneg/libm.so.6 (0x00127000)        /lib/ld-linux.so.2 (0x00214000)
 ```
 
-08 col
+18 col
+---------------------------------------------
 
 这个命令可以让你把man文件转成纯文本文件。如下示例：
 
@@ -1073,7 +1080,8 @@ init-+-acpid
 # PAGER=cat# man less | col -b > less.txt
 ```
 
-09 xmlwf
+19 xmlwf
+---------------------------------------------
 
 这个命令可以让你检查一下一个XML文档是否是所有的tag都是正常的。如：
 
@@ -1081,7 +1089,8 @@ init-+-acpid
 [hchen@RHELSVR5 ~]# curl 'https://coolshell.cn/?feed=rss2' > cocre.xml  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current                                 Dload  Upload   Total   Spent    Left  Speed100 64882    0 64882    0     0  86455      0 --:--:-- --:--:-- --:--:-- 2073k[hchen@RHELSVR5 ~]# xmlwf cocre.xml[hchen@RHELSVR5 ~]# perl -i -pe 's@<link>@<br>@g' cocre.xml[hchen@RHELSVR5 ~]# xmlwf cocre.xmlcocre.xml:13:23: mismatched tag
 ```
 
-10 lsof
+20 lsof
+---------------------------------------------
 
 可以列出打开了的文件。
 
