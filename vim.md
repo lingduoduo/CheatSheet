@@ -30,17 +30,32 @@ vim insert mode
 
 vim command mode (Esc)
 
-* j - Down one line
 * h - Left one character
-* l - Right one character 
-* w - Right one word
+* l - Right one character
+* j - Down one line
+* k - Up one line
+
+* w/W - Right one word
+* e/E - End one word
+* b/B - Back one word
+* f{char} + ,/; - Move to char and forward/backward
+* t{char} - Move to until char
+* F - backward move  
+
+* 0 - one line start
+* $ - one line end
+* () - one sentence
+* {} - one paragraph
+
+* gg - file start
+* G - file end
+* H/M/L - Head/Middle/Lower of screen
+* ctrl + u - page up
+* ctrl + f - page down
+
 * ^ - Go to the beginning of the line
 * $ - Got to the end of the line
 * } - 跳到下一个段
-* W：移动到下一个单词的开头处
-* E：移动到下一个单词的结尾处
-* B：移动到前一个单词的开头处
-* gE：移动到前一个单词的结尾处
 
 * 0：移动到当前行的第一个字符处
 * ^：移动到当前行第一个非空字符处
@@ -131,7 +146,7 @@ gg 或 1G -> /gzip -> 在第 93 列
 输入 25G 到 25 行 -> 15x 删除 15 个字符，然后显示的是 tree
 
 14. 在第一列新增一列，該列內容輸入『I am a student...』；
-gg / 1G 到 第一行 -> O 在上方新增一行，然后输入 『I am a student…』-> Esc 键返回命令模式
+gg / G 到 第一行 -> O 在上方新增一行，然后输入 『I am a student…』-> Esc 键返回命令模式
 
 15. 儲存後離開吧！
 [:wq] 或者 ZZ 保存离开文件
