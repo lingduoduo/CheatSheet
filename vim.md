@@ -1,18 +1,23 @@
-####  Editing File in vi
+####  Editing File in vim
 
-vi line mode (:)
+vim normal mode (:)
+
+* :wq - quit and save
 * :w - Writes(saves) the file
 * :w! - Forces the file to be saved
 * :q - Quit
-* :q! - Quit without saving changes
-* :wq! - Write and quit
-* :x - Same as :wq
+* :q! - Quit without savimng changes
+* :wq - Write and quit
 * :n - positions the cursor at line n
 * :$ - positions the cursor on the last line
+
 * set nu - turn on line numbering
 * set nonu - turn off line numbering
+* :vs - vertical split
+* :sp - split
+* :% s/foo/bar/g
 
-vi insert mode(ilaA)
+vim insert mode
 
 * i - insert text before cursor, until Esc hit
 * I - insert text at beginning of current line, until Esc hit
@@ -21,53 +26,41 @@ vi insert mode(ilaA)
 * o - open and put text in a new line below current line, until Esc hit
 * O - open and put text in a new line above current line, until Esc hit
 
-vi command mode (Esc)
-```
-* k - Up one line
+
+vim command mode (Esc)
+
 * j - Down one line
 * h - Left one character
 * l - Right one character 
 * w - Right one word
 * ^ - Go to the beginning of the line
 * $ - Got to the end of the line
+* } - 跳到下一个段
+* W：移动到下一个单词的开头处
+* E：移动到下一个单词的结尾处
+* B：移动到前一个单词的开头处
+* gE：移动到前一个单词的结尾处
 
-这里说到的Nouns，就是 Vim 中的一些动作
-h：左
-j：下
-k：上
-l：右
-w：移动到下个词的开头
-}：跳到下一个段
-$：移动到本行末尾
-```
+* 0：移动到当前行的第一个字符处
+* ^：移动到当前行第一个非空字符处
+* g_：移动到当前行最后一个非空字符处
+* $：移动到当前行最后一个字符处
+* n|：移动到当前行的第n列
 
-```
-W：移动到下一个单词的开头处
-E：移动到下一个单词的结尾处
-B：移动到前一个单词的开头处
-gE：移动到前一个单词的结尾处
 
-0：移动到当前行的第一个字符处
-^：移动到当前行第一个非空字符处
-g_：移动到当前行最后一个非空字符处
-$：移动到当前行最后一个字符处
-n|：移动到当前行的第n列
-```
-
-```
 Vim 中的 Verbs，就相当于操作符
-y：复制
-d：删除文本，保存到register
-c：删除文本，保存到register，并开始「插入」模式
+* y：复制
+* d：删除文本，保存到register
+* c：删除文本，保存到register，并开始「插入」模式
 
 * dw - delete a word
 * dd - delete a line
 * cw - change the current word
 * cc - change the current line
-```
 
-```
+
 Verbs+Nouns
+
 y$：把当前所有的东西，从当前位置拖拽至行末
 dw：从当前位置删除到下一个单词的开头
 c}：将当前位置更改为此段末尾
@@ -76,9 +69,8 @@ d2w：删除接下来的2个单词
 c2j：改变接下来的2行内容
 dd: 删除整行内容
 cc: 更改整行内容
-```
 
-```
+
 column terminal 命令
 !}column -t -s “|”
 
@@ -107,11 +99,8 @@ Id   Name    Cuteness
 * Nyy - copy(yank, cut) the next N lines, including the current line, into the buffer
 * p - put(paste) the line(s) in the buffer into the text after the current line 
 
-* /<pattern> start a forward search, type n to next match , type N to previous match
-* ?<pattern> start a reverse search, type n to next match , type N to previous match
-
-5. 在 vi 中設定一下行號；
-:set nu
+* /<pattern> start a forward search, type n to next match , type N to previmous match
+* ?<pattern> start a reverse search, type n to next match , type N to previmous match
 
 6. 移動到第 43 列，向右移動 59 個字元，請問你看到的小括號內是哪個文字？
 43G -> 59l
@@ -132,7 +121,7 @@ gg 或 1G -> /gzip -> 在第 93 列
 113G 跳到 113 行 -> 总共需要删除 16 行内容，所以输入 16dd
 
 12. 將這個檔案另存成一個 man.test.config 的檔名；
-输入 [:w man.test.config] 实现保存操作，接着可以输入 [:! ls -l]，即显示查看当前文件夹内文件内容的命令 ls -l 显示的内容在 vim 内，再次按下回车键即回到 vim 命令模式
+输入 [:w man.test.config] 实现保存操作，接着可以输入 [:! ls -l]，即显示查看当前文件夹内文件内容的命令 ls -l 显示的内容在 vimm 内，再次按下回车键即回到 vimm 命令模式
 
 13. 去到第 25 列，並且刪除 15 個字元，結果出現的第一個單字是什麼？
 输入 25G 到 25 行 -> 15x 删除 15 个字符，然后显示的是 tree
