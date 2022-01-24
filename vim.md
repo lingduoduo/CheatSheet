@@ -25,7 +25,8 @@ vim insert mode
 * A - append text to end of current line, until Esc hit
 * o - open and put text in a new line below current line, until Esc hit
 * O - open and put text in a new line above current line, until Esc hit
-
+* gi - jump to insert mode
+* ctrl + [ - jump to normal mode 
 
 vim command mode (Esc)
 
@@ -49,9 +50,12 @@ vim command mode (Esc)
 
 
 Vim 中的 Verbs，就相当于操作符
-* y：复制
+* ctrl + h : delete one character
+* ctrl + w : delete one word
+* ctrl + u : delete one line
 * d：删除文本，保存到register
 * c：删除文本，保存到register，并开始「插入」模式
+* u: delete whole line
 
 * dw - delete a word
 * dd - delete a line
