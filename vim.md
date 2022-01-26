@@ -82,9 +82,24 @@ Vim 中的 Verbs，就相当于操作符
 * cw - change a word and change to insert model
 * ct"char" - delete the chars util char and change to insert mode
 
+* :[range]s[ubstitute]/{pattern}/{string}/[flags]
+* :% s/char/character/g
+* :1,10 s/char/character/g
+* :1,10 s/char//n
+* :% s/char//c
+* :% s/\<char\>/character/g
+
 * / or ? to search forward or backward
 * n / N to move forward or backward
 * * / # to move forward or backward
+
+* buffer
+* :ls - list buffer
+* :b n - jump to buffer n
+* :bpre:bnext:bfirst:blast
+* :b buffer name - jump to buffer with name
+
+* 
 
 1 D - delete from the current position
 2 r - replace the current character
