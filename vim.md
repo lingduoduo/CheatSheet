@@ -143,7 +143,7 @@ copy/paste in insert mode
 
 macro
 
-"* q - record"
-"* q{register} - save commands"
-"* q - quit"
-"* qa -> @a or virtual select rows, then :'<,'>normal @a"
+* q - record
+* q{register} - save commands
+* q - quit
+* qa -> @a or virtual select rows, then :'<,'>normal @a
