@@ -11,10 +11,14 @@ vim normal mode
 * :n - positions the cursor at line n
 * :$ - positions the cursor on the last line
 
-* set nu - turn on line numbering
-* set nonu - turn off line numbering
-* set hls - set highlight search
-* set incsearch - set incremental search
+* :set nu - turn on line numbering
+* :set nonu - turn off line numbering
+* :set hls - set highlight search
+* :set incsearch - set incremental search
+* :set paste and :set nopaste
+* :set autoindent
+* :set clipboard = unnamed
+
 * :vs - vertical split
 * :sp - split
 * :% s/foo/bar/g
@@ -56,10 +60,9 @@ vim normal mode (Esc)
 * ctrl + f - page down
 
 vim virtual model 
-
 * v - switch to virtual model for selection
 
-Vim 中的 Verbs，就相当于操作符
+vim 中的 Verbs，就相当于操作符
 
 * u - undo
 * ctrl + r - redo undo
@@ -99,13 +102,34 @@ Vim 中的 Verbs，就相当于操作符
 * :bpre:bnext:bfirst:blast
 * :b buffer name - jump to buffer with name
 
-* 
+* window
+* ctrl + w - jump to window
+* :sp vim.md - open vim in a split window
+* :vs vim.md - open vim in a split window
 
-1 D - delete from the current position
-2 r - replace the current character
-3 c$ - change the text fromthe current position
-4 save as c$
-5 ~ - reverses the case of a character
-6 ctrl+r - redo whatever you just did
-7 ff yy - copy(yank, cut) the current line into the buffer
-* Nyy - copy(yank, cut) the next N lines, including the current line, into the buffer
+* text object
+* [number]<command>[text object]
+* command - d(delete), c(change), y(yank), v(visual)
+* text object - w(word), s(sentence), p(paragraph)
+* iw - inner word
+* aw - around word
+* vi(,) - i<,> - i{,} - i" - i' - select inner the symbol  
+* va(,) - a<,> - a{,} - a" - a' - select around the symbol
+* ci(,) - i<,> - i{,} - i" - i' - change inner the symbol  
+* ca(,) - a<,> - a{,} - a" - a' - change around the symbol
+
+* copy/paste in normal mode
+* y (yank) - copy
+* p (put)
+* d (copy and delete)
+* v to select and p to paste
+* yiw - copy a word
+* yy - copy a line
+
+* copy/paste in insert mode
+* cmd +v to paste
+* "0 to copy to memory 0
+* "+ p to paste from system clipboard
+* "% current file name
+* ". previous file name
+
