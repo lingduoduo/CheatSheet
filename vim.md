@@ -60,9 +60,11 @@ vim normal mode (Esc)
 * ctrl + f - page down
 
 vim virtual model 
-* v - switch to virtual model for selection
 
-vim 中的 Verbs，就相当于操作符
+* v - switch to virtual model for selection
+* V - start selection from the current line
+
+vim operator
 
 * u - undo
 * ctrl + r - redo undo
@@ -85,7 +87,7 @@ vim 中的 Verbs，就相当于操作符
 * cw - change a word and change to insert model
 * ct"char" - delete the chars util char and change to insert mode
 
-* :[range]s[ubstitute]/{pattern}/{string}/[flags]
+* :[range]s[substitute]/{pattern}/{string}/[flags]
 * :% s/char/character/g
 * :1,10 s/char/character/g
 * :1,10 s/char//n
@@ -96,18 +98,22 @@ vim 中的 Verbs，就相当于操作符
 * n / N to move forward or backward
 * * / # to move forward or backward
 
-* buffer
+buffer
+
 * :ls - list buffer
 * :b n - jump to buffer n
 * :bpre:bnext:bfirst:blast
 * :b buffer name - jump to buffer with name
 
-* window
+
+window
+
 * ctrl + w - jump to window
 * :sp vim.md - open vim in a split window
 * :vs vim.md - open vim in a split window
 
-* text object
+text object
+
 * [number]<command>[text object]
 * command - d(delete), c(change), y(yank), v(visual)
 * text object - w(word), s(sentence), p(paragraph)
@@ -118,7 +124,8 @@ vim 中的 Verbs，就相当于操作符
 * ci(,) - i<,> - i{,} - i" - i' - change inner the symbol  
 * ca(,) - a<,> - a{,} - a" - a' - change around the symbol
 
-* copy/paste in normal mode
+copy/paste in normal mode
+
 * y (yank) - copy
 * p (put)
 * d (copy and delete)
@@ -126,12 +133,17 @@ vim 中的 Verbs，就相当于操作符
 * yiw - copy a word
 * yy - copy a line
 
-* copy/paste in insert mode
+copy/paste in insert mode
+
 * cmd +v to paste
 * "0 to copy to memory 0
 * "+ p to paste from system clipboard
 * "% current file name
 * ". previous file name
 
+macro
 
-
+"* q - record"
+"* q{register} - save commands"
+"* q - quit"
+"* qa -> @a or virtual select rows, then :'<,'>normal @a"
