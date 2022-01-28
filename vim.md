@@ -11,6 +11,8 @@ vim normal mode
 * :n - positions the cursor at line n
 * :$ - positions the cursor on the last line
 
+* syntax on
+* :colorscheme slate
 * :set nu - turn on line numbering
 * :set nonu - turn off line numbering
 * :set hls - set highlight search
@@ -146,4 +148,11 @@ macro
 * q - record
 * q{register} - save commands
 * q - quit
-* qa -> @a or virtual select rows, then :'<,'>normal @a
+* qa -> @a or virtual select rows, then :'<,'>normal @
+
+auto-complete
+* ctrl + n / ctrl + p  - general keyword next and previous selection
+* ctrl + xf - file name
+* ctrl + o - omni
+
+
