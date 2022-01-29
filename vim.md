@@ -155,4 +155,26 @@ auto-complete
 * ctrl + xf - file name
 * ctrl + o - omni
 
+~/.vimrc
 
+```
+set nu
+set hlsearch
+set foldmethod=indent
+set pastetoggle=<F2>
+
+colorscheme slate
+
+let mapleader=','
+let g:mapleader=','
+
+inoremap jj <Esc>
+
+noremap <C-h> <C-w>h
+noremap <C-j> <C-w>j
+noremap <C-k> <C-w>k
+noremap <C-l> <C-w>l
+
+com! FormatJSON %!python3 -m json.tool 
+
+```
