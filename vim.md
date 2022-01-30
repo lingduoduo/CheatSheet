@@ -159,10 +159,12 @@ auto-complete
 
 ```
 set nu
+set cursorline
+set cursorcolumn
 set hlsearch
-set foldmethod=indent
 set pastetoggle=<F2>
 
+syntax on
 colorscheme slate
 
 let mapleader=','
@@ -175,7 +177,7 @@ noremap <C-j> <C-w>j
 noremap <C-k> <C-w>k
 noremap <C-l> <C-w>l
 
-com! FormatJSON %!python3 -m json.tool 
+com! FormatJSON %!python3 -m  json.tool 
 
 ```
 
