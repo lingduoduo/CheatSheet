@@ -178,3 +178,13 @@ noremap <C-l> <C-w>l
 com! FormatJSON %!python3 -m json.tool 
 
 ```
+
+map
+
+* nmap/vmap/imap to map in normal/visual/insert mode
+* nnoremap/vnoremap/inoremap in non-recursive mode
+* :vmap \ U - convert word to uppercase 
+* :imap <c-d> <Esc>ddi
+
+
+
