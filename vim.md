@@ -58,10 +58,10 @@ vim normal mode (Esc)
 * gg - file start
 * G - file end
 * H/M/L - Head/Middle/Lower of screen
-* ctrl + u - page up
-* ctrl + f - page down
+* ctrl + u - page upward
+* ctrl + f - page forward
 
-vim virtual model 
+vim virtual mode 
 
 * v - switch to virtual model for selection
 * V - start selection from the current line
@@ -220,12 +220,19 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
 Plug 'Yggdroot/indentLine'
 Plug 'w0ng/vim-hybrid'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'easymotion/vim-easymotion'
 call plug#end()
 
-
 colorscheme hybrid
+
+let g:ctrlp_map = '<c-p>'
+
+nmap ss <Plug>(easymotion-s2)
 ```
 Restart Vim, and run the :PlugInstall statement to install your plugins.
 
 * nerdtree - NERDTreeToggle
+* ctrlp
+* easymotion
 
