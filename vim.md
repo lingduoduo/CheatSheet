@@ -227,3 +227,5 @@ colorscheme hybrid
 ```
 Restart Vim, and run the :PlugInstall statement to install your plugins.
 
+* nerdtree - NERDTreeToggle
+
