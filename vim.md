@@ -189,4 +189,41 @@ map
 * :imap <c-d> <Esc>ddi
 
 
+vim plugin
+
+* Install Vim-Plug, according to its instructions.
+
+Add the following text to your vimrc.
+```
+set nu
+set hlsearch
+set foldmethod=indent
+set pastetoggle=<F2>
+syntax on
+
+let mapleader=','
+let g:mapleader=','
+
+inoremap jj <Esc>
+
+noremap <C-h> <C-w>h
+noremap <C-j> <C-w>j
+noremap <C-k> <C-w>k
+noremap <C-l> <C-w>l
+
+com! FormatJSON %!python4 -m json.tool 
+
+call plug#begin('~/.vim/plugged')
+Plug 'preservim/nerdtree'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
+Plug 'Yggdroot/indentLine'
+Plug 'w0ng/vim-hybrid'
+call plug#end()
+
+
+colorscheme hybrid
+```
+Restart Vim, and run the :PlugInstall statement to install your plugins.
 
