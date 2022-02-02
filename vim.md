@@ -172,6 +172,7 @@ vim plugin
 * fzf.vim Ag[patter] for char, Files[PATH] for directory, need to 'brew install the_silver_searcher'
 * far.vim ':Far foo bar **/ * .py ' and Fardo
 * vim-go 
+* python-mode
 
 Add the following text to your ~/.vimrc.
 ```
