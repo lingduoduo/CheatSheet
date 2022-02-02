@@ -208,7 +208,7 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'brooth/far.vim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-
+Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
 call plug#end()
 
 colorscheme hybrid
