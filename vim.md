@@ -171,7 +171,7 @@ vim plugin
 * vim vim-surround ds(delete a surrounding, e.g. ds '), cs(change a surrounding, e.g., cs " '), ys(you add a surrounding, ysiw ")
 * fzf.vim Ag[patter] for char, Files[PATH] for directory, need to 'brew install the_silver_searcher'
 * far.vim ':Far foo bar **/ * .py ' and Fardo
-
+* vim-go 
 
 Add the following text to your ~/.vimrc.
 ```
@@ -207,6 +207,8 @@ Plug "tpope/vim-surround"
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'brooth/far.vim'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+
 call plug#end()
 
 colorscheme hybrid
