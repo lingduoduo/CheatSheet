@@ -203,12 +203,13 @@ Plug 'Yggdroot/indentLine'
 Plug 'w0ng/vim-hybrid'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'easymotion/vim-easymotion'
-Plug "tpope/vim-surround"
+Plug 'tpope/vim-surround'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'brooth/far.vim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
+
 call plug#end()
 
 colorscheme hybrid
@@ -216,7 +217,18 @@ colorscheme hybrid
 let g:ctrlp_map = '<c-p>'
 
 nmap ss <Plug>(easymotion-s2)
+
+let g:pymode_python = 'python3'
+let g:pymode_trim_whitespaces = 1
+let g:pymodel_doc = 1
+let g:pymode_doc_bind = 'K'
+let g:pymode_rope_goto_definition_bind = '<C-]>'
+let g:pymode_lint = 1
+let g:pymode_lint_checkers = ['pyflakes', 'pep8', 'mccabe']
+let g:pymode_options_max_line_length = 120
+
 ```
+
 Restart Vim, and run the :PlugInstall statement to install your plugins.
 
 
