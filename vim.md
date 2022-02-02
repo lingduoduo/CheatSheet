@@ -155,32 +155,6 @@ auto-complete
 * ctrl + xf - file name
 * ctrl + o - omni
 
-~/.vimrc
-
-```
-set nu
-set cursorline
-set cursorcolumn
-set hlsearch
-set pastetoggle=<F2>
-
-syntax on
-colorscheme slate
-
-let mapleader=','
-let g:mapleader=','
-
-inoremap jj <Esc>
-
-noremap <C-h> <C-w>h
-noremap <C-j> <C-w>j
-noremap <C-k> <C-w>k
-noremap <C-l> <C-w>l
-
-com! FormatJSON %!python3 -m  json.tool 
-
-```
-
 map
 
 * nmap/vmap/imap to map in normal/visual/insert mode
@@ -192,6 +166,10 @@ map
 vim plugin
 
 * Install Vim-Plug, according to its instructions.
+* nerdtree - NERDTreeToggle
+* ctrlp
+* easymotion
+* vim vim-surround ds(delete a surrounding, e.g. ds '), cs(change a surrounding, e.g., cs " '), ys(you add a surrounding, ysiw ")
 
 Add the following text to your vimrc.
 ```
@@ -222,6 +200,7 @@ Plug 'Yggdroot/indentLine'
 Plug 'w0ng/vim-hybrid'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'easymotion/vim-easymotion'
+Plug "tpope/vim-surround"
 call plug#end()
 
 colorscheme hybrid
@@ -232,7 +211,4 @@ nmap ss <Plug>(easymotion-s2)
 ```
 Restart Vim, and run the :PlugInstall statement to install your plugins.
 
-* nerdtree - NERDTreeToggle
-* ctrlp
-* easymotion
 
