@@ -162,7 +162,6 @@ map
 * :vmap \ U - convert word to uppercase 
 * :imap <c-d> <Esc>ddi
 
-
 vim plugin
 
 * Install Vim-Plug, according to its instructions.
@@ -170,8 +169,11 @@ vim plugin
 * ctrlp
 * easymotion
 * vim vim-surround ds(delete a surrounding, e.g. ds '), cs(change a surrounding, e.g., cs " '), ys(you add a surrounding, ysiw ")
+* fzf.vim Ag[patter] for char, Files[PATH] for directory, need to 'brew install the_silver_searcher'
+* far.vim ':Far foo bar **/ * .py ' and Fardo
 
-Add the following text to your vimrc.
+
+Add the following text to your ~/.vimrc.
 ```
 set nu
 set hlsearch
@@ -192,6 +194,7 @@ noremap <C-l> <C-w>l
 com! FormatJSON %!python4 -m json.tool 
 
 call plug#begin('~/.vim/plugged')
+
 Plug 'preservim/nerdtree'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -201,6 +204,9 @@ Plug 'w0ng/vim-hybrid'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'easymotion/vim-easymotion'
 Plug "tpope/vim-surround"
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'brooth/far.vim'
 call plug#end()
 
 colorscheme hybrid
