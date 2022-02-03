@@ -214,6 +214,7 @@ Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
 Plug 'tpope/vim-commentary'
 call plug#end()
 
+set background=dark
 colorscheme hybrid
 
 let g:ctrlp_map = '<c-p>'
