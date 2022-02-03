@@ -165,14 +165,15 @@ map
 vim plugin
 
 * Install Vim-Plug, according to its instructions.
-* nerdtree - NERDTreeToggle
+* nerdtree - :NERDTreeToggle
 * ctrlp
-* easymotion
-* vim vim-surround ds(delete a surrounding, e.g. ds '), cs(change a surrounding, e.g., cs " '), ys(you add a surrounding, ysiw ")
-* fzf.vim Ag[patter] for char, Files[PATH] for directory, need to 'brew install the_silver_searcher'
+* easymotion ss + 'char'
+* vim-surround :ds(delete a surrounding, e.g. ds '), :cs(change a surrounding, e.g., cs " '), :ys(you add a surrounding, ysiw ")
+* fzf.vim :Ag[patter] for char, Files[PATH] for directory, need to 'brew install the_silver_searcher'
 * far.vim ':Far foo bar **/ * .py ' and Fardo
 * vim-go 
-* python-mode
+* python-mode :PymodeLintAuto
+* vim-commentary :gc
 
 Add the following text to your ~/.vimrc.
 ```
@@ -210,7 +211,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'brooth/far.vim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
-
+Plug 'tpope/vim-commentary'
 call plug#end()
 
 colorscheme hybrid
