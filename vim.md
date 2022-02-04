@@ -174,6 +174,7 @@ vim plugin
 * vim-go 
 * python-mode :PymodeLintAuto
 * vim-commentary :gc
+* vim-fugitive :Gedit, Gdiff, Gblame, Gcommit
 
 Add the following text to your ~/.vimrc.
 ```
@@ -212,6 +213,8 @@ Plug 'brooth/far.vim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-fugitive'
+
 call plug#end()
 
 set background=dark
