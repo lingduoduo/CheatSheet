@@ -693,6 +693,36 @@ $ git merge --no-ff branchName
 
 #### Rebase
 
+```
+git pull
+git checkout develop
+git log --graph --oneline
+git rebase master develop
+git push origin develop --force
+```
+
+```
+git pull
+git checkout develop
+blabla work
+git checkout master
+git pull origin master
+git checkout develop
+git rebase master
+git checkout master
+git rebase develop
+```
+
+```
+git fetch origin master
+git rebase origin/master
+blabla conflicts
+git add conflicted_file
+git rebase --continue
+:wq
+git push origin feature -f 
+```
+
 `git checkout branchname` » `git rebase master`
 or:
 `git merge master branchname`
