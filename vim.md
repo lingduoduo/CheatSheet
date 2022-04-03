@@ -237,4 +237,57 @@ let g:pymode_options_max_line_length = 120
 
 Restart Vim, and run the :PlugInstall statement to install your plugins.
 
+**Insert mode**
+-   使用a/i/o进入插入模式；
+-   ctrl+h 删除上一个字符
+-   ctrl+w 删除上一个单词
+-   ctrl+u 删除 当前行
+-   使用 ctrl+c代替Esc（但是可能会中断某些插件），所以推荐使用 ctrl+[
+-   gi 快速跳转到最后一次编辑的地方并进入插入模式
 
+Normal 移动的快捷方式：
+-   w/W: 移动到下一个word/WORD 开头
+-   e/E: 移动到下一个 word/WORD 结尾
+-   b/B: 移动到上一个 word/WORD 开头  (backword)
+  
+行间搜索移动
+-   f{char}: 当前光标往行后搜索字符, 分号(;)下一个找到的字符，逗号(,)上一个找到的字符
+-   F{char}: 当前光标往前搜索字符
+-   0: 移动到行首第一个字符
+-   ^: 移动到第一个非空白字符
+-   $: 移动到行尾
+-   g_: 移动到行尾非空白字符
+
+页面移动
+-   gg: 文件开头
+-   G: 文件结尾
+-   H: 屏幕的开头(Head)
+-   M: 屏幕的中间(Middle)
+-   L: 屏幕的结尾(Lower)
+-   crtl+u: 上翻页（upword）
+-   ctrl+f: 下翻页（forword）
+-   zz: 屏幕置为中间
+
+增加字符
+-   a/i/o A/I/O
+
+vim快速删除
+-   x快速删除一个字符
+-   d可以配合文本对象快速删除一个单词
+-   dw删除整个单词包括空格
+-   daw删除整个单词包括空格
+-   diw不包括空格
+-   dd删除一行
+-   dt) 删除直到)的内容
+-   di)可以删除整个括号内的内容
+-   数字加命令表示多次执行
+    
+vim快速修改
+-   r(replace)替换一个字符
+-   s(substitute)替换并进入插入模式
+-   c(change)和d的用法差不多  
+
+vim查询
+- 进行前向或者反向搜索
+- 使用n/N跳转到下一个或者上一个匹配
+- 使用*或者#进行当前单词的前向和后向匹配
