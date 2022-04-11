@@ -413,3 +413,56 @@ vim多文件操作
 	- 使用:colorscheme显示当前主题配色，默认是default
 	- 用:colorscheme <ctrl+d>可以显示所有配色
 	- 中意的配色后，用:colorscheme 配色名就可以修改配色
+
+- source ~/.vim.rc example
+
+```
+" 常用设置  
+" 设置行号
+set number
+colorscheme hybrid
+
+" 按F2进入粘贴模式
+set pastetoggle=<F2>
+
+" 高亮搜索
+set hlsearch
+
+" 设置折叠方式
+set foldmethod=indent
+
+” 一些方便的映射
+Let mapleader= ' ,'
+let g:mapleader=','
+
+" 使用jj进入normal模式
+inoremap jj <Esc>`^
+
+"使用leader+w 直接保存
+inoremap <leader>w <Esc> :w<cr>
+noremap < leader>w :w<Cr>
+
+" 切换buffer
+nnoremap <silent> [b :bprevious<CR>
+nnoremap <silent> [n :bnext<CR>
+
+" use ctrl+h/j/k/L switch window
+noremap <C-h> <C-w>h
+noremap <C-j> <C-w>j
+noremap <C-k> <C-w>k
+noremap <C-l> <C-w>l
+
+"Sudo to write
+cnoremap w!! w !sudo tee % >/dev/null
+
+" json格式化
+com! FormatJSON %!python3 -m json.tool
+
+" 插件设置，这里使用了vim-plug
+call plug#begin('~/ . vim/plugged')
+
+"安装插件只需要把github 地址放到这里重启后执行:PlugInstall 就好了
+PLug 'ling/vim-startify'
+PLug 'scrooloose/nerdtree'
+call plug#end()
+```
