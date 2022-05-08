@@ -693,6 +693,36 @@ $ git merge --no-ff branchName
 
 #### Rebase
 
+```
+git pull
+git checkout develop
+git log --graph --oneline
+git rebase master develop
+git push origin develop --force
+```
+
+```
+git pull
+git checkout develop
+blabla work
+git checkout master
+git pull origin master
+git checkout develop
+git rebase master
+git checkout master
+git rebase develop
+```
+
+```
+git fetch origin master
+git rebase origin/master
+blabla conflicts
+git add conflicted_file
+git rebase --continue
+:wq
+git push origin feature -f 
+```
+
 `git checkout branchname` » `git rebase master`
 or:
 `git merge master branchname`
@@ -716,6 +746,19 @@ Squash-merge a feature branch (as one commit):
 # git rebase <basebranch> <topicbranch>
 $ git rebase master experimentBranch
 ```
+
+- merge 是一个合并操作，会将两个分支的修改合并在一起，默认操作的情况下会提交合并中修改的内容。
+- merge 的提交历史记录了实际发生过什么，关注点在真实的提交历史上面。
+- rebase 并没有进行合并操作，只是提取了当前分支的修改，将其复制在了目标分支的最新提交后面。
+- rebase 操作会丢弃当前分支已提交的 commit，故不要在已经 push 到远程，和其他人正在协作开发的分支上执行 rebase 操作。
+- merge 与 rebase 都是很好的分支合并命令，没有好坏之分，使用哪一个应由团队的实际开发需求及场景决定。
+- 如果比较关注commit时间的话，还是用git merge，rebase会打乱时间线是不可避免的。
+
+远程和本地已经各自有commit了，我们常规的做法是git pull一下，在本地解决冲突，然后继续push，本质上git pull = git fetch + git merge。
+
+如果我们此时采用git pull --rebase，也就是=git fetch + git rebase. 还是会提示我们去处理冲突，但是从git log 上可以看出明显已经发生了rebase，也就是变基，本地分支基于了远程的最新commit，而不是上次的本地commit。
+
+git rebase 处理冲突，每处理完一次本地commit冲突，用git add标记冲突已处理完，用git rebase --continue继续处理下一个本地commit，也可以先用git rebase -i将本地的commit合并为一个commit，这样git pull --rebase就能一次处理所有的冲突。
 
 #### Stash
 
