@@ -63,3 +63,7 @@ Control + d：以Debug(调试)模式运行代码
 
 当然不需要，我们只需要选中需要重新命名的变量或类，右键弹出选项中选择Refactor,然后点击Rename，就可以进行全局修改了。
 
+**14. Parameter Info**
+
+You can explicitly invoke the popup if it has closed or if your IDE is configured not to show the popup automatically. To do so, press ⌘ P (or click View | Parameter Info).
+
