@@ -52,8 +52,9 @@ Knowing of the hand. The essence of creative journey. Gain the confidence to dev
 When something is important enough, you do it even if the odds are not in your favor.
 
 1/29/2022
-
 The golden rule says we should treat others as we would like to be treated.
 
-This works great when we all want to be treated the same - meaning we all want and value the same type of interactions . But in the real world, especially in the workspace, people have different wants and needs and different ways of expressing those wants and needs. Some people prefer to think fast, talk fast, and act fast, while others meters to take a more moderate, measured , and careful approach to work and communication. Some people are social and friendly at work and they like to build relationships and get to know their colleagues, while others exhibit less friendliness and way value relationships primarily as vehicle to accomplish tasks.
+This works great when we all want to be treated the same - meaning we all want and value the same type of interactions . But in the real world, especially in the workspace, people have different wants and needs and different ways of expressing those wants and needs. Some people prefer to think fast, talk fast, and act fast, while others meters to take a more moderate, measured, and careful approach to work and communication. Some people are social and friendly at work and they like to build relationships and get to know their colleagues, while others exhibit less friendliness and way value relationships primarily as vehicle to accomplish tasks.
 
+5/14/2022
+Every single event in your life, especially the difficult lessons, have made you smarter, stornger, and wiser than you were yesterday.
