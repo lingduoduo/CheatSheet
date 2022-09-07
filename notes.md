@@ -58,3 +58,6 @@ This works great when we all want to be treated the same - meaning we all want a
 
 5/14/2022
 Every single event in your life, especially the difficult lessons, have made you smarter, stornger, and wiser than you were yesterday.
+
+9/7/2022
+One book, one pen, one chald and one teacher can change the world"~ Malala Yousafzai.
