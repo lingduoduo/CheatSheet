@@ -61,3 +61,6 @@ Every single event in your life, especially the difficult lessons, have made you
 
 9/7/2022
 One book, one pen, one chald and one teacher can change the world"~ Malala Yousafzai.
+
+9/8/2022
+The gem cannot be polished without friction, nor man perfected without trials
