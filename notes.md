@@ -64,3 +64,6 @@ One book, one pen, one chald and one teacher can change the world"~ Malala Yousa
 
 9/8/2022
 The gem cannot be polished without friction, nor man perfected without trials
+
+9/16/2022
+"It was the worst day we have ever seen, but it brought out out the best in all of us "~ Senator John Kerry
