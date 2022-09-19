@@ -67,3 +67,6 @@ The gem cannot be polished without friction, nor man perfected without trials
 
 9/16/2022
 "It was the worst day we have ever seen, but it brought out out the best in all of us "~ Senator John Kerry
+
+9/19/2022
+"It’s not the will to win that matters…It’s the will to prepare to win that counts "~ Paul Bear Bryant
