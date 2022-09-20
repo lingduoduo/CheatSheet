@@ -70,3 +70,6 @@ The gem cannot be polished without friction, nor man perfected without trials
 
 9/19/2022
 "It’s not the will to win that matters…It’s the will to prepare to win that counts "~ Paul Bear Bryant
+
+9/20/2022
+Ask not what's inside your head, but what your head and body are inside of.
