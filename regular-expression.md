@@ -1,3 +1,5 @@
+https://www.cnblogs.com/huxi/archive/2010/07/04/1771073.html
+
 #### 校验数字的表达式
 
 1. 数字：`^[0-9]*$`
