@@ -73,3 +73,6 @@ The gem cannot be polished without friction, nor man perfected without trials
 
 9/20/2022
 Ask not what's inside your head, but what your head and body are inside of.
+
+10/4/2022
+Respecting others' opinions doesn't mean being untrue to our own.
