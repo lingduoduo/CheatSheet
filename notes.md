@@ -79,3 +79,6 @@ Respecting others' opinions doesn't mean being untrue to our own.
 
 10/6/2022
 Change is inevitable.  Growth is optional. ~ John C. Maxwell
+
+10/7/2022
+Little things make a big difference.
