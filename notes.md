@@ -82,3 +82,6 @@ Change is inevitable.  Growth is optional. ~ John C. Maxwell
 
 10/7/2022
 Little things make a big difference.
+
+10/10/2022
+If you don’t like something, change it.  If you can’t change it, change the way you think about it.
