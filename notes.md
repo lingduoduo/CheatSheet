@@ -85,3 +85,6 @@ Little things make a big difference.
 
 10/10/2022
 If you don’t like something, change it.  If you can’t change it, change the way you think about it.
+
+11/28/2022
+Success is no accident.  It is hard work, perseverance, learning, studying, sacrifice and most of all, love of what you are doing or learning to do.
