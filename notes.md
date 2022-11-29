@@ -88,3 +88,7 @@ If you don’t like something, change it.  If you can’t change it, change the 
 
 11/28/2022
 Success is no accident.  It is hard work, perseverance, learning, studying, sacrifice and most of all, love of what you are doing or learning to do.
+
+11/29/2022
+You have to fight to reach your dream.  You have to sacrifice and work hard for it.
+
