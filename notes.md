@@ -92,3 +92,6 @@ Success is no accident.  It is hard work, perseverance, learning, studying, sacr
 11/29/2022
 You have to fight to reach your dream.  You have to sacrifice and work hard for it.
 
+12/7/2022
+Things turn out best for the people who make the best of the way things turn out.
+
