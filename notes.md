@@ -97,3 +97,6 @@ Things turn out best for the people who make the best of the way things turn out
 
 12/8/2022
 "The most common way people give up their power is by thinking they don’t have any" ~ Alice Walker
+
+12/20/2022
+We don’t see things as they are, we see them as we are.
