@@ -1,8 +1,18 @@
+## Tools for ML
+
+[Docker](https://www.docker.com/): [Tutorial](https://aws.amazon.com/blogs/opensource/why-use-docker-containers-for-machine-learning-development/)
+[Conda](https://docs.conda.io/en/latest/): [Tutorial](https://conda.io/projects/conda/en/latest/user-guide/getting-started.html#starting-conda)
+[Weights and biases](https://wandb.ai/site): [Tutorial](https://docs.wandb.ai/quickstart)
+[MLflow](https://mlflow.org/): [Tutorial](https://www.mlflow.org/docs/latest/tutorials-and-examples/tutorial.html)
+[GitHub](https://github.com/): [Tutorial](https://guides.github.com/activities/hello-world/)
+[Screen](https://linuxize.com/post/how-to-use-linux-screen/): [Tutorial](https://www.geeksforgeeks.org/screen-command-in-linux-with-examples/)
+[Inkscape](https://inkscape.org/): [Tutorial](https://inkscape.org/learn/tutorials/)
+[Streamlit](https://streamlit.io/): [Tutorial](https://builtin.com/machine-learning/streamlit-tutorial)
+[Lucidchart](https://www.lucidchart.com/pages/): [Tutorial](https://www.lucidchart.com/pages/tour)
+
 ## Ongoing items
 
 ```
-https://ghe.spotify.net/lingh/weekly-update
-Dev Plan 2019 2020Q1
 What's been working for you so far?
 What's been hardest (or most surprising)?
 What's your north star, or what are you optimizing for?
