@@ -106,3 +106,6 @@ Provide a clear outline of the Associate’s roles and responsibilities over the
 Ensure that the Associate’s workload is manageable and within the bounds of the Associate’s contract.
 Provide guidance on their expectations for students, so that the Associate can respond to student questions consistently with the Instructor of Record's expectations.
 Give feedback on how well the Associate is meeting expectations with clear, concrete suggestions on how to develop their performance as an Associate.
+
+2/6/2023
+Be your own artist and always be confident in what you’re doing. If you’re not going to be confident then you might as well not be doing it
