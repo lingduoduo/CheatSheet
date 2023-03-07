@@ -109,3 +109,7 @@ Give feedback on how well the Associate is meeting expectations with clear, conc
 
 2/6/2023
 Be your own artist and always be confident in what you’re doing. If you’re not going to be confident then you might as well not be doing it
+
+3/6/2023
+Good luck is when opportunity meets preparation, while bad luck is when lack of preparation meets reality.
+
