@@ -224,6 +224,7 @@ ifconfig eth0 |grep "inet addr:" |awk '{print $2}'| cut -c 6-
 ifconfig | grep 'inet addr:'| grep -v '127.0.0.1' | cut -d: -f2 | awk '{ print $1}'
 
 ipconfig getifaddr en0
+curl ifconfig.me
 ```
 
 **12** 内存的大小:
