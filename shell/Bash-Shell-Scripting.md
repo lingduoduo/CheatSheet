@@ -13,8 +13,15 @@ ls
 To run this script, save it to a file with the .sh extension (e.g. myscript.sh), make it executable using chmod u+x myscript.sh, and then run it with ./myscript.sh. This will execute the commands in the script and display the output.
 
 **Pipes**
-Connect stdout and stdin using “|” : command 1 | command 2
-sort command & uniq command
+In Bash, pipes are used to connect the standard output (stdout) of one command to the standard input (stdin) of another command using the vertical bar symbol "|". This allows you to create powerful command pipelines that can process and transform data in a variety of ways.
+
+For example, you can use the sort command and the uniq command together to filter out duplicate lines from a text file. Here is an example command pipeline:
+```bash
+command 1 | sort | uniq
+```
+In this pipeline, the output of command 1 is passed to the sort command, which sorts the lines in alphabetical order. Then, the sorted output is passed to the uniq command, which removes any duplicate lines.
+
+By chaining commands together using pipes, you can create complex data processing pipelines that can accomplish a wide range of tasks.
 
 **Redirection**
 Use the shell redirect operator using “>”
