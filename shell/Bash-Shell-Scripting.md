@@ -143,7 +143,7 @@ do
 done
 ```
 
-### Looping: for**
+### Looping: for
 ```bash
 $@ expands to all command line arguments
 {} can use for command substitution
@@ -161,7 +161,7 @@ do
 done
 ```
 
-### Global Expressions**
+### Global Expressions
 ```bash
 \* ?  [] are meta-characters.
 \* match any characters. ? match one character. [] match any character in the list.
@@ -194,7 +194,7 @@ login3 10:43:38 ~ $ echo "Unix is simple" | tr -d "is" #remove i and s
 Unx mple
 ```
 
-### 1 Bash shell example**
+### 1 Bash shell example
 ```bash
 login3 11:30:38 ~ $ cat myscript.sh
 \#!/bin/bash
@@ -219,7 +219,7 @@ login3 11:30:52 ~ $ cat fruits.txt | ./myscript.sh Apple
 5
 ```
 
-### 2 File System basic**
+### 2 File System basic
 ```bash
 \# / - root
 \# /bin - Binaries, programs
@@ -250,7 +250,7 @@ cd ~
 cd -
 ```
 
-### 3 Working with Files and Dictionaries**
+### 3 Working with Files and Dictionaries
 ```bash
 cd "Application Support"
 cd Application\ Support
@@ -311,7 +311,7 @@ find ~ -name *.plist -and -not -paht *QuickTime -and -not *Preference
 find /homes/lingh/ -name '*.*'
 ```
 
-**4 Ownership and Permissions
+### 4 Ownership and Permissions
 
 ```bash
 \#who am I
