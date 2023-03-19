@@ -1,14 +1,16 @@
-Bash shell is a programming environment, with commands and control structures combined. Conventionally end with .sh extension
-Executable: chomod u+x myscript.sh
-The first line of the script must be #! /bin/bash
-login3 09:39:50 ~ $ cat myscript.sh
+The Bash shell is a programming environment that combines commands and control structures. Bash scripts typically end with a .sh extension, and to make them executable, you need to use the chmod command and set the user execute permission with u+x, like this: chmod u+x myscript.sh.
+
+The first line of the script must specify the location of the Bash interpreter, which is #! /bin/bash. Here is an example Bash script:
+
+```bash
 \#!/bin/bash
 echo "Listing of current directory"
 ls
 echo "Listing of root directory"
 cd /
 ls
-Run myscript.sh: ./myscript.sh
+```
+To run this script, save it to a file with the .sh extension (e.g. myscript.sh), make it executable using chmod u+x myscript.sh, and then run it with ./myscript.sh. This will execute the commands in the script and display the output.
 
 **Pipes**
 Connect stdout and stdin using “|” : command 1 | command 2
