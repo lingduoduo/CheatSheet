@@ -12,7 +12,7 @@ ls
 ```
 To run this script, save it to a file with the .sh extension (e.g. myscript.sh), make it executable using chmod u+x myscript.sh, and then run it with ./myscript.sh. This will execute the commands in the script and display the output.
 
-**Pipes**
+### Pipes
 In Bash, pipes are used to connect the standard output (stdout) of one command to the standard input (stdin) of another command using the vertical bar symbol "|". This allows you to create powerful command pipelines that can process and transform data in a variety of ways.
 
 For example, you can use the sort command and the uniq command together to filter out duplicate lines from a text file. Here is an example command pipeline:
@@ -23,65 +23,114 @@ In this pipeline, the output of command 1 is passed to the sort command, which s
 
 By chaining commands together using pipes, you can create complex data processing pipelines that can accomplish a wide range of tasks.
 
-**Redirection**
-Use the shell redirect operator using “>”
-Command > file.txt
-login3 10:01:15 ~ $ cat uniquefruits.sh
-\#!/bin/bash
-sort fruits.txt | uniq | nl > uniquefruits.txt
+### Redirection
+In Bash, you can use the redirect operator ">" to redirect the standard output (stdout) of a command to a file instead of the terminal. This allows you to save the output of a command to a file for later use or to share it with others.
 
-**Command Line Arguments**
+For example, you can use the ">" operator to redirect the output of a command to a text file. Here is an example command:
+
+```bash
+Command > file.txt
+```
+In this command, "Command" is the command whose output you want to redirect, and "file.txt" is the name of the file where you want to save the output.
+
+Here's an example of how you can use the redirect operator to save the output of a shell script to a text file:
+```bash
+#!/bin/bash
+sort fruits.txt | uniq | nl > uniquefruits.txt
+```
+In this shell script, the output of the command pipeline (sort fruits.txt | uniq | nl) is redirected to a file called "uniquefruits.txt" using the ">" operator. This saves the numbered list of unique fruits to the file for later use or analysis.
+
+Using the redirect operator, you can easily capture and save the output of commands and shell scripts to files for further processing.
+
+### Command Line Arguments**
+In Bash, you can pass command line arguments to a script or a command using the "$1", "$2", "$3", etc. variables. These variables represent the first, second, third, and so on command line arguments that were passed to the script or command.
+
+For example, you can use the "$1" variable to access the value of the first command line parameter, and the "$2" variable to access the value of the second command line parameter. The "$0" variable represents the name of the command itself.
+
+Here is an example of how you can use command line arguments in a shell script to sort a file of fruits and output a numbered list of unique fruits to a file:
+```bash
 $1 has value of first command line parameter
 $2 the second command line parameter
 $0 the command name itself
  sort “$1” | uniq | nl > uniquefruits.txt
 
-**Exit Status**
-Integer indicates success or failure. Success is 0, non-zero indicate failure.
-grep command (grep [OPTIONS] PATTERN [FILE…]
-Consider Pattern be a literal word. grep command prints all lines that match the word.
-grep apple fruits.txt (matched including substring)
-grep -w apple fruits.txt (exactly matched)
-Suppress output by redirecting stdout of grep to /dev/null.
-   login3 10:39:58 ~ $ cat isscript.sh
-\#!/bin/bash
+#!/bin/bash
+sort "$1" | uniq | nl > uniquefruits.txt
+```
+
+In this script, the "$1" variable is used to represent the first command line argument, which should be the filename of the file to sort. The "sort" command sorts the contents of the file, and the "uniq" command removes any duplicate lines. The "nl" command adds line numbers to the output, and the final output is redirected to a file called "uniquefruits.txt" using the ">" operator.
+
+Using command line arguments, you can make your shell scripts more flexible and reusable, allowing you to process different files or input data using the same script or command.
+
+## Exit Status
+In Bash, the exit status of a command is represented by an integer value that indicates whether the command succeeded or failed. A success status is represented by 0, while a non-zero status indicates failure.
+
+The grep command is a powerful text search tool that can search for patterns in one or more files. The basic syntax of the grep command is:
+```bash
+grep [OPTIONS] PATTERN [FILE…]
+```
+
+For example, you can use the grep command to search for all lines in a file that contain the word "apple":
+```
+grep apple fruits.txt
+```
+
+By default, the grep command matches any line that contains the word "apple", including lines that contain the word as a substring. To match only the exact word, you can use the "-w" option:
+
+```bash
+#!/bin/bash
 if grep "/bin/bash" "$1" > /dev/null
 then
- echo "File is a shell script"
+  echo "File is a shell script"
 elif grep "/bin/python" "$1" > /dev/null
 then
- echo "File is a python script"
+  echo "File is a Python script"
 else
- echo "File is not a shell or python script"
+  echo "File is not a shell or Python script"
 fi
+```
+In this script, the grep command is used to search for the presence of the "/bin/bash" or "/bin/python" string in the specified file. The output of the grep command is redirected to /dev/null to suppress any output. The exit status of the grep command is used in an if-else statement to determine the type of script. If the string is found, the appropriate message is printed, otherwise a message indicating that the file is not a shell or Python script is printed.
 
-**Conditions**
-Use test or [] to examine the conditions
-= indicate equal, != or < or > compare lexicographically
--eq -ne -gt -lt compare arithmetically
-Combinations of conditions use && and || or
-\- True if file/directory exists
-if [ -e "$1" ]
-\- True if file/directory does not exist
-if [ ! -e "$1" ]
--True is no argument is passed
-if [ "$1"="" ]
-login3 07:48:32 ~ $ cat isscript.sh
-\#!/bin/bash
+### Conditions
+In Bash, you can use the test command or the "[" command to examine conditions. The "=" operator is used to test for string equality, while the "!=" operator and "<" and ">" operators are used for lexicographic comparisons. To compare numerical values, you can use the "-eq", "-ne", "-gt", and "-lt" operators.
+
+You can combine conditions using the "&&" and "||" operators. To test if a file or directory exists, you can use the "-e" operator. For example:
+```bash
 if [ -e "$1" ]
 then
- echo "File exist"
+  echo "File exists"
 fi
+```
+
+To test if a file or directory does not exist, you can use the "!" operator:
+```
+if [ ! -e "$1" ]
+then
+  echo "File does not exist"
+fi
+```
+
+To test if no argument was passed, you can check if the variable is empty:
+```bash
+if [ "$1" = "" ]
+then
+  echo "No argument was passed"
+fi
+```
+Here's an example of combining conditions:
+```
 a=1
 b=1
 if [ $a -eq 1 ] && [ $b -eq 1 ]
 then
- echo "var a and var b are ones"
+  echo "Both variables are equal to 1"
 else
- echo "one of var or var b is not one"
+  echo "One of the variables is not equal to 1"
 fi
+```
+In this example, the "&&" operator is used to combine two conditions. The first condition checks if the value of "a" is equal to 1, while the second condition checks if the value of "b" is equal to 1. If both conditions are true, the script prints a message indicating that both variables are equal to 1. Otherwise, it prints a message indicating that one of the variables is not equal to 1.
 
-**Looping: while**
+### Looping: while
 Shift command can shift values of all command line argument variables left.
 login3 08:04:16 ~ $ cat uniquefruits.sh
 \#!/bin/bash
