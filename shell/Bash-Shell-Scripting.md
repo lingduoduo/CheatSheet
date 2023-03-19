@@ -42,7 +42,7 @@ In this shell script, the output of the command pipeline (sort fruits.txt | uniq
 
 Using the redirect operator, you can easily capture and save the output of commands and shell scripts to files for further processing.
 
-### Command Line Arguments**
+### Command Line Arguments
 In Bash, you can pass command line arguments to a script or a command using the "$1", "$2", "$3", etc. variables. These variables represent the first, second, third, and so on command line arguments that were passed to the script or command.
 
 For example, you can use the "$1" variable to access the value of the first command line parameter, and the "$2" variable to access the value of the second command line parameter. The "$0" variable represents the name of the command itself.
@@ -62,7 +62,7 @@ In this script, the "$1" variable is used to represent the first command line ar
 
 Using command line arguments, you can make your shell scripts more flexible and reusable, allowing you to process different files or input data using the same script or command.
 
-## Exit Status
+### Exit Status
 In Bash, the exit status of a command is represented by an integer value that indicates whether the command succeeded or failed. A success status is represented by 0, while a non-zero status indicates failure.
 
 The grep command is a powerful text search tool that can search for patterns in one or more files. The basic syntax of the grep command is:
@@ -132,6 +132,8 @@ In this example, the "&&" operator is used to combine two conditions. The first 
 
 ### Looping: while
 Shift command can shift values of all command line argument variables left.
+```bash
+
 login3 08:04:16 ~ $ cat uniquefruits.sh
 \#!/bin/bash
 while [ -n "$1" ] #checking $1 is non-zero or not; -z checking for zero
@@ -139,8 +141,10 @@ do
  sort "$1" | uniq
  shift
 done
+```
 
-**Looping: for**
+### Looping: for**
+```bash
 $@ expands to all command line arguments
 {} can use for command substitution
  login3 08:23:30 ~ $ cat uniquefruits.sh
@@ -155,8 +159,10 @@ do
  sort "$1" | uniq > "${1}.output2"
  shift
 done
+```
 
-**Global Expressions**
+### Global Expressions**
+```bash
 \* ?  [] are meta-characters.
 \* match any characters. ? match one character. [] match any character in the list.
 \* txt match any characters containing txt
@@ -186,8 +192,10 @@ login3 10:43:24 ~ $ echo "Unix is simple" | tr -d "i"
 Unx s smple
 login3 10:43:38 ~ $ echo "Unix is simple" | tr -d "is" #remove i and s
 Unx mple
+```
 
-**Bash shell example**
+### 1 Bash shell example**
+```bash
 login3 11:30:38 ~ $ cat myscript.sh
 \#!/bin/bash
 searchword=$1
@@ -209,8 +217,10 @@ echo $count
 login3 11:30:52 ~ $ cat fruits.txt | ./myscript.sh Apple
 16
 5
+```
 
-**2 File System basic**
+### 2 File System basic**
+```bash
 \# / - root
 \# /bin - Binaries, programs
 \# /sbin - System binaries, sytem program
@@ -238,8 +248,10 @@ cd ~
 \# toggle directory
 
 cd -
+```
 
-**3 Working with Files and Dictionaries**
+### 3 Working with Files and Dictionaries**
+```bash
 cd "Application Support"
 cd Application\ Support
 
@@ -297,9 +309,11 @@ find ~ -name *.plist
 find ~ -name *.plist -and -not -path *QuickTime
 find ~ -name *.plist -and -not -paht *QuickTime -and -not *Preference
 find /homes/lingh/ -name '*.*'
+```
 
-**4 Ownership and Permissions**
+**4 Ownership and Permissions
 
+```bash
 \#who am I
 whoami
 cd ~
@@ -331,9 +345,11 @@ chmod 000 filename (no permission)
 \# root user
 sudo ls -lla
 sudo chown lingh file.txt
+```
 
-**5 Commands and Programs**
+### 5 Commands and Programs
 
+```bash
 \#show command path
 whereis echo
 which echo
@@ -429,9 +445,11 @@ cat fruits.txt
 less !$ (run the command with the arguments fromt the previous command)
 history -d 10 (delete the 10th line of history)
 history -c (clean all history)
+```
 
-**6 Directing Input and Output**
+### 6 Directing Input and Output
 
+```bash
 \#Standard input -stdin, keyboard, /dev/stdin
 \#standard output -stdout, text terminal /dev/stdout
 sort fruits.txt > sortedfruits.txt
@@ -452,13 +470,15 @@ ps aux | less
 \#/dev/null - 'null device', 'bit bucket', 'black hold'
 \#similar to special files /dev/stdin and /dev/stdout, unix discards any data sent there
 ls -lah > /dev/null
-**
-****7 Configuring Your Working Environment**
+```
+
+### 7 Configuring Your Working Environment
 
 When you login (type username and password) via Terminal, either sitting at the machine, or remotely via ssh, .bash_profile is executed to configure your shell before the initial command prompt.
 
 If you've already logged into your machine and open a new terminal window (xterm) inside a client other than Mac OSX Terminal, then .bashrc is executed before the window command prompt.
 
+```bash
 \#Upon login to a bash shell - This only runs on user login
 \#/etc/profile - system configurations with master default commands
 \#~/.bash_profile, ~/.bash_login, ~/.profile, ~/.login
@@ -486,15 +506,19 @@ expot echo (every time Unix launches a program, it'll make the variable availabl
 \#Setting PATH variables
 \#PATH is a colon delimited list of file paths that Unix uses when it's trying to locate a command that you want it to run.
 export PATH=/usr/local/bin:/usr/local/sbin:$PATH
+```
 
-\#Configurign history with variables
+### Configurign history with variables
+```bash
 export HISTSIZE=1000
 export HISTFILESIZE=1000000
 export HISTTIMEFORMAT='%b %d %I:%M %p    '
 export HISTCONTROL=ignoreboth (ignore dups and ignore space)
 export HISTIGNORE="history:pwd:ls -lah:exit" (ignore commands in the history)
+```
 
-\#Customizing the command prompt with format codes
+### Customizing the command prompt with format codes
+```bash
 \#\u - username
 \#\s - current shell
 \#\w - current working directory
@@ -512,10 +536,12 @@ export HISTIGNORE="history:pwd:ls -lah:exit" (ignore commands in the history)
 \#\\ a literal backslash
 PS1='--> ' (change the main command prompt)
 PS1="\h:\W\u$'
+```
 
-**8 Unix Power Tools**
+### 8 Unix Power Tools
 
-\# grep - global regular expression print
+### grep - global regular expression print
+```bash
 grep apple fruit.txt (return the line containing apple in fruit.txt)
 grep -i apple fruit.txt (case insensitive)
 grep -w apple fruit.txt (find only word apple)
@@ -534,8 +560,10 @@ grep --color apple fruit.txt
 export GREP_COLOR="34;47"
 export GREP_OPTIONS="--color=auto"
 grep --color=auto apple fruit.txt
+```
 
-\# regular expression - basics
+### regular expression - basics
+```bash
 .  (wild card, any one character except line breaks, gre.t)
 [] (character set, any one character listed inside [], gr[ea]y)
 [^] (negative character set, any one character not listed inside [], [^aeiou])
@@ -579,8 +607,10 @@ echo 'AB,Dd:fg' | grep --color [[:punct:]] (look up character set make up of pun
 grep 'ap*le' fruits.txt (two asterisks have different meanings)
 grep 'ap+le' fruits.txt (literal + sign)
 grep -e 'ap+le' fruits.txt (extended set)
+```
 
-\#tr - translate characters
+### tr - translate characters
+```bash
 echo 'a,b,c' | tr ',' '-' (translate , to -)
 echo '1435478956780' | tr '123456789' 'ABCDEFGHI' (position matched)
 echo 'This is ROT-13 encrpted.' | tr 'A-Za-z' 'N-ZA-Mn-zaa-m'
@@ -604,8 +634,10 @@ echo 'abc123deee567f' | tr -dsc [:digit:] [:digit:] (-c only apply to delete -d)
 tr -dc [:print:] < file1 > file2 (remove non-printable characters from file 1)
 tr -d  '\015\031' < windows_file > unix_file (remove surplus carriage return and end of file character)
 tr -s ' ' < file1 > file2 (remove double spaces from file1)
+```
 
-\#sed - Stream Editor
+### sed - Stream Editor
+```bash
 sed 's/a/b/' - s:substitution, a:search string, b:replacement string
 echo 'upstream' | sed 's/up/down/' (replace up with down)
 echo 'upstream and upward' | sed 's/up/down/' (replace once)
@@ -625,8 +657,10 @@ sed -E 's/<[^<>]+>//g' homepage.html (take out html tags)
 echo 'daytime' | sed 's/\(...)time/daylight/' (change ...time to daylight)
 echo 'daytime' | sed -E 's/(...)time/\1daylight/' (extended replace and reused the matched word)
 echo 'Dan Stevens' | sed -E 's/([A-Za-z]+) ([A-Za-z]+)/\2, \1/'(change the order of the first and second words)
+```
 
-\#cut: Cutting select text portions
+### cut: Cutting select text portions
+```bash
 \#(-c characters, -b bytes, -f fields)
 ls -lah | cut -c 2-10 (grab characters from 2 to 10)
 echo '   4 lingh  users  '|wc
@@ -635,8 +669,10 @@ history | grep 'fruit' | cut -c 10-
 ps aux | grep 'lingh' | cut -c 66-
 ps aux | grep 'lingh' | cut -f 1 (grab field 1)
 cut -f 2,6 -d "," us_presidents.csv (grab fields 2, 6 by changing the delimiter as ,)
+```
 
-\#diff: Comparing files
+### diff: Comparing files
+```bash
 diff fruits.txt.output1 fruits.txt.output2 (original txt file typically first, c indicates change, a indicates append)
 \# -i (case insensitive)
 \# -b (ignore changes to blank characters)
@@ -654,8 +690,10 @@ diff -y fruits.txt.output1 fruits.txt (side by side)
 diff -u fruits.txt.output1 fruits.txt (unified comparison)
 diff -q fruits.txt.output1 fruits.txt
 diff -q fruits.txt.output1 fruits.txt  |
+```
 
-\#xargs: passing argument lists to commands
+### xargs: passing argument lists to commands
+```bash
 wc fruits.txt
 echo 'fruits.txt | wc
 echo 'fruits.txt' | xargs -t wc (run and show running commands)
@@ -674,8 +712,10 @@ grep -l 'apple' *fruits.txt | xargs wc
 find ~lingh/ -type f -print0 | xargs -0 chmod 755 (-print0 make sure the null character is used to seperate them, -0 on xargs make sure the xargs uses the null characters)
 find ~lingh/ "*fruits.txt" -print0 | xargs -0 -I {} cp {}  ~lingh/{}.backup
 find  ~lingh/ -name "*.backup" -print0 | xargs -p -0 -n1 rm
+```
 
-\# Creating an archive using tar command
+### Creating an archive using tar command
+```bash
 tar cvf archive_name.tar dirname/
 tar cvfj archive_name.tar.bz2 dirname/
 \# z - filter the archive through gzip
@@ -687,3 +727,4 @@ tar xvf archive_name.tar
 tar xvfz archive_name.tar.gz
 \#Extracting a bzipped tar archive ( *.tar.bz2 ) using option xvjf
 tar xvfj archive_name.tar.bz2
+```
