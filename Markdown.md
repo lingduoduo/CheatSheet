@@ -1,5 +1,3 @@
-# First
-## Second
 1. **整体界面 - Jupyter 主题**
 
 安装Jupyterthemes
@@ -37,6 +35,8 @@ a. 标题
 ### HEADING
 #### HEADING
 
+# First
+## Second
 ### Third
 #### Four
 ##### Five
