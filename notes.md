@@ -162,3 +162,8 @@ Harsh truths I know at 32 I wish knew at 22:
 ***
 
 Those are 20 harsh truths I wish I knew earlier in my life. Internalize them now and you’ll live better. If you got value out of this, follow me Sahil Bloom for more in future.
+
+6/21/2023
+Warren Buffet
+Surround yourself with poeple that push you to do and be better. No drama or negativity. Just higher goals and higher motivation. Good times and positive engergy. No jealousy or hate. Simply bringing out the absolute best in each other.
+
