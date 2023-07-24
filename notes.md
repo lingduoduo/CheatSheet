@@ -102,14 +102,68 @@ Things turn out best for the people who make the best of the way things turn out
 We don’t see things as they are, we see them as we are.
 
 1/4/2023
-Provide a clear outline of the Associate’s roles and responsibilities over the course of the semester regarding their participation in the class, how often the Associate and Instructor of Record will meet outside of class sessions, expectations for responding to student emails and queries, grading student work, and so on.
-Ensure that the Associate’s workload is manageable and within the bounds of the Associate’s contract.
-Provide guidance on their expectations for students, so that the Associate can respond to student questions consistently with the Instructor of Record's expectations.
-Give feedback on how well the Associate is meeting expectations with clear, concrete suggestions on how to develop their performance as an Associate.
+- Provide a clear outline of the Associate’s roles and responsibilities over the course of the semester regarding their participation in the class, how often the Associate and Instructor of Record will meet outside of class sessions, expectations for responding to student emails and queries, grading student work, and so on.
+- Ensure that the Associate’s workload is manageable and within the bounds of the Associate’s contract.
+- Provide guidance on their expectations for students, so that the Associate can respond to student questions consistently with the Instructor of Record's expectations.
+- Give feedback on how well the Associate is meeting expectations with clear, concrete suggestions on how to develop their performance as an Associate.
 
 2/6/2023
 Be your own artist and always be confident in what you’re doing. If you’re not going to be confident then you might as well not be doing it
 
 3/6/2023
 Good luck is when opportunity meets preparation, while bad luck is when lack of preparation meets reality.
+
+3/22/2023
+Do not use your energy to worry. Use your energy to believe, to create, to learn, to think and to grow.
+
+3/24/2023
+Harsh truths I know at 32 I wish knew at 22:
+
+1. Most of your friends aren’t really your friends. They’re just along for the ride when it’s fun or convenient. Your real friends are there for you when you have nothing to offer.
+
+2. You'll only see your loved ones a few more times. Remember: It's later than you think.
+
+3. You'll literally never know what you want to be when you grow up (and that's perfectly fine!).
+
+4. Most people don't really care about you. The Spotlight Effect says that we overestimate the degree to which other people are observing our actions. This should be liberating.
+
+5. You don't need to have an opinion on everything. It's perfectly reasonable to have no opinion on something that you haven't researched or don't understand.
+
+6. You probably won't be remembered or have a legacy. In a few thousand years, chances are we will all be forgotten.
+
+7. You can tell everything you need to know about a person by observing (1) how they treat service workers and (2) whether they put their shopping cart back.
+
+8. You can get pretty damn far in life by just saying what you're going to do and then doing it. No fancy hack needed.
+
+9. Most of us need fewer friends and more intellectual sparring partners. Friends are easy to come by, but intellectual sparring partners question our assumptions and force us to level up.
+
+10. Being kind to people is the only real life hack. Kindness remains severely underrated.
+
+11. We should all stop talking about how many books we read last year. It's much more impressive to read one book and have it deeply impact you than to read 100 books and not feel a thing.
+
+12. You should never bet against a person who just keeps showing up.
+
+13. Most of the people you look up to and admire are remarkably unremarkable. Their success is not due to some intrinsic difference, but some stellar combination of effort and luck.
+
+14. If it seems too good to be true, it probably is (and you should run away).
+
+15. You're probably being held back by your unwillingness to ask. Remember: Closed mouths don't get fed.
+
+16. Failure doesn't always lead to growth. Sometimes failure just leads to pain. Sometimes the growth doesn't come from the failure, but from simply outlasting the darkness.
+
+17. Waking up early is the easiest way to improve your odds of success. You don't have to wake up early to be successful, but you rarely find an early riser that isn't winning.
+
+18. Hard work is not overrated. That's ridiculous. 99% of successful people worked very hard.
+
+19. Showing up early costs very little and pays off handsomely in the long run.
+
+20. The world is not fair. Bad people win and good people lose—all the time. The world may never be truly fair, but it will always belong to those who make the most of what they have before them.
+
+***
+
+Those are 20 harsh truths I wish I knew earlier in my life. Internalize them now and you’ll live better. If you got value out of this, follow me Sahil Bloom for more in future.
+
+6/21/2023
+Warren Buffet
+Surround yourself with poeple that push you to do and be better. No drama or negativity. Just higher goals and higher motivation. Good times and positive engergy. No jealousy or hate. Simply bringing out the absolute best in each other.
 
