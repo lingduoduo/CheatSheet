@@ -11,7 +11,7 @@ vim normal mode
 * :n - positions the cursor at line n
 * :$ - positions the cursor on the last line
 
-* syntax on
+* :syntax on
 * :colorscheme slate
 * :set nu - turn on line numbering
 * :set nonu - turn off line numbering
