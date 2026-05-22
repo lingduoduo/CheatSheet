@@ -1,4 +1,393 @@
 
+# 1. 创建仓库
+
+## 初始化一个新的 Git 仓库
+
+```bash
+git init
+```
+
+作用：
+- 创建一个新的本地 Git 仓库
+
+适合场景：
+- 新项目开始版本管理
+
+---
+
+## 克隆远程仓库
+
+```bash
+git clone <repo_url>
+```
+
+例如：
+
+```bash
+git clone https://github.com/user/project.git
+```
+
+作用：
+- 从远程仓库复制代码到本地
+
+适合场景：
+- 下载已有项目
+- 团队协作开发
+
+---
+
+# 2. 添加修改到暂存区
+
+## 添加所有修改
+
+```bash
+git add .
+```
+
+作用：
+- 将当前目录下所有修改加入暂存区（Staging Area）
+
+---
+
+## 添加单个文件
+
+```bash
+git add file.py
+```
+
+作用：
+- 只暂存指定文件
+
+---
+
+## Git 提交流程
+
+```text
+工作区 Working Directory
+        ↓ git add
+
+暂存区 Staging Area
+        ↓ git commit
+
+本地仓库 Repository
+```
+
+---
+
+# 3. 提交代码
+
+```bash
+git commit -m "fix login bug"
+```
+
+作用：
+- 生成一次版本提交（commit）
+
+---
+
+## 推荐的 commit message 风格
+
+```text
+feat: add recommendation service
+fix: resolve memory leak
+refactor: simplify retrieval pipeline
+docs: update README
+```
+
+---
+
+# 4. 查看状态与历史
+
+## 查看当前状态
+
+```bash
+git status
+```
+
+作用：
+- 查看哪些文件修改了
+- 哪些已经暂存
+- 哪些未跟踪
+
+---
+
+## 查看提交历史
+
+```bash
+git log
+```
+
+---
+
+## 简洁模式
+
+```bash
+git log --oneline
+```
+
+作用：
+- 更简洁地查看提交历史
+
+---
+
+# 回退与恢复
+
+# 5. 查看具体改动
+
+```bash
+git diff
+```
+
+作用：
+- 查看代码具体修改内容
+
+---
+
+## 查看单个文件改动
+
+```bash
+git diff file.py
+```
+
+---
+
+# 6. 撤销工作区修改
+
+```bash
+git restore file.py
+```
+
+作用：
+- 恢复文件到最近一次 commit 状态
+
+注意：
+- 未提交修改会丢失
+
+---
+
+# 7. 撤销最近一次 Commit
+
+## 默认模式（mixed）
+
+```bash
+git reset HEAD~1
+```
+
+作用：
+- 删除最近一次 commit
+- 保留代码修改
+- 取消暂存状态
+
+---
+
+## soft 模式
+
+```bash
+git reset --soft HEAD~1
+```
+
+作用：
+- 删除 commit
+- 保留代码
+- 保留暂存状态
+
+---
+
+## hard 模式（危险）
+
+```bash
+git reset --hard HEAD~1
+```
+
+作用：
+- 删除 commit
+- 删除代码修改
+
+注意：
+- 修改无法恢复
+
+---
+
+# 分支操作
+
+# 8. 创建分支
+
+```bash
+git branch feature-xxx
+```
+
+作用：
+- 创建新分支
+
+---
+
+# 9. 切换分支
+
+## 传统方式
+
+```bash
+git checkout feature-xxx
+```
+
+---
+
+## 推荐方式
+
+```bash
+git switch feature-xxx
+```
+
+作用：
+- 切换到指定分支
+
+---
+
+# 10. 合并分支
+
+```bash
+git merge feature-xxx
+```
+
+作用：
+- 将 feature 分支合并到当前分支
+
+---
+
+## 常见流程
+
+```bash
+git switch main
+git merge feature-xxx
+```
+
+---
+
+# 远程同步
+
+# 11. 推送代码
+
+```bash
+git push
+```
+
+作用：
+- 上传本地 commit 到远程仓库
+
+---
+
+## 第一次推送
+
+```bash
+git push origin main
+```
+
+---
+
+# 12. 拉取最新代码
+
+```bash
+git pull
+```
+
+作用：
+- 从远程同步最新代码
+
+---
+
+## git pull 本质
+
+```text
+git fetch + git merge
+```
+
+---
+
+# 推荐新手工作流
+
+```bash
+git pull
+
+git checkout -b feature-search
+
+# 开发代码
+
+git add .
+
+git commit -m "add semantic retrieval"
+
+git push origin feature-search
+```
+
+然后：
+1. 提交 Pull Request（PR）
+2. Code Review
+3. Merge 到 main
+
+---
+
+# Git 核心理解
+
+Git 本质记录的是：
+
+```text
+commit snapshot（快照）
+```
+
+而不是文件本身。
+
+每次 commit：
+- 像一次游戏存档
+- 可以随时回退
+- 查看历史
+- 建立不同分支
+
+---
+
+# Git 最重要概念
+
+## 三个区域
+
+```text
+工作区 Working Directory
+        ↓ git add
+
+暂存区 Staging Area
+        ↓ git commit
+
+本地仓库 Repository
+```
+
+很多 Git 问题本质都是：
+
+```text
+“代码现在在哪个区域？”
+```
+
+---
+
+# Git 常用命令速查表
+
+| 功能 | 命令 |
+|---|---|
+| 初始化仓库 | `git init` |
+| 克隆仓库 | `git clone url` |
+| 添加文件 | `git add .` |
+| 提交代码 | `git commit -m "msg"` |
+| 查看状态 | `git status` |
+| 查看历史 | `git log --oneline` |
+| 查看改动 | `git diff` |
+| 撤销修改 | `git restore file.py` |
+| 回退 commit | `git reset HEAD~1` |
+| 创建分支 | `git branch feature-x` |
+| 切换分支 | `git switch feature-x` |
+| 合并分支 | `git merge feature-x` |
+| 拉取代码 | `git pull` |
+| 推送代码 | `git push` |
+
+---
+
+
+
 | Alias  | Command                               |
 | :----- | :------------------------------------ |
 | gapa   | git add --patch                       |
