@@ -3,6 +3,7 @@
 今天，分享用了一段时间 Claude Code，挑出了日常高频实用的命令,几 局
 天都在用。许多时候，Claude Code 好不好用，很大程度取决于你知
 不知道这些隐藏命令。
+
 **1、/model [model]**
 
 model opus，切换到 opus 模型
@@ -16,25 +17,40 @@ L Set model to Opus 4.6 in plan mode, else Sonnet 4.6
 
 这个命令对小白非常友好，质量最高，且省 token，也是社区公认"神
 技“，几乎所有大项目第一步都
+
+---
+
 **2、/plan**开启之后，Claude Code 进入只读规划模式，这时候呢它只会
 分析代码仓库，输出计划，思考，不会动你任何代码。
 接手新项目，如刚入职想对复杂项目重构时，先 plan 再动手了。
+
+---
+
 **3、/fast**
 这个命令，是开启高速模式，响应速度大幅提升，适合快速迭代和调试。
 注意: Fast Mode 跑的还是同一个模型，只是 API 设置做了速度优化，成
 本更高，用完记得关，不然 token MASI.
+
+---
+
 **4、/compac**t一键压缩上下文，可以带参数指定保留什么，比如
 /compact 保留错误处理逻辑 。平时当上下文用量超过 80% 时必打
 的，可以配合 /context 监控使用。
+
+---
 
 **5, /review**
 写好的代码，准备提交时，可以先review代码审查，减少上线时bug，安
 全，格式，性能等情况出现。改完代码后几乎会执行，以前是项目负责
 人，现在换成claude review.
 
+---
+
 **6、/rewind**
 有后悔药的命令，执行后可以安全回滚到上一个 checkpoint。比如修改
 了代码出了问题直接撤回，不用手动 git reset，减少 git 学习成本
+
+---
 
 **7, /clear**
 清空当前会话，重置所有上下文。比如要切换新任务时，执行改命令。
@@ -47,13 +63,19 @@ L Set model to Opus 4.6 in plan mode, else Sonnet 4.6
 
 立，并行推进。一个ai干完自动交接，不用你盯着，在大项目，复杂任务用这个能省很多时间。
 
+---
+
 **10、/doctor**
 
 自动诊断环境，依赖，会话问题。遇到奇怪 bug 先跑这个。
 
+---
+
 **11、 /todos**
 
 会列出当前会话中的 todo 项，任务管理神器啊。
+
+---
 
 **12、/diff**
 
@@ -65,9 +87,13 @@ Welcome back!         Run /init to create a CLAUDE.md file with instru.
 
 sre-tauri/tauri conf .json
 
+---
+
 **13、/help**
 请求帮助，会显示所有可用命令，包括自定义命令。有很多隐藏功能都在这里找到14、/context
 实时显示当前 token 使用率和上下文状态，防止爆内存，很实用的。
+
+---
 
 **15、 /security-review**
 
