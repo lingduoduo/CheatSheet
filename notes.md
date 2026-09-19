@@ -167,3 +167,5 @@ Those are 20 harsh truths I wish I knew earlier in my life. Internalize them now
 Warren Buffet
 Surround yourself with poeple that push you to do and be better. No drama or negativity. Just higher goals and higher motivation. Good times and positive engergy. No jealousy or hate. Simply bringing out the absolute best in each other.
 
+9/19/2026
+The Old Patagonian Express: By Train Through the Americas 
